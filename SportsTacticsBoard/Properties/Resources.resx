@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="CurrentLayoutNumber_Empty" xml:space="preserve">
+    <value />
+  </data>
+	<data name="CurrentLayoutNumber_Format" xml:space="preserve">
+    <value>{0}/{1}</value>
+  </data>
+	<assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+	<data name="DeleteHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\deletehs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="ExceptionMessage_LayoutFieldTagInvalid" xml:space="preserve">
+    <value>Layout field type tag is not valid</value>
+  </data>
+	<data name="ExceptionMessage_LayoutNameInvalid" xml:space="preserve">
+    <value>Layout name is not valid</value>
+  </data>
+	<data name="FailedToOpenFileFormatStr" xml:space="preserve">
+    <value>Failed to open file {0}</value>
+  </data>
+	<data name="FieldObject_Ball" xml:space="preserve">
+    <value>Ball</value>
+  </data>
+	<data name="FieldObject_Player" xml:space="preserve">
+    <value>Player</value>
+  </data>
+	<data name="FieldObject_Player_Name_Format" xml:space="preserve">
+    <value>Player - {0} - {1}</value>
+  </data>
+	<data name="FieldObject_Puck" xml:space="preserve">
+    <value>Puck</value>
+  </data>
+	<data name="FieldObject_Referee_Hockey_1" xml:space="preserve">
+    <value>Referee 1</value>
+  </data>
+	<data name="FieldObject_Referee_Hockey_2" xml:space="preserve">
+    <value>Referee 2</value>
+  </data>
+	<data name="FieldObject_Referee_Hockey_L1" xml:space="preserve">
+    <value>Linesman 1</value>
+  </data>
+	<data name="FieldObject_Referee_Hockey_L2" xml:space="preserve">
+    <value>Linesman 2</value>
+  </data>
+	<data name="FieldObject_Referee_Soccer_4th" xml:space="preserve">
+    <value>Referee - 4th Official</value>
+  </data>
+	<data name="FieldObject_Referee_Soccer_AR1" xml:space="preserve">
+    <value>Referee - Assistant #1</value>
+  </data>
+	<data name="FieldObject_Referee_Soccer_AR2" xml:space="preserve">
+    <value>Referee - Assistant #2</value>
+  </data>
+	<data name="FieldObject_Referee_Soccer_CR" xml:space="preserve">
+    <value>Referee - Centre</value>
+  </data>
+	<data name="FieldObject_Referee_Volleyball_N" xml:space="preserve">
+    <value>Referee - Main</value>
+  </data>
+	<data name="FieldObject_Referee_Volleyball_NE" xml:space="preserve">
+    <value>Referee - Line #2</value>
+  </data>
+	<data name="FieldObject_Referee_Volleyball_NW" xml:space="preserve">
+    <value>Referee - Line #1</value>
+  </data>
+	<data name="FieldObject_Referee_Volleyball_S" xml:space="preserve">
+    <value>Referee - Assistant</value>
+  </data>
+	<data name="FieldObject_Referee_Volleyball_SE" xml:space="preserve">
+    <value>Referee - Line #4</value>
+  </data>
+	<data name="FieldObject_Referee_Volleyball_SW" xml:space="preserve">
+    <value>Referee - Line #3</value>
+  </data>
+	<data name="FieldType_Floorball" xml:space="preserve">
+    <value>Floorball</value>
+  </data>
+	<data name="FieldType_Hockey_NHL" xml:space="preserve">
+    <value>Ice Hockey (NHL)</value>
+  </data>
+	<data name="FieldType_Soccer" xml:space="preserve">
+    <value>Football/Soccer (FIFA)</value>
+  </data>
+	<data name="FieldType_Soccer5" xml:space="preserve">
+    <value>Football/Soccer 5 vs 5</value>
+  </data>
+	<data name="FieldType_Soccer7" xml:space="preserve">
+    <value>Football/Soccer 7 vs 7</value>
+  </data>
+	<data name="FieldType_Soccer9" xml:space="preserve">
+    <value>Football/Soccer 9 vs 9</value>
+  </data>
+	<data name="FieldType_Volleyball" xml:space="preserve">
+    <value>Volleyball</value>
+  </data>
+	<data name="FileFilter" xml:space="preserve">
+    <value>Sports Tactics Board files (*.stb.xml)|*.stb.xml|All files (*.*)|*.*</value>
+  </data>
+	<data name="GoToNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\gotonexths.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="GoToPrevious" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\gotoprevious.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="Help" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\help.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="ImageFileNamePattern" xml:space="preserve">
+    <value> - {0:000}</value>
+  </data>
+	<data name="NavBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\navback.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="NavForward" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\navforward.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="NewDocumentHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\newdocumenths.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="NoSavedLayoutsMenuItemText" xml:space="preserve">
+    <value>&lt;&lt;none&gt;&gt;</value>
+  </data>
+	<data name="NotImplementedYet" xml:space="preserve">
+    <value>Not implemented yet!</value>
+  </data>
+	<data name="openHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\openhs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="RestartHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\restarths.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="SaveAsImageFileFilter" xml:space="preserve">
+    <value>Windows Bitmap (BMP)|*.bmp|Graphics Interchange Format (GIF)|*.gif|Portable Network Graphics (PNG)|*.png|Joint Photographic Experts Group (JPEG)|*.jpg</value>
+  </data>
+	<data name="saveHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\savehs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="SaveImageDialogTitle" xml:space="preserve">
+    <value>Save As Image File</value>
+  </data>
+	<data name="SaveImageSequenceDialogTitle" xml:space="preserve">
+    <value>Save Sequence As Image Files</value>
+  </data>
+	<data name="SaveSequenceEntryBeforeSwitchingEntries" xml:space="preserve">
+    <value>Save your current layout in place of the current sequence entry?</value>
+  </data>
+	<data name="TeamName_Attacking" xml:space="preserve">
+    <value>Attacking</value>
+  </data>
+	<data name="TeamName_Defending" xml:space="preserve">
+    <value>Defending</value>
+  </data>
+	<data name="UnableToOpenFile_InstallationMayBeIncomplete" xml:space="preserve">
+    <value>Unable to locate document. The installation of this program may not be complete or may have been modified.</value>
+  </data>
+	<data name="DataContainer_MoveFirstHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Images\DataContainer_MoveFirstHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="DataContainer_MoveLastHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Images\DataContainer_MoveLastHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="DataContainer_MoveNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Images\DataContainer_MoveNextHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="DataContainer_MovePreviousHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Images\DataContainer_MovePreviousHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="PlayHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Images\PlayHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="RecordHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Images\RecordHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="Edit_UndoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Images\Edit_UndoHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="PauseHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Images\PauseHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="SavedLayoutInformation_ErrorMessage_AtLeastOneItemMustBeChecked" xml:space="preserve">
+    <value>At least one item must be checked.</value>
+  </data>
+	<data name="SavedLayoutInformation_ErrorMessage_NameMustNotBeBlank" xml:space="preserve">
+    <value>Name must not be blank.</value>
+  </data>
+	<data name="FieldObject_BaseCone_Label_Format" xml:space="preserve">
+    <value>C{0}</value>
+  </data>
+	<data name="FieldObject_BaseCone_Name_Format" xml:space="preserve">
+    <value>Cone - {0}</value>
+  </data>
+	<data name="FieldObject_Referee_Futsal_1" xml:space="preserve">
+    <value>Referee 1</value>
+  </data>
+	<data name="FieldObject_Referee_Futsal_2" xml:space="preserve">
+    <value>Referee 2</value>
+  </data>
+	<data name="FieldType_Futsal" xml:space="preserve">
+    <value>Futsal (FIFA)</value>
+  </data>
+	<data name="FieldType_NFLFootball" xml:space="preserve">
+    <value>American Football (NFL)</value>
+  </data>
+	<data name="TitleFormatString" xml:space="preserve">
+    <value>{0} - {1}</value>
+  </data>
+	<data name="CustomLabelLongerThanRecommended" xml:space="preserve">
+    <value>The custom label is longer than recommended (2 characters or less). It probably won't display properly. Do you want to keep this label?</value>
+  </data>
+	<data name="InvalidCultureOption_Format" xml:space="preserve">
+    <value>Value supplied ('{1}') for {0} option does not contain a valid or supported value</value>
+  </data>
+	<data name="InvalidParametersTitle" xml:space="preserve">
+    <value>Invalid Parameters</value>
+  </data>
+	<data name="MissingCultureOptionValue_Format" xml:space="preserve">
+    <value>{0} option missing culture name</value>
+  </data>
+	<data name="zoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\zoom.cur;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</data>
+	<data name="RepeatHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Images\RepeatHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="FieldObject_Referee_Handball_1" xml:space="preserve">
+    <value>Referee 1</value>
+  </data>
+	<data name="FieldObject_Referee_Handball_2" xml:space="preserve">
+    <value>Referee 2</value>
+  </data>
+	<data name="FieldType_Handball" xml:space="preserve">
+    <value>Handball</value>
+  </data>
+</root>
