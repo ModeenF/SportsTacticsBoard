@@ -1,0 +1,5 @@
+open sftp://rdturner0@web.sourceforge.net
+option exclude *.bak;*.tmp;~$*;*.wbk;*~;#*;.#*;.svn;*.swp
+option synchdelete on
+synchronize remote WebSiteFiles /home/groups/s/sp/sportstacticsbd/htdocs
+exit

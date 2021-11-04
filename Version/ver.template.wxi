@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?ifdef StbVersion?>
+  <?undef StbVersion?>
+  <?endif?>
+  <?define StbVersion = "${version}" ?>
+  <?ifdef StbBuildNum?>
+  <?undef StbBuildNum?>
+  <?endif?>
+  <?define StbBuildNum = "${version_build}" ?>
+</Include>

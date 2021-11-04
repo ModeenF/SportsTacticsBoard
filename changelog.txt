@@ -1,0 +1,58 @@
+-- Changes committed to source control since previous release
+FEAT - Added Handball (based on Futsal with 2 extra players) [3388096]
+FIX - Corrected number of players to 6 for Floorball. [3475030]
+FEAT - Added Repeat button for sequence playback -- allows sequence to play continuously in a  loop
+FEAT - Added tooltips for field objects so that it's easier to identify them.
+FEAT - Added basic framework for zooming and rotating the displayed view of the field (while holding Ctrl: left click to zoom in, right click to zoom out; mouse wheel zooms: hold Alt to zoom on point; left-click holding Alt to centre on point); menu items to reset the view, and to change the orientation between horizontal and vertical.
+FEAT - Added the ability to provide a custom label for field objects within a saved sequence (allows re-numbering of players). Only objects with labels can be renamed.
+FIX - Fixed redraw issue when moving objects with movement lines enabled
+CHG - Changed file name formatting when exporting images to include leading zeros and be 3 digits long to permit easier sorting of files.
+
+0.2.1008 - Added new playing surfaces (Futsal and American football)
+FEAT - Added FIFA Futsal pitch
+FEAT - Added American football (NFL) field (players are a bit random and possibly labelled wrong -- need someone with expertise)
+CHG - Relabelled sports to be more specific and add governing body designation related to field markings and layout
+
+0.2.1007 - Added German translation, Floorball support, and automated playback. Fixes issues including XP SP3 install issue
+FEAT - Added 20 triangular cones to the soccer field for documenting drills
+FIX - Updated Saved Layout Information dialog to use labels of field objects instead of "tags"
+FEAT - Added German translation of main user interface - translation courtesy of Ralph Rinschen
+FEAT - Added Floorball field - code courtesy of Ulrich Jenzer
+FEAT - Added support for "playing back" (or animating) the sequence - idea and some code courtesy of Ulrich Jenzer
+FIX - Fixed installer on Windows XP SP3
+CHG - Changed/added more icons in tool bar
+FEAT - Added support for moving to the beginning or the end of a sequence
+
+0.2.1005 - Various minor fixes and lots of build/release improvements
+BUILD - Updated build environment to use more recent tools, Visual Studio 2008, .NET 3.5, Wix 3.0.4805.0, FxCop 1.36, and NAnt 0.86 Beta1
+FIX - Exit menu item wasn't working. 
+FIX - Fixed locating of installed documents and library files when installed using updated installers (that have bin folder).
+BUILD - Added code analysis using FxCop to build process.
+BUILD - Removed Votive project from solution to allow building solution without WiX.
+BUILD - Added WiX build to NAnt build files, re-organized installer building slightly.
+BUILD - Added NAnt build files to build main targets and build "release" target files.
+BUILD - Various modifications to version generation, MSI installer building.
+FEAT - Added Volleyball court - code courtesy of Lukas Kawalec (kadeon)
+CHG - Made the hockey benches and penalty boxes slightly deeper and wider to fit players better.
+CHG - Moved "root" menu back to "Sequence" menu and moved position of "Playing Surface" menu to end.
+FEAT - Added menu items in Help menu linking to installed documents (readme, changelog, license)
+
+
+0.2.0 - First useful version
+FEAT - Copying current layout to clipboard as an image for easily importing into other programs, such as PowerPoint.
+FEAT - Ensure that "Saved Layouts" are only available for the currently selected sports field type.
+FEAT - Improve layout sequence creation and management.
+FEAT - Exporting image sequences as bitmaps.
+FEAT - Clean up initial hockey player placement, bench layout and devise new labelling system to support sports like hockey.
+FEAT - Implement saving and loading of "Saved Layouts" as they currently don't save to disk.
+FEAT - Provide sample layouts for library and improved installation and usage instructions related to the library and file locations. 
+FEAT - Added Windows installer
+FIX - Corrected missing centre line on soccer field.
+
+0.1.1 - Minor fixes and features
+
+0.1.0 - Initial Release
+FEAT - Supports more than one sport (currently Soccer and Hockey), more to be added. 
+FEAT - Records sequences of positions for documenting tactical strategies or plays. 
+FEAT - Save and loads tactical sequences from files - allows building a library of plays or drills. 
+FEAT - Supports pre-defined layouts that position players, ball/puck and officials. 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SavedLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FieldTypeTag>Soccer</FieldTypeTag>
+  <Name>Players on Bench</Name>
+  <Category />
+  <Description>All the players positioned on their respective benches.</Description>
+  <Layout>
+    <Entry tag="Player_Attacking_1" x="8.25" y="65.25" />
+    <Entry tag="Player_Defending_1" x="58.25" y="65.25" />
+    <Entry tag="Player_Attacking_2" x="11.5" y="65.25" />
+    <Entry tag="Player_Defending_2" x="61.5" y="65.25" />
+    <Entry tag="Player_Attacking_3" x="14.75" y="65.25" />
+    <Entry tag="Player_Defending_3" x="64.75" y="65.25" />
+    <Entry tag="Player_Attacking_4" x="18" y="65.25" />
+    <Entry tag="Player_Defending_4" x="68" y="65.25" />
+    <Entry tag="Player_Attacking_5" x="21.25" y="65.25" />
+    <Entry tag="Player_Defending_5" x="71.25" y="65.25" />
+    <Entry tag="Player_Attacking_6" x="24.5" y="65.25" />
+    <Entry tag="Player_Defending_6" x="74.5" y="65.25" />
+    <Entry tag="Player_Attacking_7" x="27.75" y="65.25" />
+    <Entry tag="Player_Defending_7" x="77.75" y="65.25" />
+    <Entry tag="Player_Attacking_8" x="31" y="65.25" />
+    <Entry tag="Player_Defending_8" x="81" y="65.25" />
+    <Entry tag="Player_Attacking_9" x="34.25" y="65.25" />
+    <Entry tag="Player_Defending_9" x="84.25" y="65.25" />
+    <Entry tag="Player_Attacking_10" x="37.5" y="65.25" />
+    <Entry tag="Player_Defending_10" x="87.5" y="65.25" />
+    <Entry tag="Player_Attacking_11" x="40.75" y="65.25" />
+    <Entry tag="Player_Defending_11" x="90.75" y="65.25" />
+  </Layout>
+</SavedLayout>

@@ -1,0 +1,12 @@
+- Setting for controlling playback speed of sequence [Email: Ralph Rinschen]
+- New field types:
+  - Badminton [SF Tracker] 
+  - Sepaktakraw [SF Tracker] 
+- Saving the zoom/position/orientation when saving the sequence [me]
+- Creating movie (flv, wmv) sequence from the sequence [Email: Ralph Rinschen]  --> maybe use HTML + Javascript with PNG files (e.g. http://javascript.internet.com/miscellaneous/fading-slide-show.html), or HTML + Javascript and SVG files
+- Abitrarily positioning text objects on the field [Email: Ralph Rinschen]
+- Adding/removing players (making players visible/shown) [SF Tracker]
+- Separate arrows with different renderings [me, SF Tracker]
+- Making soccer ball more obvious/visible [Email: Ralph Rinschen]
+- Presentation mode (a bit like PowerPoint slide-show mode - e.g. simple click to advance) [Email: Ralph Rinschen]
+- BUG: Add a ball for American Football

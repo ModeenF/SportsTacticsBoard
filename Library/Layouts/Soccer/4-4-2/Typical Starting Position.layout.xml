@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SavedLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FieldTypeTag>Soccer</FieldTypeTag>
+  <Name>Typical Starting Position</Name>
+  <Category>4-4-2</Category>
+  <Description>A typical starting position for teams using a common 4-4-2 line-up.</Description>
+  <Layout>
+    <Entry tag="Player_Attacking_1" x="3" y="30" />
+    <Entry tag="Player_Defending_1" x="97" y="30" />
+    <Entry tag="Player_Attacking_2" x="16" y="8.4" />
+    <Entry tag="Player_Defending_2" x="84" y="8.4" />
+    <Entry tag="Player_Attacking_3" x="16" y="22.8" />
+    <Entry tag="Player_Defending_3" x="84" y="22.8" />
+    <Entry tag="Player_Attacking_4" x="16" y="37.1999969" />
+    <Entry tag="Player_Defending_4" x="84" y="37.1999969" />
+    <Entry tag="Player_Attacking_5" x="16" y="51.6" />
+    <Entry tag="Player_Defending_5" x="84" y="51.6" />
+    <Entry tag="Player_Attacking_6" x="35" y="8.4" />
+    <Entry tag="Player_Defending_6" x="65" y="8.4" />
+    <Entry tag="Player_Attacking_7" x="35" y="22.8" />
+    <Entry tag="Player_Defending_7" x="65" y="22.8" />
+    <Entry tag="Player_Attacking_8" x="35" y="37.1999969" />
+    <Entry tag="Player_Defending_8" x="65" y="37.1999969" />
+    <Entry tag="Player_Attacking_9" x="35" y="51.6" />
+    <Entry tag="Player_Defending_9" x="65" y="51.6" />
+    <Entry tag="Player_Attacking_10" x="45" y="20" />
+    <Entry tag="Player_Defending_10" x="55" y="20" />
+    <Entry tag="Player_Attacking_11" x="45" y="40" />
+    <Entry tag="Player_Defending_11" x="55" y="40" />
+  </Layout>
+</SavedLayout>
