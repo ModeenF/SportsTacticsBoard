@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SavedLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FieldTypeTag>Soccer7</FieldTypeTag>
+  <Name>Typical Starting Position</Name>
+  <Category>2-3-1</Category>
+  <Description>A typical starting position for teams using a common 2-3-1 line-up.</Description>
+  <Layout>
+    <Entry tag="Player_Attacking_1" x="2.2726283" y="29.796646" />
+    <Entry tag="Player_Defending_1" x="99.11172" y="29.796646" />
+    <Entry tag="Player_Attacking_2" x="11.7419" y="21.589943" />
+    <Entry tag="Player_Defending_2" x="90.905014" y="19.948603" />
+    <Entry tag="Player_Attacking_3" x="11.6156435" y="40.275974" />
+    <Entry tag="Player_Defending_3" x="91.41004" y="40.275974" />
+    <Entry tag="Player_Attacking_4" x="25.756422" y="7.575421" />
+    <Entry tag="Player_Defending_4" x="74.996635" y="8.83799" />
+    <Entry tag="Player_Attacking_5" x="24.99888" y="28.029049" />
+    <Entry tag="Player_Defending_5" x="75.122894" y="30.175415" />
+    <Entry tag="Player_Attacking_6" x="25.125137" y="52.396645" />
+    <Entry tag="Player_Defending_6" x="75.249146" y="54.290497" />
+    <Entry tag="Player_Attacking_7" x="34.846924" y="28.78659" />
+    <Entry tag="Player_Defending_7" x="60.224575" y="30.175415" />
+  </Layout>
+</SavedLayout>

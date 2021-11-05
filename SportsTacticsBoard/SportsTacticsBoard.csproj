@@ -49,10 +49,21 @@
     <None Update="app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <Compile Update="FieldControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Content Include="res\localization.en-US.res" />
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Content Include="res\localization.en-US.res">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\NavBack.png" />

@@ -40,7 +40,7 @@ namespace SportsTacticsBoard
 
     public abstract class FieldObject
     {
-        public static ResourceManager ResourceManager;
+        public static ResourceManager ResourceManager { get { return new ResourceManager(); } }
 
         public abstract string Tag { get; }
         public abstract string Label { get; }
@@ -135,7 +135,7 @@ namespace SportsTacticsBoard
         public virtual void DrawAt(Graphics graphics, PointF pos)
         {
             if (null == graphics)
-                throw new ArgumentNullException("graphics");
+                throw new ArgumentNullException(nameof(graphics));
 
             var rectangle = GetRectangleAt(pos);
             using (var fillBrush = new SolidBrush(FillBrushColor))
@@ -148,7 +148,7 @@ namespace SportsTacticsBoard
             if (!HasLabel)
                 return;
 
-            var fontSize = LabelFontSize * rectangle.Height / 18.0F;
+            var fontSize = LabelFontSize * (float)rectangle.Height / 18.0F;
             using (var labelFont = new Font("Arial", fontSize, FontStyle.Bold))
             {
                 using (StringFormat strFormat = new StringFormat())
@@ -158,7 +158,7 @@ namespace SportsTacticsBoard
                     graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
                     try
                     {
-                        graphics.DrawString(LabelText, labelFont, LabelBrush, rectangle.Location, strFormat);
+                        graphics.DrawString(LabelText, labelFont, LabelBrush, rectangle, strFormat);
                     }
                     catch (System.Runtime.InteropServices.ExternalException)
                     {
@@ -179,7 +179,7 @@ namespace SportsTacticsBoard
         public void DrawMovementLineFrom(Graphics graphics, PointF startPoint, PointF endPoint)
         {
             if (null == graphics)
-                throw new ArgumentNullException("graphics");
+                throw new ArgumentNullException(nameof(graphics));
 
             using (Pen movementPen = GetMovementPen())
                 graphics.DrawLine(movementPen, startPoint, endPoint);

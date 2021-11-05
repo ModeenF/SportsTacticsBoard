@@ -23,52 +23,53 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace SportsTacticsBoard
 {
-  public partial class SelectPlayingSurfaceType : Form
-  {
-    public SelectPlayingSurfaceType()
+    public partial class SelectPlayingSurfaceType : Form
     {
-      InitializeComponent();
-    }
+        public SelectPlayingSurfaceType()
+        {
+            InitializeComponent();
+        }
 
-    internal static IPlayingSurfaceType AskUserForFieldType(bool saveAsDefaultChecked)
-    {
-      using (SelectPlayingSurfaceType sftDialog = new SelectPlayingSurfaceType()) {
-        sftDialog.saveAsDefaultCheckBox.Checked = saveAsDefaultChecked;
-        sftDialog.fieldTypeComboBox.DataSource = MainForm.AvailableFieldTypes;
-        sftDialog.fieldTypeComboBox.DisplayMember = "Name";
-        if (sftDialog.fieldTypeComboBox.Items.Count > 0) {
-          string defaultFieldType = global::SportsTacticsBoard.Properties.Settings.Default.DefaultFieldType;
-          int selectedIndex = 0;
-          if (defaultFieldType.Length > 0) {
-            int index = sftDialog.fieldTypeComboBox.FindStringExact(defaultFieldType);
-            if (index >= 0) {
-              selectedIndex = index;
+        internal static IPlayingSurfaceType AskUserForFieldType(bool saveAsDefaultChecked)
+        {
+            using (SelectPlayingSurfaceType sftDialog = new SelectPlayingSurfaceType())
+            {
+                sftDialog.saveAsDefaultCheckBox.Checked = saveAsDefaultChecked;
+                sftDialog.fieldTypeComboBox.DataSource = MainForm.AvailableFieldTypes;
+                sftDialog.fieldTypeComboBox.DisplayMember = "Name";
+                if (sftDialog.fieldTypeComboBox.Items.Count > 0)
+                {
+                    string defaultFieldType = Properties.Settings.Default.DefaultFieldType;
+                    int selectedIndex = 0;
+                    if (defaultFieldType.Length > 0)
+                    {
+                        int index = sftDialog.fieldTypeComboBox.FindStringExact(defaultFieldType);
+                        if (index >= 0)
+                        {
+                            selectedIndex = index;
+                        }
+                    }
+                    sftDialog.fieldTypeComboBox.SelectedIndex = selectedIndex;
+                }
+
+                if (sftDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return null;
+                }
+                
+                IPlayingSurfaceType selectedFieldType = (IPlayingSurfaceType)sftDialog.fieldTypeComboBox.SelectedItem;
+                if (sftDialog.saveAsDefaultCheckBox.Checked)
+                {
+                    Properties.Settings.Default.DefaultFieldType = selectedFieldType.Name;
+                    Properties.Settings.Default.Save();
+                }
+                return selectedFieldType;
             }
-          }
-          sftDialog.fieldTypeComboBox.SelectedIndex = selectedIndex;
         }
-        if (sftDialog.ShowDialog() != DialogResult.OK) {
-          return null;
-        }
-        IPlayingSurfaceType selectedFieldType = (IPlayingSurfaceType)sftDialog.fieldTypeComboBox.SelectedItem;
-        if (sftDialog.saveAsDefaultCheckBox.Checked) {
-          global::SportsTacticsBoard.Properties.Settings.Default.DefaultFieldType =
-            selectedFieldType.Name;
-          global::SportsTacticsBoard.Properties.Settings.Default.Save();
-        }
-        return selectedFieldType;
-      }
-    }
 
-  }
+    }
 }

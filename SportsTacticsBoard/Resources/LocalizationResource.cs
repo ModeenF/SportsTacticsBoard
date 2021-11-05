@@ -41,11 +41,11 @@ namespace SportsTacticsBoard.Resources
         public string FieldObjectPlayer { get; set; }
         public string FieldObjectPlayerNameFormat { get; set; }
         public string FieldObjectPuck { get; set; }
-        public string FieldObjectReferee { get; set; }
+        public string FieldObjectReferee_Soccer_CR { get; set; }
         public string FieldObjectRefereeAssistant { get; set; }
         public string FieldObjectRefereeLine { get; set; }
         public string FieldObjectRefereeMain { get; set; }
-        public string FieldObjectRefereeCentre { get; set; }
+        //public string FieldObjectRefereeCentre { get; set; }
         public string FieldTypeFloorball { get; set; }
         public string FieldTypeFutsal { get; set; }
         public string FieldTypeHandball { get; set; }
@@ -118,6 +118,6 @@ namespace SportsTacticsBoard.Resources
         public string Ok { get; set; }
         public string Cancel { get; set; }
 
-        public string ChangeLabel { get; set; }
+        public string ChangeLabel { get; set; }       
     }
 }

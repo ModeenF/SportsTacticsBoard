@@ -40,7 +40,15 @@ namespace SportsTacticsBoard.Resources
         public LocalizationResource LocalizationResource { get; }
         public ImagesResource ImagesResource { get; }
 
-        public ResourceManager(string culture) : this(culture, AppDomain.CurrentDomain.BaseDirectory + @"/res") { }
+        public ResourceManager()
+            : this(DefaultCulture)
+        {
+        }
+
+        public ResourceManager(string culture)
+            : this(culture, AppDomain.CurrentDomain.BaseDirectory + @"/res")
+        {
+        }
 
         public ResourceManager(string culture, string pathToResources)
         {
@@ -94,13 +102,13 @@ namespace SportsTacticsBoard.Resources
                 NavBack = new Bitmap(GetStreamForImage("NavBack.png")),
                 NavForward = new Bitmap(GetStreamForImage("NavForward.png")),
                 NewDocumentHs = new Bitmap(GetStreamForImage("NewDocumentHS.png")),
-                OpenHs = new Bitmap(GetStreamForImage("OpenHS.png")),
+                OpenHs = new Bitmap(GetStreamForImage("openHS.png")),
                 PauseHs = new Bitmap(GetStreamForImage("PauseHS.png")),
                 PlayHs = new Bitmap(GetStreamForImage("PlayHS.png")),
                 RecordHs = new Bitmap(GetStreamForImage("RecordHS.png")),
                 RepeatHs = new Bitmap(GetStreamForImage("RepeatHS.png")),
                 RestartHs = new Bitmap(GetStreamForImage("RestartHS.png")),
-                SaveHs = new Bitmap(GetStreamForImage("SaveHS.png")),
+                SaveHs = new Bitmap(GetStreamForImage("saveHS.png"))
                 //Zoom = new Bitmap(GetStreamForImage("Zoom.cur")) //Can't load a .cur file
             };
         }

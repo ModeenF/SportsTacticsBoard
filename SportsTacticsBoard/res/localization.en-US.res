@@ -22,15 +22,13 @@ FieldObjectPlayerNameFormat: Player - {0} - {1}
 
 FieldObjectPuck: Puck
 
-FieldObjectReferee: Referee
+FieldObjectReferee_Soccer_CR: Centre Referee
 
 FieldObjectRefereeAssistant: Assistant
 
 FieldObjectRefereeLine: Line
 
 FieldObjectRefereeMain: Main
-
-FieldObjectRefereeCentre: Centre
 
 FieldTypeFloorball: Floorball
 
