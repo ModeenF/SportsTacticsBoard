@@ -29,25 +29,25 @@ using System.Drawing;
 
 namespace SportsTacticsBoard.PlayingSurfaceTypes
 {
-  /// <summary>
-  /// Implements a standard Handball pitch based on the FIFA Futsal pitch.
-  /// 
-  /// Playing surface units are in metres and the default pitch 
-  /// dimensions are 40 metres by 22 metres. Pitch is drawn to
-  /// correct dimensions without any specific compromises.
-  /// 
-  /// 2 referee field objects are supported for referee training.
-  /// </summary>
-  class Handball : FutsalHandballBase
-  {
-    public override string Tag
+    /// <summary>
+    /// Implements a standard Handball pitch based on the FIFA Futsal pitch.
+    /// 
+    /// Playing surface units are in metres and the default pitch 
+    /// dimensions are 40 metres by 22 metres. Pitch is drawn to
+    /// correct dimensions without any specific compromises.
+    /// 
+    /// 2 referee field objects are supported for referee training.
+    /// </summary>
+    class Handball : FutsalHandballBase
     {
-      get { return "Handball"; }
-    }
+        public override string Tag
+        {
+            get { return "Handball"; }
+        }
 
-    protected override int PlayersPerTeam
-    {
-      get { return 7; }
+        protected override int PlayersPerTeam
+        {
+            get { return 7; }
+        }
     }
-  }
 }

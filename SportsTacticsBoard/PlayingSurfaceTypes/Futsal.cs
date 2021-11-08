@@ -23,31 +23,28 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing;
 
 namespace SportsTacticsBoard.PlayingSurfaceTypes
 {
-  /// <summary>
-  /// Implements a standard FIFA Futsal pitch.
-  /// 
-  /// Playing surface units are in metres and the default pitch 
-  /// dimensions are 40 metres by 22 metres. Pitch is drawn to
-  /// correct dimensions without any specific compromises.
-  /// 
-  /// 2 referee field objects are supported for referee training.
-  /// </summary>
-  class Futsal : FutsalHandballBase
-  {
-    public override string Tag
+    /// <summary>
+    /// Implements a standard FIFA Futsal pitch.
+    /// 
+    /// Playing surface units are in metres and the default pitch 
+    /// dimensions are 40 metres by 22 metres. Pitch is drawn to
+    /// correct dimensions without any specific compromises.
+    /// 
+    /// 2 referee field objects are supported for referee training.
+    /// </summary>
+    class Futsal : FutsalHandballBase
     {
-      get { return "Futsal"; }
-    }
+        public override string Tag
+        {
+            get { return "Futsal"; }
+        }
 
-    protected override int PlayersPerTeam
-    {
-      get { return 5; }
+        protected override int PlayersPerTeam
+        {
+            get { return 5; }
+        }
     }
-  }
 }

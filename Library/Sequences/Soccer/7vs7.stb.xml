@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SportsTacticsBoardDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <fieldType>Soccer7</fieldType>
+  <layoutSequence>
+    <Entry tag="Player_Attacking_1" x="8.25" y="65.25" hidden="false" />
+    <Entry tag="Player_Defending_1" x="58.25" y="65.25" hidden="false" />
+    <Entry tag="Player_Attacking_2" x="11.5" y="65.25" hidden="false" />
+    <Entry tag="Player_Defending_2" x="61.5" y="65.25" hidden="false" />
+    <Entry tag="Player_Attacking_3" x="14.75" y="65.25" hidden="false" />
+    <Entry tag="Player_Defending_3" x="64.75" y="65.25" hidden="false" />
+    <Entry tag="Player_Attacking_4" x="18" y="65.25" hidden="false" />
+    <Entry tag="Player_Defending_4" x="68" y="65.25" hidden="false" />
+    <Entry tag="Player_Attacking_5" x="21.25" y="65.25" hidden="false" />
+    <Entry tag="Player_Defending_5" x="71.25" y="65.25" hidden="false" />
+    <Entry tag="Player_Attacking_6" x="24.5" y="65.25" hidden="false" />
+    <Entry tag="Player_Defending_6" x="74.5" y="65.25" hidden="false" />
+    <Entry tag="Player_Attacking_7" x="27.75" y="65.25" hidden="false" />
+    <Entry tag="Player_Defending_7" x="77.75" y="65.25" hidden="false" />
+    <Entry tag="Ball" x="50" y="30" hidden="false" />
+    <Entry tag="Referee_Soccer_CR" x="55" y="35" hidden="false" />
+    <Entry tag="Cone_1" x="35" y="-5" hidden="false" />
+    <Entry tag="Cone_2" x="36.5" y="-5" hidden="false" />
+    <Entry tag="Cone_3" x="38" y="-5" hidden="false" />
+    <Entry tag="Cone_4" x="39.5" y="-5" hidden="false" />
+    <Entry tag="Cone_5" x="41" y="-5" hidden="false" />
+    <Entry tag="Cone_6" x="42.5" y="-5" hidden="false" />
+    <Entry tag="Cone_7" x="44" y="-5" hidden="false" />
+    <Entry tag="Cone_8" x="45.5" y="-5" hidden="false" />
+    <Entry tag="Cone_9" x="47" y="-5" hidden="false" />
+    <Entry tag="Cone_10" x="48.5" y="-5" hidden="false" />
+    <Entry tag="Cone_11" x="50" y="-5" hidden="false" />
+    <Entry tag="Cone_12" x="51.5" y="-5" hidden="false" />
+    <Entry tag="Cone_13" x="53" y="-5" hidden="false" />
+    <Entry tag="Cone_14" x="54.5" y="-5" hidden="false" />
+    <Entry tag="Cone_15" x="56" y="-5" hidden="false" />
+    <Entry tag="Cone_16" x="57.5" y="-5" hidden="false" />
+    <Entry tag="Cone_17" x="59" y="-5" hidden="false" />
+    <Entry tag="Cone_18" x="60.5" y="-5" hidden="false" />
+    <Entry tag="Cone_19" x="62" y="-5" hidden="false" />
+    <Entry tag="Cone_20" x="63.5" y="-5" hidden="false" />
+  </layoutSequence>
+  <layoutSequence>
+    <Entry tag="Player_Attacking_1" x="2.2726283" y="29.796646" hidden="false" />
+    <Entry tag="Player_Defending_1" x="99.11172" y="29.796646" hidden="false" />
+    <Entry tag="Player_Attacking_2" x="11.7419" y="21.589943" hidden="false" />
+    <Entry tag="Player_Defending_2" x="90.905014" y="19.948603" hidden="false" />
+    <Entry tag="Player_Attacking_3" x="11.6156435" y="40.275974" hidden="false" />
+    <Entry tag="Player_Defending_3" x="91.41004" y="40.275974" hidden="false" />
+    <Entry tag="Player_Attacking_4" x="25.756422" y="7.575421" hidden="false" />
+    <Entry tag="Player_Defending_4" x="74.996635" y="8.83799" hidden="false" />
+    <Entry tag="Player_Attacking_5" x="24.99888" y="28.029049" hidden="false" />
+    <Entry tag="Player_Defending_5" x="75.122894" y="30.175415" hidden="false" />
+    <Entry tag="Player_Attacking_6" x="25.125137" y="52.396645" hidden="false" />
+    <Entry tag="Player_Defending_6" x="75.249146" y="54.290497" hidden="false" />
+    <Entry tag="Player_Attacking_7" x="34.846924" y="28.78659" hidden="false" />
+    <Entry tag="Player_Defending_7" x="60.224575" y="30.175415" hidden="false" />
+    <Entry tag="Ball" x="50" y="30" hidden="false" />
+    <Entry tag="Referee_Soccer_CR" x="52.775414" y="36.109493" hidden="false" />
+    <Entry tag="Cone_1" x="35" y="-5" hidden="false" />
+    <Entry tag="Cone_2" x="36.5" y="-5" hidden="false" />
+    <Entry tag="Cone_3" x="38" y="-5" hidden="false" />
+    <Entry tag="Cone_4" x="39.5" y="-5" hidden="false" />
+    <Entry tag="Cone_5" x="41" y="-5" hidden="false" />
+    <Entry tag="Cone_6" x="42.5" y="-5" hidden="false" />
+    <Entry tag="Cone_7" x="44" y="-5" hidden="false" />
+    <Entry tag="Cone_8" x="45.5" y="-5" hidden="false" />
+    <Entry tag="Cone_9" x="47" y="-5" hidden="false" />
+    <Entry tag="Cone_10" x="48.5" y="-5" hidden="false" />
+    <Entry tag="Cone_11" x="50" y="-5" hidden="false" />
+    <Entry tag="Cone_12" x="51.5" y="-5" hidden="false" />
+    <Entry tag="Cone_13" x="53" y="-5" hidden="false" />
+    <Entry tag="Cone_14" x="54.5" y="-5" hidden="false" />
+    <Entry tag="Cone_15" x="56" y="-5" hidden="false" />
+    <Entry tag="Cone_16" x="57.5" y="-5" hidden="false" />
+    <Entry tag="Cone_17" x="59" y="-5" hidden="false" />
+    <Entry tag="Cone_18" x="60.5" y="-5" hidden="false" />
+    <Entry tag="Cone_19" x="62" y="-5" hidden="false" />
+    <Entry tag="Cone_20" x="63.5" y="-5" hidden="false" />
+  </layoutSequence>
+  <customLabels />
+</SportsTacticsBoardDocument>

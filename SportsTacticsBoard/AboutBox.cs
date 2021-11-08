@@ -29,32 +29,36 @@ using System.Windows.Forms;
 
 namespace SportsTacticsBoard
 {
-  public partial class AboutBox : Form
-  {
-    public AboutBox()
+    public partial class AboutBox : Form
     {
-      InitializeComponent();
-      webSiteLinkLabel.Links[0].LinkData = 
-        webSiteLinkLabel.Text.Substring(webSiteLinkLabel.Links[0].Start, webSiteLinkLabel.Links[0].Length);
-    }
+        public AboutBox()
+        {
+            InitializeComponent();
+            webSiteLinkLabel.Links[0].LinkData =
+              webSiteLinkLabel.Text.Substring(webSiteLinkLabel.Links[0].Start, webSiteLinkLabel.Links[0].Length);
+        }
 
-    private void AboutBox_Load(object sender, EventArgs e)
-    {
-      versionLabel.Text = typeof(Program).Assembly.GetName().Version.ToString();
-      object[] copyrightAttributes = typeof(Program).Assembly.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
-      if (copyrightAttributes.Length > 0) {
-        copyrightLabel.Text = ((AssemblyCopyrightAttribute)copyrightAttributes[0]).Copyright;
-      }
-      object[] titleAttributes = typeof(Program).Assembly.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
-      if (titleAttributes.Length > 0) {
-        titleLabel.Text = ((AssemblyTitleAttribute)titleAttributes[0]).Title;
-      }
-    }
+        private void AboutBox_Load(object sender, EventArgs e)
+        {
+            versionLabel.Text = typeof(Program).Assembly.GetName().Version.ToString();
+            object[] copyrightAttributes = typeof(Program).Assembly.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+            if (copyrightAttributes.Length > 0)
+            {
+                copyrightLabel.Text = ((AssemblyCopyrightAttribute)copyrightAttributes[0]).Copyright;
+            }
 
-    private void webSiteLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-      string url = e.Link.LinkData as string;
-      System.Diagnostics.Process.Start(url);
-      this.webSiteLinkLabel.Links[webSiteLinkLabel.Links.IndexOf(e.Link)].Visited = true;
+            object[] titleAttributes = typeof(Program).Assembly.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+            if (titleAttributes.Length > 0)
+            {
+                titleLabel.Text = ((AssemblyTitleAttribute)titleAttributes[0]).Title;
+            }
+        }
+
+        private void webSiteLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string url = e.Link.LinkData as string;
+            System.Diagnostics.Process.Start(url);
+            this.webSiteLinkLabel.Links[webSiteLinkLabel.Links.IndexOf(e.Link)].Visited = true;
+        }
     }
-  }
 }

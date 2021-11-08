@@ -3,7 +3,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <ApplicationIcon>program.ico</ApplicationIcon>
+    <ApplicationIcon>Images\program.ico</ApplicationIcon>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>SportsTacticsBoard.snk</AssemblyOriginatorKeyFile>
     <PublishUrl>http://localhost/SportsTacticsBoard/</PublishUrl>
@@ -38,14 +38,17 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <AdditionalFiles Remove="C:\Users\fredr\.nuget\packages\microsoft.dotnet.upgradeassistant.extensions.default.analyzers\0.3.252501\build\\WebTypeReplacements.typemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="GlobalSuppressions.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Update="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Version\ver.cs">
-      <Link>ver.cs</Link>
-    </Compile>
     <None Update="app.manifest">
       <SubType>Designer</SubType>
     </None>
@@ -115,7 +118,7 @@
     <EmbeddedResource Include="Images\RecordHS.png" />
     <EmbeddedResource Include="Images\RepeatHS.png" />
     <EmbeddedResource Include="Images\zoom.cur" />
-    <Content Include="program.ico" />
+    <Content Include="Images\program.ico" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.252501">

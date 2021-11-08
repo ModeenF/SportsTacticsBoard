@@ -92,7 +92,7 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
         public bool UsePenaltyMarks { get; set; }
         public bool Use18yard { get; set; }
 
-        public bool UseRetreatLine { get; set; }        
+        public bool UseRetreatLine { get; set; }
 
         public string Name
         {

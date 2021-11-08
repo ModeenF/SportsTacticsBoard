@@ -49,7 +49,7 @@ namespace SportsTacticsBoard
                     {
                         // Missing parameter
                         var msg = string.Format(System.Globalization.CultureInfo.CurrentCulture, global::SportsTacticsBoard.Properties.Resources.MissingCultureOptionValue_Format, CultureOption);
-                        GlobalizationAwareMessageBox.Show(null, msg, global::SportsTacticsBoard.Properties.Resources.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
+                        RtlAwareMessageBox.Show(null, msg, global::SportsTacticsBoard.Properties.Resources.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
                         return;
                     }
                     try
@@ -59,7 +59,7 @@ namespace SportsTacticsBoard
                     catch (ArgumentException)
                     {
                         var msg = string.Format(System.Globalization.CultureInfo.CurrentCulture, global::SportsTacticsBoard.Properties.Resources.InvalidCultureOption_Format, CultureOption, args[index]);
-                        GlobalizationAwareMessageBox.Show(null, msg, global::SportsTacticsBoard.Properties.Resources.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
+                        RtlAwareMessageBox.Show(null, msg, global::SportsTacticsBoard.Properties.Resources.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
                         return;
                     }
                 }
@@ -75,7 +75,7 @@ namespace SportsTacticsBoard
                 catch (NotSupportedException)
                 {
                     var msg = string.Format(System.Globalization.CultureInfo.CurrentCulture, global::SportsTacticsBoard.Properties.Resources.InvalidCultureOption_Format, CultureOption, culture.Name);
-                    GlobalizationAwareMessageBox.Show(null, msg, global::SportsTacticsBoard.Properties.Resources.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
+                    RtlAwareMessageBox.Show(null, msg, global::SportsTacticsBoard.Properties.Resources.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
                     return;
                 }
             }

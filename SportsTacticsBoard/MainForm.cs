@@ -219,7 +219,7 @@ namespace SportsTacticsBoard
             {
                 if ((currentSequence.NumberOfLayouts > 0) && (fieldControl.IsDirty))
                 {
-                    DialogResult dr = GlobalizationAwareMessageBox.Show(
+                    DialogResult dr = RtlAwareMessageBox.Show(
                       this,
                       Properties.Resources.ResourceManager.GetString("SaveSequenceEntryBeforeSwitchingEntries"),
                       this.Text,
@@ -259,7 +259,7 @@ namespace SportsTacticsBoard
                 if ((currentSequence.NumberOfLayouts > 0) && (fieldControl.IsDirty))
                 {
                     DialogResult dr =
-                      GlobalizationAwareMessageBox.Show(this,
+                      RtlAwareMessageBox.Show(this,
                                               Properties.Resources.ResourceManager.GetString("SaveSequenceEntryBeforeSwitchingEntries"),
                                               this.Text,
                                               MessageBoxButtons.YesNoCancel,
@@ -363,7 +363,7 @@ namespace SportsTacticsBoard
                                 if (newFieldType == null)
                                 {
                                     string msgFormat = Properties.Resources.ResourceManager.GetString("FailedToOpenFileFormatStr");
-                                    GlobalizationAwareMessageBox.Show(
+                                    RtlAwareMessageBox.Show(
                                       this,
                                       String.Format(CultureInfo.CurrentUICulture, msgFormat, openFileDialog.FileName),
                                       this.Text,
@@ -395,7 +395,7 @@ namespace SportsTacticsBoard
                             else
                             {
                                 string msgFormat = Properties.Resources.ResourceManager.GetString("FailedToOpenFileFormatStr");
-                                GlobalizationAwareMessageBox.Show(
+                                RtlAwareMessageBox.Show(
                                   this,
                                   String.Format(CultureInfo.CurrentUICulture, msgFormat, openFileDialog.FileName),
                                   this.Text,
@@ -409,7 +409,7 @@ namespace SportsTacticsBoard
                     catch (System.IO.IOException /*exception*/)
                     {
                         string msgFormat = Properties.Resources.ResourceManager.GetString("FailedToOpenFileFormatStr");
-                        GlobalizationAwareMessageBox.Show(
+                        RtlAwareMessageBox.Show(
                           this,
                           String.Format(CultureInfo.CurrentUICulture, msgFormat, openFileDialog.FileName),
                           this.Text,
@@ -651,14 +651,13 @@ namespace SportsTacticsBoard
         private void savedCurrentLayoutMenuItem_Click(object sender, EventArgs e)
         {
             StopPlayingSequence();
-
             SaveCurrentLayout();
         }
 
         private void NotImplementedYet()
         {
             string msg = Properties.Resources.ResourceManager.GetString("NotImplementedYet");
-            GlobalizationAwareMessageBox.Show(
+            RtlAwareMessageBox.Show(
               this,
               msg,
               this.Text,
@@ -671,7 +670,6 @@ namespace SportsTacticsBoard
         private void removeSavedLayoutMenuItem_Click(object sender, EventArgs e)
         {
             StopPlayingSequence();
-
             NotImplementedYet();
         }
 
@@ -879,7 +877,7 @@ namespace SportsTacticsBoard
             }
 
             string msg = Properties.Resources.ResourceManager.GetString("UnableToOpenFile_InstallationMayBeIncomplete");
-            GlobalizationAwareMessageBox.Show(
+            RtlAwareMessageBox.Show(
               this,
               msg,
               this.Text,
@@ -953,7 +951,7 @@ namespace SportsTacticsBoard
                 if ((currentSequence.NumberOfLayouts > 0) && (fieldControl.IsDirty))
                 {
                     DialogResult dr =
-                      GlobalizationAwareMessageBox.Show(this,
+                      RtlAwareMessageBox.Show(this,
                                               Properties.Resources.ResourceManager.GetString("SaveSequenceEntryBeforeSwitchingEntries"),
                                               this.Text,
                                               MessageBoxButtons.YesNoCancel,
