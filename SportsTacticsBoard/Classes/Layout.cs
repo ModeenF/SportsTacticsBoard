@@ -36,7 +36,7 @@ namespace SportsTacticsBoard
     public class FieldLayout : IEquatable<FieldLayout>
     {
         [XmlElement(ElementName = "Entry")]
-        
+
         public Collection<LayoutEntry> Entries { get; }
 
         public FieldLayout()
@@ -103,7 +103,21 @@ namespace SportsTacticsBoard
         public bool Equals(FieldLayout other)
         {
             // Would still want to check for null etc. first.
-            return this.Entries.All(other.Entries.Contains);
+            if (other != null)
+            {
+                return this.Entries.All(other.Entries.Contains);
+            }
+            return false;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as FieldLayout);
+        }
+
+        public override int GetHashCode()
+        {
+            return Entries.GetHashCode();
         }
     }
 }

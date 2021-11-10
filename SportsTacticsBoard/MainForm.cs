@@ -30,6 +30,7 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace SportsTacticsBoard
@@ -352,7 +353,7 @@ namespace SportsTacticsBoard
                     try
                     {
                         XmlSerializer serializer = new XmlSerializer(typeof(LayoutSequence));
-                        using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open))
+                        using (var fs = XmlReader.Create(new FileStream(openFileDialog.FileName, FileMode.Open)))
                         {
                             LayoutSequence seq = (LayoutSequence)serializer.Deserialize(fs);
                             if (seq != null)

@@ -25,6 +25,7 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
 
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace SportsTacticsBoard.FieldObjects
@@ -39,9 +40,15 @@ namespace SportsTacticsBoard.FieldObjects
             get { return false; }
         }
 
-        protected override float[] MovementPenDashPattern
+        protected override List<float> MovementPenDashPattern
         {
-            get { return new[] { 3.0F, 2.0F }; }
+            get
+            {
+                var list = new List<float>();
+                list.Add(3.0F);
+                list.Add(2.0F);
+                return list;
+            }
         }
 
         public Ball(float posX, float posY, float dispRadius)

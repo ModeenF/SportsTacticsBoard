@@ -37,7 +37,7 @@
 :: In order to build this program you need the following:
 ::
 ::   - NAnt version 0.85 or higher
-::   - .NET Framework 2.0 (SDK is optional)
+::   - .NET 6 (SDK is optional)
 ::   - WiX 3.0.
 ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

@@ -41,7 +41,7 @@ namespace SportsTacticsBoard
         /// <summary>
         /// Stores the saved layouts.
         /// </summary>
-        private List<SavedLayout> savedLayouts = new List<SavedLayout>();
+        private readonly List<SavedLayout> savedLayouts = new();
 
         /// <summary>
         /// Default constructor for the saved layout manager.
@@ -184,8 +184,8 @@ namespace SportsTacticsBoard
         {
             try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(SavedLayout));
-                using (FileStream fs = new FileStream(fileName, FileMode.Open))
+                XmlSerializer serializer = new(typeof(SavedLayout));
+                using (FileStream fs = new(fileName, FileMode.Open))
                 {
                     SavedLayout layout = (SavedLayout)serializer.Deserialize(fs);
                     if ((string.IsNullOrEmpty(layout.FieldTypeTag)) ||
@@ -220,7 +220,7 @@ namespace SportsTacticsBoard
         {
             try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(SavedLayout));
+                XmlSerializer serializer = new(typeof(SavedLayout));
                 using (TextWriter writer = new StreamWriter(fileName))
                 {
                     serializer.Serialize(writer, layout);
@@ -288,7 +288,7 @@ namespace SportsTacticsBoard
         /// <returns>true if items were inserted into the menu, false otherwise</returns>
         public bool UpdateMenu(ToolStripMenuItem menuToInsertInto, string fieldTypeTag, EventHandler menuItemClickEventHandler)
         {
-            Dictionary<string, ToolStripMenuItem> categorySubMenus = new Dictionary<string, ToolStripMenuItem>();
+            Dictionary<string, ToolStripMenuItem> categorySubMenus = new();
             menuToInsertInto.DropDownItems.Clear();
             bool itemsInserted = false;
             if (savedLayouts.Count > 0)
@@ -349,8 +349,10 @@ namespace SportsTacticsBoard
                 ToolStripMenuItem mi = null;
                 try
                 {
-                    mi = new ToolStripMenuItem(menuItemStr);
-                    mi.Enabled = false;
+                    mi = new ToolStripMenuItem(menuItemStr)
+                    {
+                        Enabled = false
+                    };
                     menuToInsertInto.DropDownItems.Add(mi);
                     mi = null;
                 }
@@ -459,7 +461,7 @@ namespace SportsTacticsBoard
         /// for display to the user.</returns>
         private string[] GetCurrentSavedLayoutCategories(string fieldTypeTag)
         {
-            List<string> result = new List<string>();
+            List<string> result = new();
             foreach (SavedLayout savedLayout in savedLayouts)
             {
                 if (MatchesFieldTypeTag(fieldTypeTag, savedLayout.FieldTypeTag) && !string.IsNullOrEmpty(savedLayout.Category))

@@ -441,7 +441,7 @@ namespace SportsTacticsBoard
                     }
                     finally
                     {
-                        if (null != brush)
+                        if (brush != null)
                         {
                             brush.Dispose();
                         }
@@ -770,7 +770,7 @@ namespace SportsTacticsBoard
         {
             if (zoomRatio == 0.0F)
             {
-                throw new ArgumentOutOfRangeException("zoomRatio");
+                throw new ArgumentOutOfRangeException(nameof(zoomRatio));
             }
             var ft = FieldType;
             if (null != ft)
