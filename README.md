@@ -10,7 +10,7 @@ Features
 - Supports exporting images and image sequences to files or clipboard.
 - English and German translations of the UI. (Not working that greate now)
 
-This project has been forked from https://sourceforge.net/projects/sportstacticsbd/ Some parts taken from https://github.com/manio143/SportsTacticsBoard
+This project has been [forked](https://sourceforge.net/projects/sportstacticsbd/) from, Some parts taken [from](https://github.com/manio143/SportsTacticsBoard), [old home page](http://sportstacticsbd.sourceforge.net/)
 
 ## New
 
