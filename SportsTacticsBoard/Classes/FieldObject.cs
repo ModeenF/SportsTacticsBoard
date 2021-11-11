@@ -26,6 +26,7 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
 using SportsTacticsBoard.Resources;
@@ -57,7 +58,7 @@ namespace SportsTacticsBoard
         public float OutlinePenWidth { get; set; } = 1.0F;
         public float MovementPenWidth { get; set; } = 3.0F;
 
-        protected virtual List<float> MovementPenDashPattern
+        protected virtual Collection<float> MovementPenDashPattern
         {
             get { return null; }
         }

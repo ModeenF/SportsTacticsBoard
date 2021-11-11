@@ -27,6 +27,7 @@
 
 using SportsTacticsBoard.Resources;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Globalization;
 
@@ -50,25 +51,38 @@ namespace SportsTacticsBoard.FieldObjects
             get { return 8; }
         }
 
-        protected override List<float> MovementPenDashPattern
+        protected override Collection<float> MovementPenDashPattern
         {
             get
             {
-                var list = new List<float>();
+                var list = new Collection<float>();
                 list.Add(3.0F);
                 list.Add(2.0F);
                 return list;
             }
         }
 
-        protected BaseCone(int coneNumber, float posX, float posY, float dispRadius)
+        protected BaseCone(int coneNumber, float posX, float posY, float dispRadius,
+            Color? outlinePenColor = null, Color? fillBrushColor = null, Color? movementPenColor = null)
                 : base(posX, posY, dispRadius)
         {
+            if (outlinePenColor == null)
+                OutlinePenColor = Color.Black;
+            else
+                OutlinePenColor = outlinePenColor.Value;
+
+            if (fillBrushColor == null)
+                FillBrushColor = Color.Orange;
+            else
+                FillBrushColor = fillBrushColor.Value;
+
+            if (movementPenColor == null)
+                MovementPenColor = Color.Orange;
+            else
+                MovementPenColor = movementPenColor.Value;
+
             ConeNumber = coneNumber;
-            OutlinePenColor = Color.Black;
-            FillBrushColor = Color.Orange;
             MovementPenWidth = 1.5F;
-            MovementPenColor = Color.Orange;
 
             Label = string.Format(CultureInfo.CurrentUICulture,
                 ResourceManager.LocalizationResource.FieldObjectBaseConeLabelFormat, coneNumber);

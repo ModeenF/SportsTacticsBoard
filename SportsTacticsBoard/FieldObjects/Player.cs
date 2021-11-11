@@ -64,25 +64,36 @@ namespace SportsTacticsBoard.FieldObjects
             return "Player_" + team + "_" + playerLabel;
         }
 
-        private static Color GetTeamColor(TeamId team)
-        {
-            switch (team)
-            {
-                case TeamId.Defending:
-                    return Color.LightBlue;
-                case TeamId.Attacking:
-                default:
-                    return Color.Yellow;
-            }
-        }
-
-        public Player(TeamId team, float dispRadius) :
+        public Player(TeamId team, float dispRadius, Color? outlinePenColor = null,
+            Color? fillBrushColorDefending = null, Color? fillBrushColorAttacking = null,
+            Color? movementPenColorDefending = null, Color? movementPenColorAttacking = null) :
           base(0.0F, 0.0F, dispRadius)
         {
             Team = team;
-            OutlinePenColor = Color.White;
-            MovementPenColor = GetTeamColor(team);
-            FillBrushColor = GetTeamColor(team);
+
+            if (outlinePenColor == null)
+                OutlinePenColor = Color.White;
+            else
+                OutlinePenColor = outlinePenColor.Value;
+
+            Color defendingColor = Color.LightBlue;
+            if (fillBrushColorDefending != null)
+                defendingColor = fillBrushColorDefending.Value;
+
+            Color attackingColor = Color.Yellow;
+            if (fillBrushColorAttacking != null)
+                defendingColor = fillBrushColorAttacking.Value;
+
+            FillBrushColor = team == TeamId.Defending ? defendingColor : attackingColor;
+
+            defendingColor = Color.LightBlue;
+            if (movementPenColorDefending != null)
+                defendingColor = movementPenColorDefending.Value;
+
+            attackingColor = Color.Yellow;
+            if (movementPenColorAttacking != null)
+                defendingColor = movementPenColorAttacking.Value;
+            MovementPenColor = team == TeamId.Defending ? defendingColor : attackingColor;
         }
     }
 }

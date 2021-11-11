@@ -2,30 +2,27 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
+    <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Compile Update="AboutBox.cs">
+    <Compile Update="Gui\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="EditFieldObjectLabelDialog.cs">
+    <Compile Update="Gui\EditFieldObjectLabelDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="MainForm.cs">
+    <Compile Update="Gui\FieldControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Gui\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="SavedLayoutInformation.cs">
+    <Compile Update="Gui\SavedLayoutInformation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="SelectPlayingSurfaceType.cs">
+    <Compile Update="Gui\SelectPlayingSurfaceType.cs">
       <SubType>Form</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="MainForm.de.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Update="SavedLayoutInformation.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

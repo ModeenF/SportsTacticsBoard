@@ -37,17 +37,9 @@
 		<CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
 	<ItemGroup>
-		<AdditionalFiles Remove="C:\Users\fredr\.nuget\packages\microsoft.dotnet.upgradeassistant.extensions.default.analyzers\0.3.252501\build\\WebTypeReplacements.typemap" />
+		<AdditionalFiles Remove="app.manifest" />
 	</ItemGroup>
 	<ItemGroup>
-		<Reference Update="System.Core">
-			<RequiredTargetFramework>3.5</RequiredTargetFramework>
-		</Reference>
-	</ItemGroup>
-	<ItemGroup>
-		<None Update="app.manifest">
-			<SubType>Designer</SubType>
-		</None>
 		<None Update="Properties\Settings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -60,10 +52,15 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Settings.settings</DependentUpon>
 		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Images\program.ico" />
 		<Content Include="res\localization.en-US.res">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
+		</Content>		
 	</ItemGroup>
+	
 	<ItemGroup>
 		<EmbeddedResource Include="Images\NavBack.png" />
 		<EmbeddedResource Include="Images\NavForward.png" />
@@ -75,35 +72,6 @@
 		<EmbeddedResource Include="Images\openHS.png" />
 		<EmbeddedResource Include="Images\RestartHS.png" />
 		<EmbeddedResource Include="Images\saveHS.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-			<Visible>False</Visible>
-			<ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-			<Install>false</Install>
-		</BootstrapperPackage>
-		<BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
-			<Visible>False</Visible>
-			<ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-			<Install>true</Install>
-		</BootstrapperPackage>
-		<BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
-			<Visible>False</Visible>
-			<ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-			<Install>false</Install>
-		</BootstrapperPackage>
-		<BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
-			<Visible>False</Visible>
-			<ProductName>.NET Framework 3.5</ProductName>
-			<Install>false</Install>
-		</BootstrapperPackage>
-		<BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-			<Visible>False</Visible>
-			<ProductName>.NET Framework 3.5 SP1</ProductName>
-			<Install>false</Install>
-		</BootstrapperPackage>
-	</ItemGroup>
-	<ItemGroup>
 		<EmbeddedResource Include="Images\DataContainer_MoveFirstHS.png" />
 		<EmbeddedResource Include="Images\DataContainer_MoveLastHS.png" />
 		<EmbeddedResource Include="Images\DataContainer_MoveNextHS.png" />
@@ -114,13 +82,9 @@
 		<EmbeddedResource Include="Images\RecordHS.png" />
 		<EmbeddedResource Include="Images\RepeatHS.png" />
 		<EmbeddedResource Include="Images\zoom.cur" />
-		<Content Include="Images\program.ico" />
 	</ItemGroup>
+
 	<ItemGroup>
-		<PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.252501">
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
 		<PackageReference Include="YamlDotNet" Version="11.2.1" />
 	</ItemGroup>
 </Project>

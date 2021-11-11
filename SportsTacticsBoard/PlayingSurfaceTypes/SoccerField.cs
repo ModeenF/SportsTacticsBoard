@@ -38,7 +38,7 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
     /// 
     /// 4 referee field objects are supported for referee training.
     /// </summary>
-    public class SoccerField : SportsTacticsBoard.IPlayingSurfaceType
+    public class SoccerField : IPlayingSurfaceType
     {
         public SoccerField()
         {
@@ -58,9 +58,7 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
             CentreTickLength = PenaltyMarkRadius;
             SurfaceColor = Color.Green;
             PlayersPerTeam = 11;
-
-
-            Tag = PlayersPerTeam != 11 ? "Soccer2" + PlayersPerTeam : "Soccer";
+            Tag = "Soccer";
 
             UseCenterCircel = true;
             UseAllRef = true;

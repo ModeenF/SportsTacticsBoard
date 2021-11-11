@@ -34,7 +34,7 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
     /// 
     /// Playing surface units are in feet.
     /// </summary>
-    class AmericanFootball_NFL : SportsTacticsBoard.IPlayingSurfaceType
+    class AmericanFootball_NFL : IPlayingSurfaceType
     {
         private const float fieldLength = 360.0F;
         private const float fieldWidth = 160.0F;

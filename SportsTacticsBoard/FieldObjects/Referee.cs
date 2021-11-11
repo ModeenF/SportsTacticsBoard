@@ -39,14 +39,32 @@ namespace SportsTacticsBoard.FieldObjects
             get { return LabelText.Length > 1 ? 6 : 9; }
         }
 
-        public Referee(string label, string tag, float posX, float posY, float dispRadius)
+        public Referee(string label, string tag, float posX, float posY, float dispRadius,
+            Color? outlinePenColor = null, Color? fillBrushColor = null, Color? movementPenColor = null, Color? labelBrushColor = null)
             : base(posX, posY, dispRadius)
         {
             Label = label;
             Tag = tag;
-            FillBrushColor = Color.Black;
-            MovementPenColor = Color.Black;
-            LabelBrushColor = Color.White;
+
+            if (outlinePenColor == null)
+                OutlinePenColor = Color.Black;
+            else
+                OutlinePenColor = outlinePenColor.Value;
+
+            if (fillBrushColor == null)
+                FillBrushColor = Color.Black;
+            else
+                FillBrushColor = fillBrushColor.Value;
+
+            if (movementPenColor == null)
+                MovementPenColor = Color.Black;
+            else
+                MovementPenColor = movementPenColor.Value;
+
+            if (labelBrushColor == null)
+                LabelBrushColor = Color.Black;
+            else
+                LabelBrushColor = labelBrushColor.Value;
         }
     }
 }

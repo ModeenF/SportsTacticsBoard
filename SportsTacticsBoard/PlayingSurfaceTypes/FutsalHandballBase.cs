@@ -38,7 +38,7 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
     /// 
     /// 2 referee field objects are supported for referee training.
     /// </summary>
-    abstract class FutsalHandballBase : SportsTacticsBoard.IPlayingSurfaceType
+    abstract class FutsalHandballBase : IPlayingSurfaceType
     {
         private const float fieldLength = 40.0F;
         private const float fieldWidth = 22.0F;

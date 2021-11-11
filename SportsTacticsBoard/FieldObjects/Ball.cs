@@ -26,6 +26,7 @@
 //
 
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 
 namespace SportsTacticsBoard.FieldObjects
@@ -40,11 +41,11 @@ namespace SportsTacticsBoard.FieldObjects
             get { return false; }
         }
 
-        protected override List<float> MovementPenDashPattern
+        protected override Collection<float> MovementPenDashPattern
         {
             get
             {
-                var list = new List<float>();
+                var list = new Collection<float>();
                 list.Add(3.0F);
                 list.Add(2.0F);
                 return list;
@@ -52,16 +53,29 @@ namespace SportsTacticsBoard.FieldObjects
         }
 
         public Ball(float posX, float posY, float dispRadius)
-            : this(string.Empty, "Ball", posX, posY, dispRadius)
+            : this(string.Empty, "Ball", posX, posY, dispRadius, Color.White)
         {
-            OutlinePenColor = Color.White;
         }
 
-        public Ball(string label, string tag, float posX, float posY, float dispRadius)
+        public Ball(string label, string tag, float posX, float posY, float dispRadius,
+            Color? outlinePenColor = null, Color? fillBrushColor = null, Color? movementPenColor = null)
             : base(posX, posY, dispRadius)
         {
-            OutlinePenColor = Color.Black;
-            FillBrushColor = Color.White;
+            if (outlinePenColor == null)
+                OutlinePenColor = Color.Black;
+            else
+                OutlinePenColor = outlinePenColor.Value;
+
+            if (fillBrushColor == null)
+                FillBrushColor = Color.Black;
+            else
+                FillBrushColor = fillBrushColor.Value;
+
+            if (movementPenColor == null)
+                MovementPenColor = Color.Black;
+            else
+                MovementPenColor = movementPenColor.Value;
+
             Label = label;
             Tag = tag;
         }

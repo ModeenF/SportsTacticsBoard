@@ -30,40 +30,54 @@ using System.Drawing;
 
 namespace SportsTacticsBoard.FieldObjects
 {
-    public class Puck : FieldObject
+    public class Puck : Ball
     {
-        public override string Label
-        {
-            get { return ""; }
-        }
+        //public override string Label
+        //{
+        //    get { return ""; }
+        //}
 
-        public override string Tag
-        {
-            get { return "Puck"; }
-        }
+        //public override string Tag
+        //{
+        //    get { return "Puck"; }
+        //}
 
-        public override bool ShowsLabel
-        {
-            get { return false; }
-        }
+        //public override bool ShowsLabel
+        //{
+        //    get { return false; }
+        //}
 
-        protected override List<float> MovementPenDashPattern
-        {
-            get
-            {
-                var list = new List<float>();
-                list.Add(3.0F);
-                list.Add(2.0F);
-                return list;
-            }
-        }
+        //protected override List<float> MovementPenDashPattern
+        //{
+        //    get
+        //    {
+        //        var list = new List<float>();
+        //        list.Add(3.0F);
+        //        list.Add(2.0F);
+        //        return list;
+        //    }
+        //}
 
-        public Puck(float posX, float posY, float dispRadius) :
-          base(posX, posY, dispRadius)
+
+        public Puck(float posX, float posY, float dispRadius,
+            Color? outlinePenColor = null, Color? fillBrushColor = null, Color? movementPenColor = null)
+          : base(string.Empty, "Puck", posX, posY, dispRadius)
         {
-            OutlinePenColor = Color.Black;
-            MovementPenColor = Color.Black;
-            FillBrushColor = Color.Black;
+
+            //if (outlinePenColor == null)
+            //    OutlinePenColor = Color.Black;
+            //else
+            //    OutlinePenColor = outlinePenColor.Value;
+
+            //if (fillBrushColor == null)
+            //    FillBrushColor = Color.Black;
+            //else
+            //    FillBrushColor = fillBrushColor.Value;
+
+            //if (movementPenColor == null)
+            //    MovementPenColor = Color.Black;
+            //else
+            //    MovementPenColor = movementPenColor.Value;
         }
     }
 }

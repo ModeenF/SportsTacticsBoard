@@ -33,7 +33,7 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
     /// Implements a Floorball field
     /// Author: Ulrich Jenzer
     /// </summary>
-    class FloorballField : SportsTacticsBoard.IPlayingSurfaceType
+    class FloorballField : IPlayingSurfaceType
     {
         // Field units are in metres
         private const float fieldLength = 24.0F;
