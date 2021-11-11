@@ -1,6 +1,14 @@
 # Sports Tactics Board
 
-Sports Tactics Board is a utility that allows coaches, trainers and officials to describe sports tactics, strategies and positioning using a magnetic or chalk-board style approach.
+Sports Tactics Board is a utility that allows coaches, trainers and officials to describe sports tactics, strategies and positioning using a magnetic or chalk-board style approach. Supports soccer, hockey, volleyball and floorball.
+
+Features
+- Supports more than one sport (currently Soccer/Football, Hockey, Volleyball, Floorball, Futsal and American Football).
+- Records sequences of positions for documenting tactical strategies or plays.
+- Save and loads tactical sequences - allows building a library of plays or drills.
+- Supports pre-defined layouts that position players, ball/puck and officials.
+- Supports exporting images and image sequences to files or clipboard.
+- English and German translations of the UI. (Not working that greate now)
 
 This project has been forked from https://sourceforge.net/projects/sportstacticsbd/ Some parts taken from https://github.com/manio143/SportsTacticsBoard
 
