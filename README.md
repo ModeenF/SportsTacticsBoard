@@ -11,6 +11,8 @@ Features
 
 This project has been [forked](https://sourceforge.net/projects/sportstacticsbd/) from, Some parts taken [from](https://github.com/manio143/SportsTacticsBoard), [old home page](http://sportstacticsbd.sourceforge.net/)
 
+[Screenshots](https://github.com/ModeenF/SportsTacticsBoard/blob/main/Screenshots.md)
+
 ## New
 - .Net 6.0
 - More .net Core changes and updates
