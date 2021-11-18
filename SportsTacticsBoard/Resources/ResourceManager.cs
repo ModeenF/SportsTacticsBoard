@@ -30,25 +30,38 @@ using YamlDotNet.Serialization;
 
 namespace SportsTacticsBoard.Resources
 {
-    public class ResourceManager
+    public sealed class ResourceManager
     {
         private const string LocalizationResourceFileName = "localization.";
-        private const string DefaultCulture = "en-US";
+        //private const string DefaultCulture = "en-US";
+        private const string DefaultCulture = "de-DE";
+        //private const string DefaultCulture = "sv-SE";      
         private const string ResourceExtension = ".res";
         private const string ImageResourcePath = "SportsTacticsBoard.Images.";
+
+        private static ResourceManager instance;
+        private static readonly object padlock = new object();
+
+        private ResourceManager(string culture)
+            : this(culture ?? DefaultCulture, AppDomain.CurrentDomain.BaseDirectory + @"/res")
+        {
+        }
+
+        public static ResourceManager GetInstance(string culture = null)
+        {
+            lock (padlock)
+            {
+                if (instance == null)
+                {
+                    instance = new ResourceManager(culture);
+                }
+                return instance;
+            }
+        }
 
         public LocalizationResource LocalizationResource { get; }
         public ImagesResource ImagesResource { get; }
 
-        public ResourceManager()
-            : this(DefaultCulture)
-        {
-        }
-
-        public ResourceManager(string culture)
-            : this(culture, AppDomain.CurrentDomain.BaseDirectory + @"/res")
-        {
-        }
 
         public ResourceManager(string culture, string pathToResources)
         {

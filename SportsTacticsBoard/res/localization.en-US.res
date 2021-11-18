@@ -38,7 +38,7 @@ TeamNameAttacking: Attacking
 TeamNameDefending: Defending
 TitleFormatString: '{0} - {1}'
 UnableToOpenFileInstallationMayBeIncomplete: Unable to locate document. The installation of this program may not be complete or may have been modified.
-MenuAbout: '&About'
+MenuAbout: '&Aboutfff'
 MenuChangePlayingSurfaceType: Change &type
 MenuCommonSavedLayouts: '&Library'
 MenuCopy: '&Copy to clipboard'
@@ -51,6 +51,7 @@ MenuOrientation: Orientation
 MenuHorizontal: Horizontal
 MenuVertical: Vertical
 MenuLayout: '&Layout'
+MenuLicense: '&License...'
 MenuNewSequence: '&New'
 MenuOpenSequence: '&Open'
 MenuOptions: Op&tions
@@ -63,6 +64,9 @@ MenuSaveSequenceAs: 'Save &As...'
 MenuSaveSequence: '&Save'
 MenuSequence: '&Sequence'
 MenuUserSavedLayouts: '&My layouts'
+MenuSaveTofile: 'Export to image &file...'
+MenuChangeLog: '&Change log...'
+MenuReadMe: '&Readme file...'
 GoToFirst: Beginning
 GoToLast: End
 PreviousLayout: Previous
@@ -76,8 +80,13 @@ RevertCurrent: Revert Current
 ShowMovement: Show Movement
 Version: 'Version:'
 License: 'This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.'
+
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+'
 CustomLabel: 'Custom &label:'
 RevertToDefault: 'Field &object:'
 Ok: OK

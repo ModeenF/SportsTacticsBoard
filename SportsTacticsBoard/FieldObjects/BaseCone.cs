@@ -85,9 +85,9 @@ namespace SportsTacticsBoard.FieldObjects
             MovementPenWidth = 1.5F;
 
             Label = string.Format(CultureInfo.CurrentUICulture,
-                ResourceManager.LocalizationResource.FieldObjectBaseConeLabelFormat, coneNumber);
+                resourceManager.LocalizationResource.FieldObjectBaseConeLabelFormat, coneNumber);
             Name = string.Format(CultureInfo.CurrentUICulture,
-                ResourceManager.LocalizationResource.FieldObjectBaseConeNameFormat, coneNumber);
+                resourceManager.LocalizationResource.FieldObjectBaseConeNameFormat, coneNumber);
         }
     }
 }

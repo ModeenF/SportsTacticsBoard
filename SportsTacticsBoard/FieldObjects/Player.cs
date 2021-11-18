@@ -30,7 +30,7 @@ using System.Globalization;
 
 namespace SportsTacticsBoard.FieldObjects
 {
-    public abstract class Player : Person
+    public class Player : Person
     {
         public enum TeamId
         {
@@ -50,12 +50,12 @@ namespace SportsTacticsBoard.FieldObjects
             get { return ComposeName(Team, Label); }
         }
 
-        public static string ComposeName(TeamId team, string playerLabel)
+        public string ComposeName(TeamId team, string playerLabel)
         {
-            var nameFormat = ResourceManager.LocalizationResource.FieldObjectPlayerNameFormat;
+            var nameFormat = resourceManager.LocalizationResource.FieldObjectPlayerNameFormat;
             var teamName = team == TeamId.Attacking ?
-                ResourceManager.LocalizationResource.TeamNameAttacking :
-                ResourceManager.LocalizationResource.TeamNameDefending;
+                resourceManager.LocalizationResource.TeamNameAttacking :
+                resourceManager.LocalizationResource.TeamNameDefending;
             return string.Format(CultureInfo.CurrentUICulture, nameFormat, teamName, playerLabel);
         }
 

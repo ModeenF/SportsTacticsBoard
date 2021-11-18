@@ -24,12 +24,11 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Resources;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
-using SportsTacticsBoard.Resources;
 
 namespace SportsTacticsBoard
 {
@@ -42,7 +41,7 @@ namespace SportsTacticsBoard
 
     public abstract class FieldObject
     {
-        public static ResourceManager ResourceManager { get { return new ResourceManager(); } }
+        public ResourceManager resourceManager;
 
         public abstract string Tag { get; }
         public abstract string Label { get; }
@@ -57,6 +56,13 @@ namespace SportsTacticsBoard
         public Color MovementPenColor { get; set; } = Color.White;
         public float OutlinePenWidth { get; set; } = 1.0F;
         public float MovementPenWidth { get; set; } = 3.0F;
+
+        protected FieldObject(float posX, float posY, float dispRadius)
+        {
+            Position = new PointF(posX, posY);
+            DisplayRadius = dispRadius;
+            resourceManager = ResourceManager.GetInstance();
+        }
 
         protected virtual Collection<float> MovementPenDashPattern
         {
@@ -92,14 +98,8 @@ namespace SportsTacticsBoard
                     typeof(LocalizationResource).GetProperties()
                         .First(p => p.Name == propertyName)
                         .GetGetMethod()
-                        .Invoke(ResourceManager.LocalizationResource, Array.Empty<object>());
+                        .Invoke(resourceManager.LocalizationResource, Array.Empty<object>());
             }
-        }
-
-        protected FieldObject(float posX, float posY, float dispRadius)
-        {
-            Position = new PointF(posX, posY);
-            DisplayRadius = dispRadius;
         }
 
         public bool ContainsPoint(PointF pt)

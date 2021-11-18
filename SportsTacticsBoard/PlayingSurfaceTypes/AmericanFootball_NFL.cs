@@ -26,6 +26,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using SportsTacticsBoard.FieldObjects;
 
 namespace SportsTacticsBoard.PlayingSurfaceTypes
 {
@@ -42,7 +43,6 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
         private const float endZoneDepth = 30.0F;
         private const float outOfBoundsWidth = 6.0F;
         private const float playerSize = 2.5F;
-        private const float ballSize = 1.5F;
         private const float fieldObjectOutlinePenWidth = 3.0F / 36.0F;
         private const float fieldObjectMovementPenWidth = fieldObjectOutlinePenWidth * 3.0F;
         private const float coneSize = 1.50F;
@@ -104,11 +104,11 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
                 // Add some players
                 foreach (var s in attackingPlayers)
                 {
-                    fieldObjects.Add(new FieldObjects.LabelledPlayer(MakeLabelFromTag(s), FieldObjects.Player.TeamId.Attacking, playerSize, s));
+                    fieldObjects.Add(new LabelledPlayer(MakeLabelFromTag(s), FieldObjects.Player.TeamId.Attacking, playerSize, s));
                 }
                 foreach (var s in defendingPlayers)
                 {
-                    fieldObjects.Add(new FieldObjects.LabelledPlayer(MakeLabelFromTag(s), FieldObjects.Player.TeamId.Defending, playerSize, s));
+                    fieldObjects.Add(new LabelledPlayer(MakeLabelFromTag(s), FieldObjects.Player.TeamId.Defending, playerSize, s));
                 }
 
                 // Add some cones
@@ -117,7 +117,7 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
                 var yPosition = fieldWidth + 12.0F;
                 for (int coneNumber = 1; (coneNumber <= NumberOfCones); coneNumber++, xPosition += (coneSize * 3))
                 {
-                    fieldObjects.Add(new FieldObjects.UnlabelledTriangularCone(coneNumber, xPosition, yPosition, coneSize));
+                    fieldObjects.Add(new UnlabelledTriangularCone(coneNumber, xPosition, yPosition, coneSize));
                 }
 
                 // Adjust various parameters for all the field objects
@@ -142,14 +142,14 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
                 float positionX = (fieldLength / 2.0F) + offsetFromCentre;
                 foreach (var s in attackingPlayers)
                 {
-                    string playerTag = FieldObjects.LabelledPlayer.ComposeTag(FieldObjects.Player.TeamId.Attacking, s);
+                    string playerTag = LabelledPlayer.ComposeTag(Player.TeamId.Attacking, s);
                     layout.AddEntry(playerTag, positionX, positionY);
                     positionX += positionIncrement;
                 }
                 positionX = (fieldLength / 2.0F) - offsetFromCentre;
                 foreach (var s in defendingPlayers)
                 {
-                    string playerTag = FieldObjects.LabelledPlayer.ComposeTag(FieldObjects.Player.TeamId.Defending, s);
+                    string playerTag = LabelledPlayer.ComposeTag(Player.TeamId.Defending, s);
                     layout.AddEntry(playerTag, positionX, positionY);
                     positionX -= positionIncrement;
                 }
@@ -157,7 +157,7 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
             }
         }
 
-        public ReadOnlyCollection<string> GetTeam(SportsTacticsBoard.FieldObjects.Player.TeamId team)
+        public ReadOnlyCollection<string> GetTeam(Player.TeamId team)
         {
             throw new System.NotImplementedException();
         }
@@ -235,34 +235,38 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
                                         float arrow1MidPoint = (textRect1.Top + textRect1.Bottom) / 2;
                                         float arrow2MidPoint = (textRect2.Top + textRect2.Bottom) / 2;
                                         graphics.FillPolygon(outOfBoundsBrush, new PointF[] {
-                      new PointF(textRect1.Left - arrowOffset - arrowWidth, arrow1MidPoint),
-                      new PointF(textRect1.Left - arrowOffset, arrow1MidPoint - (arrowWidth / 2)),
-                      new PointF(textRect1.Left - arrowOffset, arrow1MidPoint + (arrowWidth / 2)),
-                      new PointF(textRect1.Left - arrowOffset - arrowWidth, arrow1MidPoint)
-                    }, System.Drawing.Drawing2D.FillMode.Alternate);
+                                            new PointF(textRect1.Left - arrowOffset - arrowWidth, arrow1MidPoint),
+                                            new PointF(textRect1.Left - arrowOffset, arrow1MidPoint - (arrowWidth / 2)),
+                                            new PointF(textRect1.Left - arrowOffset, arrow1MidPoint + (arrowWidth / 2)),
+                                            new PointF(textRect1.Left - arrowOffset - arrowWidth, arrow1MidPoint)
+                                        }, 
+                                        System.Drawing.Drawing2D.FillMode.Alternate);
                                         graphics.FillPolygon(outOfBoundsBrush, new PointF[] {
-                      new PointF(textRect2.Left - arrowOffset - arrowWidth, arrow2MidPoint),
-                      new PointF(textRect2.Left - arrowOffset, arrow2MidPoint - (arrowWidth / 2)),
-                      new PointF(textRect2.Left - arrowOffset, arrow2MidPoint + (arrowWidth / 2)),
-                      new PointF(textRect2.Left - arrowOffset - arrowWidth, arrow2MidPoint)
-                    }, System.Drawing.Drawing2D.FillMode.Alternate);
+                                            new PointF(textRect2.Left - arrowOffset - arrowWidth, arrow2MidPoint),
+                                            new PointF(textRect2.Left - arrowOffset, arrow2MidPoint - (arrowWidth / 2)),
+                                            new PointF(textRect2.Left - arrowOffset, arrow2MidPoint + (arrowWidth / 2)),
+                                            new PointF(textRect2.Left - arrowOffset - arrowWidth, arrow2MidPoint)
+                                        },
+                                        System.Drawing.Drawing2D.FillMode.Alternate);
                                     }
                                     else if (yardMarker >= 60)
                                     {
                                         float arrow1MidPoint = (textRect1.Top + textRect1.Bottom) / 2;
                                         float arrow2MidPoint = (textRect2.Top + textRect2.Bottom) / 2;
                                         graphics.FillPolygon(outOfBoundsBrush, new PointF[] {
-                      new PointF(textRect1.Right + arrowOffset + arrowWidth, arrow1MidPoint),
-                      new PointF(textRect1.Right + arrowOffset, arrow1MidPoint - (arrowWidth / 2)),
-                      new PointF(textRect1.Right + arrowOffset, arrow1MidPoint + (arrowWidth / 2)),
-                      new PointF(textRect1.Right + arrowOffset + arrowWidth, arrow1MidPoint)
-                    }, System.Drawing.Drawing2D.FillMode.Alternate);
+                                            new PointF(textRect1.Right + arrowOffset + arrowWidth, arrow1MidPoint),
+                                            new PointF(textRect1.Right + arrowOffset, arrow1MidPoint - (arrowWidth / 2)),
+                                            new PointF(textRect1.Right + arrowOffset, arrow1MidPoint + (arrowWidth / 2)),
+                                            new PointF(textRect1.Right + arrowOffset + arrowWidth, arrow1MidPoint)
+                                        },
+                                        System.Drawing.Drawing2D.FillMode.Alternate);
                                         graphics.FillPolygon(outOfBoundsBrush, new PointF[] {
-                      new PointF(textRect2.Right + arrowOffset + arrowWidth, arrow2MidPoint),
-                      new PointF(textRect2.Right + arrowOffset, arrow2MidPoint - (arrowWidth / 2)),
-                      new PointF(textRect2.Right + arrowOffset, arrow2MidPoint + (arrowWidth / 2)),
-                      new PointF(textRect2.Right + arrowOffset + arrowWidth, arrow2MidPoint)
-                    }, System.Drawing.Drawing2D.FillMode.Alternate);
+                                            new PointF(textRect2.Right + arrowOffset + arrowWidth, arrow2MidPoint),
+                                            new PointF(textRect2.Right + arrowOffset, arrow2MidPoint - (arrowWidth / 2)),
+                                            new PointF(textRect2.Right + arrowOffset, arrow2MidPoint + (arrowWidth / 2)),
+                                            new PointF(textRect2.Right + arrowOffset + arrowWidth, arrow2MidPoint)
+                                        },
+                                        System.Drawing.Drawing2D.FillMode.Alternate);
                                     }
                                 }
                             }

@@ -157,7 +157,7 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
             {
                 benchStartPos += Length / 2.0F;
             }
-
+           
             for (int playerNumber = 1; playerNumber <= PlayersPerTeam; playerNumber++)
             {
                 string playerTag = FieldObjects.NumberedPlayer.ComposeTag(teamId, playerNumber);
@@ -170,8 +170,8 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
             get
             {
                 FieldLayout layout = new FieldLayout();
-                AppendPlayerPositions(layout, SportsTacticsBoard.FieldObjects.Player.TeamId.Attacking, true);
-                AppendPlayerPositions(layout, SportsTacticsBoard.FieldObjects.Player.TeamId.Defending, false);
+                AppendPlayerPositions(layout, FieldObjects.Player.TeamId.Attacking, true);
+                AppendPlayerPositions(layout, FieldObjects.Player.TeamId.Defending, false);
                 return layout;
             }
         }

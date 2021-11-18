@@ -27,10 +27,14 @@
 
 namespace SportsTacticsBoard.FieldObjects
 {
-    public abstract class Person : FieldObject
+    public class Person : FieldObject
     {
-        protected Person(float posX, float posY, float dispRadius) :
-          base(posX, posY, dispRadius)
+        public override string Label { get; }
+
+        public override string Tag { get; }
+
+        protected Person(float posX, float posY, float dispRadius)
+            : base(posX, posY, dispRadius)
         {
         }
     }

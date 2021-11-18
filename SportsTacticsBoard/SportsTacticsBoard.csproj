@@ -40,6 +40,10 @@
 		<AdditionalFiles Remove="app.manifest" />
 	</ItemGroup>
 	<ItemGroup>
+	  <None Remove="res\localization.de-DE.res" />
+	  <None Remove="res\localization.sv-SE.res" />
+	</ItemGroup>
+	<ItemGroup>
 		<None Update="Properties\Settings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -56,6 +60,12 @@
 
 	<ItemGroup>
 		<Content Include="Images\program.ico" />
+		<Content Include="res\localization.sv-SE.res">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="res\localization.de-DE.res">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 		<Content Include="res\localization.en-US.res">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>		
@@ -84,7 +94,7 @@
 		<EmbeddedResource Include="Images\zoom.cur" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup>		
 		<PackageReference Include="YamlDotNet" Version="11.2.1" />
 	</ItemGroup>
 </Project>

@@ -23,6 +23,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Resources;
 using System;
 using System.Reflection;
 using System.Windows.Forms;
@@ -34,8 +35,8 @@ namespace SportsTacticsBoard
         public AboutBox()
         {
             InitializeComponent();
-            webSiteLinkLabel.Links[0].LinkData =
-              webSiteLinkLabel.Text.Substring(webSiteLinkLabel.Links[0].Start, webSiteLinkLabel.Links[0].Length);
+            webSiteLinkLabel.Links[0].LinkData = webSiteLinkLabel.Text.Substring(webSiteLinkLabel.Links[0].Start, webSiteLinkLabel.Links[0].Length);
+            SetLanguage();
         }
 
         private void AboutBox_Load(object sender, EventArgs e)
@@ -59,6 +60,13 @@ namespace SportsTacticsBoard
             string url = e.Link.LinkData as string;
             System.Diagnostics.Process.Start(url);
             this.webSiteLinkLabel.Links[webSiteLinkLabel.Links.IndexOf(e.Link)].Visited = true;
+        }
+
+        private void SetLanguage()
+        {
+            ResourceManager resourceManager = ResourceManager.GetInstance();
+            versionTextLabel.Text = resourceManager.LocalizationResource.Version;
+            richTextBoxLicens.Text = resourceManager.LocalizationResource.License;
         }
     }
 }

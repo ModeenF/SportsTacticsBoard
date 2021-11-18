@@ -62,7 +62,7 @@ namespace SportsTacticsBoard.FieldObjects
                 MovementPenColor = movementPenColor.Value;
 
             if (labelBrushColor == null)
-                LabelBrushColor = Color.Black;
+                LabelBrushColor = Color.White;
             else
                 LabelBrushColor = labelBrushColor.Value;
         }

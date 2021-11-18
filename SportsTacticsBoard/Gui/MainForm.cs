@@ -23,6 +23,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Resources;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -62,9 +63,13 @@ namespace SportsTacticsBoard
             InitializeComponent();
             originalCaption = Text;
             fieldControl.CustomLabelProvider = this;
+
+
             fieldControl.IsDirtyChanged += new EventHandler(fieldControl_IsDirtyChanged);
             fieldControl.IsViewDirtyChanged += new EventHandler(fieldControl_IsViewDirtyChanged);
             fieldControl.KeyDown += new KeyEventHandler(fieldControl_KeyDown);
+
+            SetLanguage();
         }
 
         void fieldControl_IsViewDirtyChanged(object sender, EventArgs e)
@@ -1077,6 +1082,51 @@ namespace SportsTacticsBoard
 
             NotImplementedYet();
 
+        }
+
+        private void SetLanguage()
+        {
+            ResourceManager resourceManager = ResourceManager.GetInstance();
+            recordNewPositionButton.Text = resourceManager.LocalizationResource.RecordNewPosition;
+            previousLayoutInSequence.Text = resourceManager.LocalizationResource.PreviousLayout;
+            nextLayoutInSequence.ToolTipText = resourceManager.LocalizationResource.NextLayout;
+            recordOverCurrentPositionButton.Text = resourceManager.LocalizationResource.RecordOverCurrentPosition;
+            removeCurrentPositionFromSequenceButton.Text = resourceManager.LocalizationResource.RemoveCurrent;
+            revertCurrentLayoutToSavedButton.Text = resourceManager.LocalizationResource.RevertCurrent;
+            sequenceMenuItem.Text = resourceManager.LocalizationResource.MenuSequence;
+            openSequenceMenuItem.Text = resourceManager.LocalizationResource.MenuOpenSequence;
+            saveSequenceMenuItem.Text = resourceManager.LocalizationResource.MenuSaveSequence;
+            saveSequenceAsMenuItem.Text = resourceManager.LocalizationResource.MenuSaveSequenceAs;
+            layoutsToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuLayout;
+            newSequenceMenuItem.Text = resourceManager.LocalizationResource.MenuNewSequence;
+            showMovementButton.Text = resourceManager.LocalizationResource.ShowMovement;
+            saveCurrentLayoutMenuItem.Text = resourceManager.LocalizationResource.MenuSaveCurrentLayout;
+            commonSavedLayoutsMenuItem.Text = resourceManager.LocalizationResource.MenuCommonSavedLayouts;
+            removeSavedLayoutMenuItem.Text = resourceManager.LocalizationResource.MenuRemoveSavedLayout;
+            helpToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuHelp;
+            aboutToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuAbout;
+            playingSurfaceMenuItem.Text = resourceManager.LocalizationResource.MenuPlayingSurface;
+            exportSequenceToImageFilesMenuItem.Text = resourceManager.LocalizationResource.MenuExport;
+            exportSequenceToImageFilesMenuItem.ToolTipText = resourceManager.LocalizationResource.MenuExportTooltip;
+            changePlayingSurfaceTypeMenuItem.Text = resourceManager.LocalizationResource.MenuChangePlayingSurfaceType;
+            copyMenuItem.Text = resourceManager.LocalizationResource.MenuCopy;
+            copyMenuItem.ToolTipText = resourceManager.LocalizationResource.MenuCopyTooltip;
+            saveTofileToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuSaveTofile;
+            userSavedLayoutsMenuItem.Text = resourceManager.LocalizationResource.MenuUserSavedLayouts;
+            printMenuItem.Text = resourceManager.LocalizationResource.MenuPrint;
+            exitMenuItem.Text = resourceManager.LocalizationResource.MenuExit;
+            licenseMenuItem.Text = resourceManager.LocalizationResource.MenuLicense;
+            changeLogMenuItem.Text = resourceManager.LocalizationResource.MenuChangeLog;
+            readMeMenuItem.Text = resourceManager.LocalizationResource.MenuReadMe;
+            goToFirstToolStripButton.Text = resourceManager.LocalizationResource.GoToFirst;
+            playToolStripButton.Text = resourceManager.LocalizationResource.PlayPause;
+            goToLastToolStripButton.Text = resourceManager.LocalizationResource.GoToLast;
+            orientationToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuOrientation;
+            horizontalToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuHorizontal;
+            verticalToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuVertical;
+            resetViewToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuResetView;
+            optionsToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuOptions;
+            repeatToolStripButton.Text = resourceManager.LocalizationResource.Repeat;
         }
     }
 }
