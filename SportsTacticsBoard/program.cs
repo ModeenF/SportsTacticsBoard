@@ -7,6 +7,7 @@
 // officials to describe sports tactics, strategies and positioning using 
 // a magnetic or chalk-board style approach.
 // 
+// Copyright (C) 2021- Fredrik Modéen
 // Copyright (C) 2006-2010 Robert Turner
 // 
 // This program is free software; you can redistribute it and/or modify
@@ -43,7 +44,7 @@ namespace SportsTacticsBoard
             ResourceManager resourceManager = ResourceManager.GetInstance();
             for (int index = 0; (index < args.Length); index++)
             {
-                if (string.Compare(args[index], CultureOption, StringComparison.OrdinalIgnoreCase) == 0)
+                if (string.Equals(args[index], CultureOption, StringComparison.OrdinalIgnoreCase))
                 {
                     index++;
                     if (index >= args.Length)
