@@ -18,8 +18,11 @@ FieldTypeFloorball: Floorball
 FieldTypeFutsal: Futsal (FIFA)
 FieldTypeHandball: Handball
 FieldTypeHockeyNhl: Ice Hockey (NHL)
-FieldTypeNflFootball: American Football (NFL)
-FieldTypeSoccer: Football/Soccer (FIFA)
+FieldTypeNflFootball: American Fotboll (NFL)
+FieldTypeSoccer: Fotboll (FIFA)
+FieldTypeSoccer5: Fotboll 5 mot 5
+FieldTypeSoccer7: Fotboll 7 mot 7
+FieldTypeSoccer9: Fotboll 9 mot 9
 FieldTypeVolleyball: Volleyball
 FileFilter: 'Sports Tactics Board files (*.stb.xml)|*.stb.xml|All files (*.*)|*.*'
 ImageFileNamePattern: ' - {0:000}'
@@ -88,7 +91,16 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 '
 CustomLabel: 'Custom &label:'
-RevertToDefault: 'Field &object:'
+RevertToDefault: 'Revert to &Default'
+FieldObjectLabel: 'Field &object:'
 Ok: OK
 Cancel: Cancel
 ChangeLabel: 'Change &label...'
+EditFieldObjectLabelDialog:	Edit Label
+SelectPlayingSurfaceTypeLable: 'Please select the type of sport/field you would like to document tactics for:'
+SelectPlayingSurfaceType: Select Playing Surface Type
+SaveAsDefaultCheckBox: Save as &default
+CategoryLabel: '&Category:'
+DescriptionLabel: '&Description:'
+EntriesLabel: '&Objects to position:'
+NameLabel: '&Name:'

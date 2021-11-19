@@ -23,8 +23,8 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Resources;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SportsTacticsBoard
@@ -40,6 +40,7 @@ namespace SportsTacticsBoard
         static void Main(string[] args)
         {
             System.Globalization.CultureInfo culture = null;
+            ResourceManager resourceManager = ResourceManager.GetInstance();
             for (int index = 0; (index < args.Length); index++)
             {
                 if (string.Compare(args[index], CultureOption, StringComparison.OrdinalIgnoreCase) == 0)
@@ -48,8 +49,8 @@ namespace SportsTacticsBoard
                     if (index >= args.Length)
                     {
                         // Missing parameter
-                        var msg = string.Format(System.Globalization.CultureInfo.CurrentCulture, global::SportsTacticsBoard.Properties.Resources.MissingCultureOptionValue_Format, CultureOption);
-                        RtlAwareMessageBox.Show(null, msg, global::SportsTacticsBoard.Properties.Resources.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
+                        var msg = string.Format(System.Globalization.CultureInfo.CurrentCulture, resourceManager.LocalizationResource.MissingCultureOptionValueFormat, CultureOption);
+                        RtlAwareMessageBox.Show(null, msg, resourceManager.LocalizationResource.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
                         return;
                     }
                     try
@@ -58,8 +59,8 @@ namespace SportsTacticsBoard
                     }
                     catch (ArgumentException)
                     {
-                        var msg = string.Format(System.Globalization.CultureInfo.CurrentCulture, global::SportsTacticsBoard.Properties.Resources.InvalidCultureOption_Format, CultureOption, args[index]);
-                        RtlAwareMessageBox.Show(null, msg, global::SportsTacticsBoard.Properties.Resources.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
+                        var msg = string.Format(System.Globalization.CultureInfo.CurrentCulture, resourceManager.LocalizationResource.InvalidCultureOptionFormat, CultureOption, args[index]);
+                        RtlAwareMessageBox.Show(null, msg, resourceManager.LocalizationResource.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
                         return;
                     }
                 }
@@ -74,8 +75,8 @@ namespace SportsTacticsBoard
                 }
                 catch (NotSupportedException)
                 {
-                    var msg = string.Format(System.Globalization.CultureInfo.CurrentCulture, global::SportsTacticsBoard.Properties.Resources.InvalidCultureOption_Format, CultureOption, culture.Name);
-                    RtlAwareMessageBox.Show(null, msg, global::SportsTacticsBoard.Properties.Resources.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
+                    var msg = string.Format(System.Globalization.CultureInfo.CurrentCulture, resourceManager.LocalizationResource.InvalidCultureOptionFormat, CultureOption, culture.Name);
+                    RtlAwareMessageBox.Show(null, msg, resourceManager.LocalizationResource.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
                     return;
                 }
             }

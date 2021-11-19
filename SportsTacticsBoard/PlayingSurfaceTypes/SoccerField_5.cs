@@ -23,8 +23,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using SportsTacticsBoard.Resources;
 using System.Drawing;
 
 namespace SportsTacticsBoard.PlayingSurfaceTypes
@@ -58,6 +57,15 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
             UsePenaltyMarks = false;
             Use18yard = false;
             UseRetreatLine = true;
+        }
+
+        public override string Name
+        {
+            get
+            {
+                ResourceManager resourceManager = ResourceManager.GetInstance();
+                return resourceManager.LocalizationResource.FieldTypeSoccer5;
+            }
         }
     }
 }

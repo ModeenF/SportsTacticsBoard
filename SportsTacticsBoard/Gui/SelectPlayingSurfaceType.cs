@@ -23,6 +23,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Resources;
 using System.Windows.Forms;
 
 namespace SportsTacticsBoard
@@ -32,6 +33,7 @@ namespace SportsTacticsBoard
         public SelectPlayingSurfaceType()
         {
             InitializeComponent();
+            SetLanguage();
         }
 
         internal static IPlayingSurfaceType AskUserForFieldType(bool saveAsDefaultChecked)
@@ -60,7 +62,7 @@ namespace SportsTacticsBoard
                 {
                     return null;
                 }
-                
+
                 IPlayingSurfaceType selectedFieldType = (IPlayingSurfaceType)sftDialog.fieldTypeComboBox.SelectedItem;
                 if (sftDialog.saveAsDefaultCheckBox.Checked)
                 {
@@ -71,5 +73,14 @@ namespace SportsTacticsBoard
             }
         }
 
+        private void SetLanguage()
+        {
+            ResourceManager resourceManager = ResourceManager.GetInstance();
+            okButton.Text = resourceManager.LocalizationResource.Ok;
+            cancelButton.Text = resourceManager.LocalizationResource.Cancel;
+            label1.Text = resourceManager.LocalizationResource.SelectPlayingSurfaceTypeLable;
+            saveAsDefaultCheckBox.Text = resourceManager.LocalizationResource.SaveAsDefaultCheckBox;
+            this.Text = resourceManager.LocalizationResource.SelectPlayingSurfaceType;
+        }
     }
 }

@@ -23,6 +23,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Resources;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
@@ -92,11 +93,12 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
 
         public bool UseRetreatLine { get; set; }
 
-        public string Name
+        public virtual string Name
         {
             get
             {
-                return Properties.Resources.ResourceManager.GetString("FieldType_" + Tag);
+                ResourceManager resourceManager = ResourceManager.GetInstance();
+                return resourceManager.LocalizationResource.FieldTypeSoccer;
             }
         }
 

@@ -43,8 +43,8 @@ namespace SportsTacticsBoard
         private LayoutSequence currentSequence;
         private int positionInSequence;
         private string fileName = "";
-        private string fileFilter = Properties.Resources.ResourceManager.GetString("FileFilter");
-        private string saveAsImageFileFilter = Properties.Resources.ResourceManager.GetString("SaveAsImageFileFilter");
+        private string fileFilter;
+        private string saveAsImageFileFilter;
         private string originalCaption;
         private bool sequenceDirty;
 
@@ -161,18 +161,17 @@ namespace SportsTacticsBoard
         {
             if (null != currentSequence)
             {
+                ResourceManager resourceManager = ResourceManager.GetInstance();
                 if (currentSequence.NumberOfLayouts == 0)
                 {
-                    currentLayoutNumber.Text =
-                      Properties.Resources.ResourceManager.GetString("CurrentLayoutNumber_Empty");
+                    currentLayoutNumber.Text = resourceManager.LocalizationResource.CurrentLayoutNumberEmpty;
                 }
                 else
                 {
-                    string formatString =
-                      Properties.Resources.ResourceManager.GetString("CurrentLayoutNumber_Format");
-                    currentLayoutNumber.Text =
-                      string.Format(CultureInfo.CurrentUICulture, formatString, positionInSequence + 1, currentSequence.NumberOfLayouts);
+                    string formatString = resourceManager.LocalizationResource.CurrentLayoutNumberFormat;
+                    currentLayoutNumber.Text = string.Format(CultureInfo.CurrentUICulture, formatString, positionInSequence + 1, currentSequence.NumberOfLayouts);
                 }
+
                 goToFirstToolStripButton.Enabled = (positionInSequence > 0);
                 previousLayoutInSequence.Enabled = (positionInSequence > 0);
                 nextLayoutInSequence.Enabled = ((positionInSequence + 1) < currentSequence.NumberOfLayouts);
@@ -199,6 +198,7 @@ namespace SportsTacticsBoard
                 goToLastToolStripButton.Enabled = false;
                 playToolStripButton.Enabled = false;
             }
+
             if (IsPlayingSequence)
             {
                 playToolStripButton.Image = Properties.Resources.PauseHS;
@@ -221,18 +221,14 @@ namespace SportsTacticsBoard
             {
                 return;
             }
+
             if (positionInSequence > 0)
             {
                 if ((currentSequence.NumberOfLayouts > 0) && (fieldControl.IsDirty))
                 {
-                    DialogResult dr = RtlAwareMessageBox.Show(
-                      this,
-                      Properties.Resources.ResourceManager.GetString("SaveSequenceEntryBeforeSwitchingEntries"),
-                      this.Text,
-                      MessageBoxButtons.YesNoCancel,
-                      MessageBoxIcon.Question,
-                      MessageBoxDefaultButton.Button1,
-                      (MessageBoxOptions)0);
+                    ResourceManager resourceManager = ResourceManager.GetInstance();
+                    DialogResult dr = RtlAwareMessageBox.Show(this, resourceManager.LocalizationResource.SaveSequenceEntryBeforeSwitchingEntries, this.Text,
+                        MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, (MessageBoxOptions)0);
                     switch (dr)
                     {
                         case DialogResult.Yes:
@@ -260,18 +256,14 @@ namespace SportsTacticsBoard
             {
                 return;
             }
+
             if (positionInSequence + 1 < currentSequence.NumberOfLayouts)
             {
                 if ((currentSequence.NumberOfLayouts > 0) && (fieldControl.IsDirty))
                 {
-                    DialogResult dr =
-                      RtlAwareMessageBox.Show(this,
-                                              Properties.Resources.ResourceManager.GetString("SaveSequenceEntryBeforeSwitchingEntries"),
-                                              this.Text,
-                                              MessageBoxButtons.YesNoCancel,
-                                              MessageBoxIcon.Question,
-                                              MessageBoxDefaultButton.Button1,
-                                              (MessageBoxOptions)0);
+                    ResourceManager resourceManager = ResourceManager.GetInstance();
+                    DialogResult dr = RtlAwareMessageBox.Show(this, resourceManager.LocalizationResource.SaveSequenceEntryBeforeSwitchingEntries, this.Text,
+                        MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, (MessageBoxOptions)0);
                     switch (dr)
                     {
                         case DialogResult.Yes:
@@ -330,11 +322,8 @@ namespace SportsTacticsBoard
             string title = originalCaption;
             if (!string.IsNullOrEmpty(fileName))
             {
-                title = string.Format(
-                  CultureInfo.CurrentCulture,
-                  Properties.Resources.TitleFormatString,
-                  originalCaption,
-                  System.IO.Path.GetFileName(fileName));
+                ResourceManager resourceManager = ResourceManager.GetInstance();
+                title = string.Format(CultureInfo.CurrentCulture, resourceManager.LocalizationResource.TitleFormatString, originalCaption, Path.GetFileName(fileName));
             }
             Text = title;
         }
@@ -355,6 +344,7 @@ namespace SportsTacticsBoard
                 DialogResult res = openFileDialog.ShowDialog();
                 if (res == DialogResult.OK)
                 {
+                    ResourceManager resourceManager = ResourceManager.GetInstance();
                     try
                     {
                         XmlSerializer serializer = new XmlSerializer(typeof(LayoutSequence));
@@ -363,20 +353,12 @@ namespace SportsTacticsBoard
                             LayoutSequence seq = (LayoutSequence)serializer.Deserialize(fs);
                             if (seq != null)
                             {
-                                // Locate the field type interface for the field specified by
-                                // this saved file
+                                // Locate the field type interface for the field specified by this saved file
                                 IPlayingSurfaceType newFieldType = FindFieldType(seq.FieldTypeTag);
                                 if (newFieldType == null)
                                 {
-                                    string msgFormat = Properties.Resources.ResourceManager.GetString("FailedToOpenFileFormatStr");
-                                    RtlAwareMessageBox.Show(
-                                      this,
-                                      String.Format(CultureInfo.CurrentUICulture, msgFormat, openFileDialog.FileName),
-                                      this.Text,
-                                      MessageBoxButtons.OK,
-                                      MessageBoxIcon.Error,
-                                      MessageBoxDefaultButton.Button1,
-                                      (MessageBoxOptions)0);
+                                    RtlAwareMessageBox.Show(this, String.Format(CultureInfo.CurrentUICulture, resourceManager.LocalizationResource.FailedToOpenFileFormatStr,
+                                        openFileDialog.FileName), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, (MessageBoxOptions)0);
                                 }
                                 else
                                 {
@@ -400,29 +382,15 @@ namespace SportsTacticsBoard
                             }
                             else
                             {
-                                string msgFormat = Properties.Resources.ResourceManager.GetString("FailedToOpenFileFormatStr");
-                                RtlAwareMessageBox.Show(
-                                  this,
-                                  String.Format(CultureInfo.CurrentUICulture, msgFormat, openFileDialog.FileName),
-                                  this.Text,
-                                  MessageBoxButtons.OK,
-                                  MessageBoxIcon.Error,
-                                  MessageBoxDefaultButton.Button1,
-                                  (MessageBoxOptions)0);
+                                RtlAwareMessageBox.Show(this, String.Format(CultureInfo.CurrentUICulture, resourceManager.LocalizationResource.FailedToOpenFileFormatStr,
+                                    openFileDialog.FileName), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, (MessageBoxOptions)0);
                             }
                         }
                     }
-                    catch (System.IO.IOException /*exception*/)
+                    catch (IOException /*exception*/)
                     {
-                        string msgFormat = Properties.Resources.ResourceManager.GetString("FailedToOpenFileFormatStr");
-                        RtlAwareMessageBox.Show(
-                          this,
-                          String.Format(CultureInfo.CurrentUICulture, msgFormat, openFileDialog.FileName),
-                          this.Text,
-                          MessageBoxButtons.OK,
-                          MessageBoxIcon.Error,
-                          MessageBoxDefaultButton.Button1,
-                          (MessageBoxOptions)0);
+                        RtlAwareMessageBox.Show(this, String.Format(CultureInfo.CurrentUICulture, resourceManager.LocalizationResource.FailedToOpenFileFormatStr,
+                            openFileDialog.FileName), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, (MessageBoxOptions)0);
                     }
                 }
             }
@@ -662,15 +630,9 @@ namespace SportsTacticsBoard
 
         private void NotImplementedYet()
         {
-            string msg = Properties.Resources.ResourceManager.GetString("NotImplementedYet");
-            RtlAwareMessageBox.Show(
-              this,
-              msg,
-              this.Text,
-              MessageBoxButtons.OK,
-              MessageBoxIcon.Information,
-              MessageBoxDefaultButton.Button1,
-              (MessageBoxOptions)0);
+            ResourceManager resourceManager = ResourceManager.GetInstance();
+            RtlAwareMessageBox.Show(this, resourceManager.LocalizationResource.NotImplementedYet, this.Text,
+              MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, (MessageBoxOptions)0);
         }
 
         private void removeSavedLayoutMenuItem_Click(object sender, EventArgs e)
@@ -694,6 +656,7 @@ namespace SportsTacticsBoard
             UpdateCommonSavedLayoutMenuItems();
             UpdateUserSavedLayoutMenuItems();
             UpdateSequenceControls();
+
             if (null == fieldControl.FieldType)
             {
                 FileNew(true, false);
@@ -742,18 +705,20 @@ namespace SportsTacticsBoard
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
+                ResourceManager resourceManager = ResourceManager.GetInstance();
                 saveFileDialog.Filter = saveAsImageFileFilter;
                 saveFileDialog.FilterIndex = 3; // set to PNG by default
                 saveFileDialog.RestoreDirectory = true;
                 saveFileDialog.OverwritePrompt = !saveEntireSequence;
                 if (saveEntireSequence)
                 {
-                    saveFileDialog.Title = Properties.Resources.ResourceManager.GetString("SaveImageSequenceDialogTitle");
+                    saveFileDialog.Title = resourceManager.LocalizationResource.SaveImageSequenceDialogTitle;
                 }
                 else
                 {
-                    saveFileDialog.Title = Properties.Resources.ResourceManager.GetString("SaveImageDialogTitle");
+                    saveFileDialog.Title = resourceManager.LocalizationResource.SaveImageDialogTitle;
                 }
+
                 DialogResult res = saveFileDialog.ShowDialog();
                 if (res != DialogResult.OK)
                 {
@@ -786,7 +751,8 @@ namespace SportsTacticsBoard
                     {
                         idx = fileNamePattern.Length;
                     }
-                    fileNamePattern = fileNamePattern.Insert(idx, Properties.Resources.ResourceManager.GetString("ImageFileNamePattern"));
+
+                    fileNamePattern = fileNamePattern.Insert(idx, resourceManager.LocalizationResource.ImageFileNamePattern);
                     for (int sequenceIndex = 0; sequenceIndex < currentSequence.NumberOfLayouts; sequenceIndex++)
                     {
                         string entryFileName = string.Format(CultureInfo.CurrentUICulture, fileNamePattern, sequenceIndex + 1);
@@ -830,12 +796,11 @@ namespace SportsTacticsBoard
             string rootProjectDir = Path.GetDirectoryName(installDir);
 #endif
             string[] appFolders = new string[] {
-        installDir
-        ,binDir
+                installDir, binDir
 #if DEBUG
-        ,rootProjectDir
+                ,rootProjectDir
 #endif
-      };
+            };
 
             string documentFileName = null;
             // Locate the document from the list of possible names
@@ -854,6 +819,7 @@ namespace SportsTacticsBoard
                         break;
                     }
                 }
+
                 if (documentFileName != null)
                 {
                     // exit the outer loop as we have found one that exists
@@ -871,10 +837,10 @@ namespace SportsTacticsBoard
                     System.Diagnostics.Process.Start(documentFileName);
                     return;
                 }
-                catch (System.ObjectDisposedException)
+                catch (ObjectDisposedException)
                 {
                 }
-                catch (System.InvalidOperationException)
+                catch (InvalidOperationException)
                 {
                 }
                 catch (System.ComponentModel.Win32Exception)
@@ -882,15 +848,9 @@ namespace SportsTacticsBoard
                 }
             }
 
-            string msg = Properties.Resources.ResourceManager.GetString("UnableToOpenFile_InstallationMayBeIncomplete");
-            RtlAwareMessageBox.Show(
-              this,
-              msg,
-              this.Text,
-              MessageBoxButtons.OK,
-              MessageBoxIcon.Exclamation,
-              MessageBoxDefaultButton.Button1,
-              (MessageBoxOptions)0);
+            ResourceManager resourceManager = ResourceManager.GetInstance();
+            RtlAwareMessageBox.Show(this, resourceManager.LocalizationResource.UnableToOpenFileInstallationMayBeIncomplete, this.Text,
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, (MessageBoxOptions)0);
             return;
         }
 
@@ -954,16 +914,12 @@ namespace SportsTacticsBoard
                 {
                     return;
                 }
+
                 if ((currentSequence.NumberOfLayouts > 0) && (fieldControl.IsDirty))
                 {
-                    DialogResult dr =
-                      RtlAwareMessageBox.Show(this,
-                                              Properties.Resources.ResourceManager.GetString("SaveSequenceEntryBeforeSwitchingEntries"),
-                                              this.Text,
-                                              MessageBoxButtons.YesNoCancel,
-                                              MessageBoxIcon.Question,
-                                              MessageBoxDefaultButton.Button1,
-                                              (MessageBoxOptions)0);
+                    ResourceManager resourceManager = ResourceManager.GetInstance();
+                    DialogResult dr = RtlAwareMessageBox.Show(this, resourceManager.LocalizationResource.SaveSequenceEntryBeforeSwitchingEntries, this.Text,
+                        MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, (MessageBoxOptions)0);
                     switch (dr)
                     {
                         case DialogResult.Yes:
@@ -973,6 +929,7 @@ namespace SportsTacticsBoard
                             return;
                     }
                 }
+
                 if (positionInSequence + 1 >= currentSequence.NumberOfLayouts)
                 {
                     GoToStartOfSequence();
@@ -1127,6 +1084,9 @@ namespace SportsTacticsBoard
             resetViewToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuResetView;
             optionsToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuOptions;
             repeatToolStripButton.Text = resourceManager.LocalizationResource.Repeat;
+
+            fileFilter = resourceManager.LocalizationResource.FileFilter;
+            saveAsImageFileFilter = resourceManager.LocalizationResource.FileFilter;
         }
     }
 }

@@ -55,11 +55,7 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
 
         abstract protected int PlayersPerTeam { get; }
         abstract public string Tag { get; }
-
-        public string Name
-        {
-            get { return Properties.Resources.ResourceManager.GetString("FieldType_" + Tag); }
-        }
+        abstract public string Name { get; }
 
         public float Length
         {

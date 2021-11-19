@@ -23,6 +23,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,6 +51,7 @@ namespace SportsTacticsBoard
         public SavedLayoutInformation()
         {
             InitializeComponent();
+            SetLanguage();
         }
 
         internal static SavedLayout AskUserForSavedLayoutDetails(ICollection<FieldObject> fieldObjects, string fieldTypeTag, string[] existingLayoutCategories)
@@ -88,7 +90,8 @@ namespace SportsTacticsBoard
         {
             if (nameTextBox.Text.Trim().Length == 0)
             {
-                errorProvider.SetError(nameTextBox, Properties.Resources.SavedLayoutInformation_ErrorMessage_NameMustNotBeBlank);
+                ResourceManager resourceManager = ResourceManager.GetInstance();
+                errorProvider.SetError(nameTextBox, resourceManager.LocalizationResource.SavedLayoutInformationErrorMessageNameMustNotBeBlank);
                 e.Cancel = true;
                 return;
             }
@@ -103,7 +106,8 @@ namespace SportsTacticsBoard
         {
             if (entriesListBox.CheckedItems.Count == 0)
             {
-                errorProvider.SetError(entriesListBox, Properties.Resources.SavedLayoutInformation_ErrorMessage_AtLeastOneItemMustBeChecked);
+                ResourceManager resourceManager = ResourceManager.GetInstance();
+                errorProvider.SetError(entriesListBox, resourceManager.LocalizationResource.SavedLayoutInformationErrorMessageAtLeastOneItemMustBeChecked);
                 e.Cancel = true;
                 return;
             }
@@ -112,6 +116,18 @@ namespace SportsTacticsBoard
         private void entriesListBox_Validated(object sender, EventArgs e)
         {
             errorProvider.SetError(entriesListBox, string.Empty);
+        }
+
+        private void SetLanguage()
+        {
+            ResourceManager resourceManager = ResourceManager.GetInstance();
+            this.Text = resourceManager.LocalizationResource.SavedLayoutInformation;
+            okButton.Text = resourceManager.LocalizationResource.Ok;
+            cancelButton.Text = resourceManager.LocalizationResource.Cancel;
+            categoryLabel.Text = resourceManager.LocalizationResource.CategoryLabel;
+            descriptionLabel.Text = resourceManager.LocalizationResource.DescriptionLabel;
+            entriesLabel.Text = resourceManager.LocalizationResource.EntriesLabel;
+            nameLabel.Text = resourceManager.LocalizationResource.NameLabel;
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿CurrentLayoutNumberEmpty: 
 CurrentLayoutNumberFormat: '{0}/{1}'
 CustomLabelLongerThanRecommended: The custom label is longer than recommended (2 characters or less). It probably won't display properly. Do you want to keep this label?
-ExceptionMessageLayoutFieldTagInvalid: Layout field type tag is not valid
-ExceptionMessageLayoutNameInvalid: Layout name is not valid
-FailedToOpenFileFormatStr: 'Failed to open file {0}'
+ExceptionMessageLayoutFieldTagInvalid: Anordnungsfeld Typ ist ungültig
+ExceptionMessageLayoutNameInvalid: Anordnungsfeld Name ist ungültig
+FailedToOpenFileFormatStr: 'Fehler beim Öffnen der Datei {0}'
 FieldObjectBall: Ball
 FieldObjectBaseConeLabelFormat: C{0}
 FieldObjectBaseConeNameFormat: Cone - {0}
@@ -14,30 +14,33 @@ FieldObjectReferee_Soccer_CR: Centre Referee
 FieldObjectReferee_Soccer_AR1: Assistant
 FieldObjectReferee_Soccer_AR2: Line
 FieldObjectReferee_Soccer_4th: Main
-FieldTypeFloorball: Floorball
+FieldTypeFloorball: Unihockey
 FieldTypeFutsal: Futsal (FIFA)
 FieldTypeHandball: Handball
-FieldTypeHockeyNhl: Ice Hockey (NHL)
+FieldTypeHockeyNhl: Eishockey (NHL)
 FieldTypeNflFootball: American Football (NFL)
-FieldTypeSoccer: Football/Soccer (FIFA)
+FieldTypeSoccer: Fussball (FIFA)
+FieldTypeSoccer5: Fussball 5 * 5
+FieldTypeSoccer7: Fussball 7 * 7
+FieldTypeSoccer9: Fussball 9 * 9
 FieldTypeVolleyball: Volleyball
-FileFilter: 'Sports Tactics Board files (*.stb.xml)|*.stb.xml|All files (*.*)|*.*'
+FileFilter: 'Sports Taktiks Board Dateien (*.stb.xml)|*.stb.xml|All files (*.*)|*.*'
 ImageFileNamePattern: ' - {0:000}'
 InvalidCultureOptionFormat: Value supplied ('{1}') for {0} option does not contain a valid or supported value
 InvalidParametersTitle: Invalid Parameters
 MissingCultureOptionValueFormat: '{0} option missing culture name'
-NoSavedLayoutsMenuItemText: '<<none>>'
-NotImplementedYet: Not implemented yet!
+NoSavedLayoutsMenuItemText: '<<keine>>'
+NotImplementedYet: Noch nicht implementiert!
 SaveAsImageFileFilter: 'Windows Bitmap (BMP)|*.bmp|Graphics Interchange Format (GIF)|*.gif|Portable Network Graphics (PNG)|*.png|Joint Photographic Experts Group (JPEG)|*.jpg'
-SavedLayoutInformationErrorMessageAtLeastOneItemMustBeChecked: At least one item must be checked.
-SavedLayoutInformationErrorMessageNameMustNotBeBlank: Name must not be blank.
-SaveImageDialogTitle: Save As Image File
-SaveImageSequenceDialogTitle: Save Sequence As Image Files
-SaveSequenceEntryBeforeSwitchingEntries: Save your current layout in place of the current sequence entry?
+SavedLayoutInformationErrorMessageAtLeastOneItemMustBeChecked: Es muss mindestens ein Begriff ausgewählt werden.
+SavedLayoutInformationErrorMessageNameMustNotBeBlank: Name darf nicht leer sein.
+SaveImageDialogTitle: Sichern als Image Datei
+SaveImageSequenceDialogTitle: Sichere Sequenz als Image Dateien
+SaveSequenceEntryBeforeSwitchingEntries: Sicheren der aktuellen Anordnung anstatt der aktuellen Sequenz?
 TeamNameAttacking: Attacking
 TeamNameDefending: Defending
 TitleFormatString: '{0} - {1}'
-UnableToOpenFileInstallationMayBeIncomplete: Unable to locate document. The installation of this program may not be complete or may have been modified.
+UnableToOpenFileInstallationMayBeIncomplete: Das Dokument kann nicht gefunden werden. Wahrscheinlich war die Installation nicht vollständig oder wurde zwischenzeitlich verändert.
 MenuAbout: '&Über...'
 MenuChangePlayingSurfaceType: &Typ wechseln...
 MenuCommonSavedLayouts: '&Bibliothek'
@@ -88,7 +91,17 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 '
 CustomLabel: 'Custom &label:'
-RevertToDefault: 'Field &object:'
+RevertToDefault: '&Default setzen'
+FieldObjectLabel: 'Field &object:'
 Ok: OK
-Cancel: Cancel
-ChangeLabel: 'Change &label...'
+Cancel: Abbruch
+ChangeLabel: '&Bezeichnung ändern...'
+EditFieldObjectLabelDialog:	Bearbeite Bezeichnungen
+SelectPlayingSurfaceTypeLable: 'Bitte wähle den Typ des Sportfeldes aus für das du eine Taktik erstellen willst:'
+SelectPlayingSurfaceType: Auswahl Oberflächen Typ
+SaveAsDefaultCheckBox: Sichern als &Default
+SavedLayoutInformation: Sichere Anordnung
+CategoryLabel: '&Kategory:'
+DescriptionLabel: '&Beschreibung:'
+EntriesLabel: '&Positionsobjekt:'
+NameLabel: '&Name:'

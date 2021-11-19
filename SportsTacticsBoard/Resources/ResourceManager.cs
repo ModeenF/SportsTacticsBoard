@@ -34,8 +34,8 @@ namespace SportsTacticsBoard.Resources
     {
         private const string LocalizationResourceFileName = "localization.";
         //private const string DefaultCulture = "en-US";
-        private const string DefaultCulture = "de-DE";
-        //private const string DefaultCulture = "sv-SE";      
+        //private const string DefaultCulture = "de-DE";
+        private const string DefaultCulture = "sv-SE";      
         private const string ResourceExtension = ".res";
         private const string ImageResourcePath = "SportsTacticsBoard.Images.";
 

@@ -24,6 +24,7 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
 
+using SportsTacticsBoard.Resources;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
@@ -60,7 +61,8 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
         {
             get
             {
-                return Properties.Resources.ResourceManager.GetString("FieldType_" + Tag);
+                ResourceManager resourceManager = ResourceManager.GetInstance();
+                return resourceManager.LocalizationResource.FieldTypeVolleyball;
             }
         }
 

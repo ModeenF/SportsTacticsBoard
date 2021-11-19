@@ -24,6 +24,8 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
 
+using SportsTacticsBoard.Resources;
+
 namespace SportsTacticsBoard.PlayingSurfaceTypes
 {
     /// <summary>
@@ -45,6 +47,15 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
         protected override int PlayersPerTeam
         {
             get { return 5; }
+        }
+
+        public override string Name
+        {
+            get
+            {
+                ResourceManager resourceManager = ResourceManager.GetInstance();
+                return resourceManager.LocalizationResource.FieldTypeFutsal;
+            }
         }
     }
 }

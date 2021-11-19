@@ -29,6 +29,7 @@ using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using SportsTacticsBoard.Resources;
 
 namespace SportsTacticsBoard
 {
@@ -214,6 +215,8 @@ namespace SportsTacticsBoard
                 zoomCursor = new Cursor(s);
             }
             this.Cursor = ToolCursor;
+
+            SetLanguage();
         }
 
         public IPlayingSurfaceType FieldType
@@ -873,6 +876,11 @@ namespace SportsTacticsBoard
             base.OnMouseClick(e);
         }
 
+        private void SetLanguage()
+        {
+            ResourceManager resourceManager = ResourceManager.GetInstance();
+            changeLabelMenuItem.Text = resourceManager.LocalizationResource.ChangeLabel;
+        }
     }
 
 }

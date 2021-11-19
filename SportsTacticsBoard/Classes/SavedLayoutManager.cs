@@ -23,6 +23,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Resources;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -152,16 +153,15 @@ namespace SportsTacticsBoard
         /// <returns>The file name for the layout file.</returns>
         private string GetFileNameForLayout(SavedLayout layout)
         {
+            ResourceManager resourceManager = ResourceManager.GetInstance();
             if (string.IsNullOrEmpty(layout.FieldTypeTag))
             {
-                string msg = Properties.Resources.ResourceManager.GetString("ExceptionMessage_LayoutFieldTagInvalid");
-                throw new ArgumentException(msg, nameof(layout));
+                throw new ArgumentException(resourceManager.LocalizationResource.ExceptionMessageLayoutFieldTagInvalid, nameof(layout));
             }
 
             if (string.IsNullOrEmpty(layout.Name))
             {
-                string msg = Properties.Resources.ResourceManager.GetString("ExceptionMessage_LayoutNameInvalid");
-                throw new ArgumentException(msg, nameof(layout));
+                throw new ArgumentException(resourceManager.LocalizationResource.ExceptionMessageLayoutNameInvalid, nameof(layout));
             }
 
             string fn = Path.Combine(LayoutPath, layout.FieldTypeTag);
@@ -227,7 +227,7 @@ namespace SportsTacticsBoard
                 }
                 return true;
             }
-            catch (System.IO.IOException)
+            catch (IOException)
             {
                 return false;
             }
@@ -310,24 +310,13 @@ namespace SportsTacticsBoard
                                 categorySubMenus.Add(savedLayout.Category, menuToInsertIn);
                             }
                         }
-                        ToolStripMenuItem mi = null;
-                        try
+
+                        ToolStripMenuItem mi = new ToolStripMenuItem(savedLayout.Name, null, menuItemClickEventHandler);
+                        if (savedLayout.Description.Length > 0)
                         {
-                            mi = new ToolStripMenuItem(savedLayout.Name, null, menuItemClickEventHandler);
-                            if (savedLayout.Description.Length > 0)
-                            {
-                                mi.ToolTipText = savedLayout.Description;
-                            }
-                            menuToInsertIn.DropDownItems.Add(mi);
-                            mi = null;
+                            mi.ToolTipText = savedLayout.Description;
                         }
-                        finally
-                        {
-                            if (null != mi)
-                            {
-                                mi.Dispose();
-                            }
-                        }
+                        menuToInsertIn.DropDownItems.Add(mi);
                         itemsInserted = true;
                     }
                 }
@@ -345,25 +334,14 @@ namespace SportsTacticsBoard
 
             if (!itemsInserted)
             {
-                string menuItemStr = Properties.Resources.ResourceManager.GetString("NoSavedLayoutsMenuItemText");
-                ToolStripMenuItem mi = null;
-                try
+                ResourceManager resourceManager = ResourceManager.GetInstance();
+                ToolStripMenuItem mi = new ToolStripMenuItem(resourceManager.LocalizationResource.NoSavedLayoutsMenuItemText)
                 {
-                    mi = new ToolStripMenuItem(menuItemStr)
-                    {
-                        Enabled = false
-                    };
-                    menuToInsertInto.DropDownItems.Add(mi);
-                    mi = null;
-                }
-                finally
-                {
-                    if (null != mi)
-                    {
-                        mi.Dispose();
-                    }
-                }
+                    Enabled = false
+                };
+                menuToInsertInto.DropDownItems.Add(mi);
             }
+
             return itemsInserted;
         }
 
@@ -401,8 +379,9 @@ namespace SportsTacticsBoard
         {
             if (string.IsNullOrEmpty(layoutPath))
             {
-                DialogResult dr = RtlAwareMessageBox.Show(null, Properties.Resources.ResourceManager.GetString("SaveSequenceEntryBeforeSwitchingEntries"),
-                    "", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
+                ResourceManager resourceManager = ResourceManager.GetInstance();
+                DialogResult dr = RtlAwareMessageBox.Show(null, resourceManager.LocalizationResource.SaveSequenceEntryBeforeSwitchingEntries, "",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
                 return;
             }
 

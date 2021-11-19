@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using SportsTacticsBoard.FieldObjects;
+using SportsTacticsBoard.Resources;
 
 namespace SportsTacticsBoard.PlayingSurfaceTypes
 {
@@ -56,7 +57,8 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
         {
             get
             {
-                return Properties.Resources.ResourceManager.GetString("FieldType_" + Tag);
+                ResourceManager resourceManager = ResourceManager.GetInstance();
+                return resourceManager.LocalizationResource.FieldTypeNflFootball;
             }
         }
 

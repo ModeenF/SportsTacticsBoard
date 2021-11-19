@@ -23,6 +23,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Resources;
 using System.Windows.Forms;
 
 namespace SportsTacticsBoard
@@ -56,19 +57,32 @@ namespace SportsTacticsBoard
         public EditFieldObjectLabelDialog()
         {
             InitializeComponent();
+            SetLanguage();
         }
 
         private void OkButton_Click(object sender, System.EventArgs e)
-        {
+        {            
             if (customLabelTextBox.Text.Length > 2)
             {
-                DialogResult dr = RtlAwareMessageBox.Show(this, Properties.Resources.ResourceManager.GetString("CustomLabelLongerThanRecommended"),
+                ResourceManager resourceManager = ResourceManager.GetInstance();
+                DialogResult dr = RtlAwareMessageBox.Show(this, resourceManager.LocalizationResource.CustomLabelLongerThanRecommended,
                     this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2, 0);
                 if (dr != DialogResult.Yes)
                 {
                     this.DialogResult = DialogResult.None;
                 }
             }
+        }
+
+        private void SetLanguage()
+        {
+            ResourceManager resourceManager = ResourceManager.GetInstance();
+            customLabelLabel.Text = resourceManager.LocalizationResource.CustomLabel;
+            revertToDefaultButton.Text = resourceManager.LocalizationResource.RevertToDefault;
+            fieldObjectLabel.Text = resourceManager.LocalizationResource.FieldObjectLabel;
+            okButton.Text = resourceManager.LocalizationResource.Ok;
+            cancelButton.Text = resourceManager.LocalizationResource.Cancel;
+            this.Text = resourceManager.LocalizationResource.EditFieldObjectLabelDialog;
         }
     }
 }

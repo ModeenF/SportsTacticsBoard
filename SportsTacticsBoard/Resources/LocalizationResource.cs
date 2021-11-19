@@ -29,11 +29,13 @@ namespace SportsTacticsBoard.Resources
     [Serializable]
     public class LocalizationResource
     {
+        #region for FieldObject
         public string FieldObjectBaseConeLabelFormat { get; set; }
         public string FieldObjectBaseConeNameFormat { get; set; }
         public string FieldObjectPlayerNameFormat { get; set; }
         public string TeamNameAttacking { get; set; }
         public string TeamNameDefending { get; set; }
+        #endregion
 
         #region for MainForm             
         public string MenuAbout { get; set; }
@@ -81,15 +83,62 @@ namespace SportsTacticsBoard.Resources
         #region for AboutForm
         public string Version { get; set; }
         public string License { get; set; }
-
         #endregion
+
+        #region for EditFieldObjectLabelDialog
+        public string CustomLabelLongerThanRecommended { get; set; }
+        public string EditFieldObjectLabelDialog { get; set; }
+        public string RevertToDefault { get; set; }
+        public string CustomLabel { get; set; }
+        public string FieldObjectLabel { get; set; }
+        #endregion
+
+        #region for FieldControl
+        public string ChangeLabel { get; set; }
+        #endregion
+
+        #region for SelectPlayingSurfaceType
+        public string SelectPlayingSurfaceTypeLable { get; set; }
+        public string SelectPlayingSurfaceType { get; set; }
+        public string SaveAsDefaultCheckBox { get; set; }
+        #endregion
+
+        #region for SavedLayoutInformation
+        public string SavedLayoutInformation { get; set; }
+        public string CategoryLabel { get; set; }
+        public string DescriptionLabel { get; set; }
+        public string EntriesLabel { get; set; }
+        public string NameLabel { get; set; }
+        public string SavedLayoutInformationErrorMessageAtLeastOneItemMustBeChecked { get; set; }
+        #endregion
+
+        #region for SavedLayoutManager
+        public string ExceptionMessageLayoutFieldTagInvalid { get; set; }
+        public string ExceptionMessageLayoutNameInvalid { get; set; }
+        public string NoSavedLayoutsMenuItemText { get; set; }
+        public string SavedLayoutInformationErrorMessageNameMustNotBeBlank { get; set; }
+        public string SaveSequenceEntryBeforeSwitchingEntries { get; set; }
+        #endregion
+
+        #region PlayingSurfaceTypes
+        public string FieldTypeSoccer5 { get; set; }
+        public string FieldTypeSoccer7 { get; set; }
+        public string FieldTypeSoccer9 { get; set; }
+        public string FieldTypeFloorball { get; set; }
+        public string FieldTypeFutsal { get; set; }
+        public string FieldTypeHandball { get; set; }
+        public string FieldTypeHockeyNhl { get; set; }
+        public string FieldTypeNflFootball { get; set; }
+        public string FieldTypeSoccer { get; set; }
+        public string FieldTypeVolleyball { get; set; }
+        #endregion
+
+        public string Ok { get; set; }
+        public string Cancel { get; set; }
 
         public string CurrentLayoutNumberEmpty { get; set; }
         public string SaveAsImageFileFilter { get; set; }
-        public string CurrentLayoutNumberFormat { get; set; }
-        public string CustomLabelLongerThanRecommended { get; set; }
-        public string ExceptionMessageLayoutFieldTagInvalid { get; set; }
-        public string ExceptionMessageLayoutNameInvalid { get; set; }
+        public string CurrentLayoutNumberFormat { get; set; }        
         public string FailedToOpenFileFormatStr { get; set; }
         public string FieldObjectBall { get; set; }                
         public string FieldObjectPlayer { get; set; }        
@@ -98,32 +147,16 @@ namespace SportsTacticsBoard.Resources
         public string FieldObjectReferee_Soccer_AR1 { get; set; }
         public string FieldObjectReferee_Soccer_AR2 { get; set; }
         public string FieldObjectReferee_Soccer_4th { get; set; }
-        public string FieldTypeFloorball { get; set; }
-        public string FieldTypeFutsal { get; set; }
-        public string FieldTypeHandball { get; set; }
-        public string FieldTypeHockeyNhl { get; set; }
-        public string FieldTypeNflFootball { get; set; }
-        public string FieldTypeSoccer { get; set; }
-        public string FieldTypeVolleyball { get; set; }
         public string FileFilter { get; set; }
         public string ImageFileNamePattern { get; set; }
         public string InvalidCultureOptionFormat { get; set; }
         public string InvalidParametersTitle { get; set; }
-        public string MissingCultureOptionValueFormat { get; set; }
-        public string NoSavedLayoutsMenuItemText { get; set; }
-        public string NotImplementedYet { get; set; }        
-        public string SavedLayoutInformationErrorMessageAtLeastOneItemMustBeChecked { get; set; }
-        public string SavedLayoutInformationErrorMessageNameMustNotBeBlank { get; set; }
+        public string MissingCultureOptionValueFormat { get; set; }        
+        public string NotImplementedYet { get; set; }                        
         public string SaveImageDialogTitle { get; set; }
-        public string SaveImageSequenceDialogTitle { get; set; }
-        public string SaveSequenceEntryBeforeSwitchingEntries { get; set; }
+        public string SaveImageSequenceDialogTitle { get; set; }        
         public string TitleFormatString { get; set; }
-        public string UnableToOpenFileInstallationMayBeIncomplete { get; set; }              
-        public string CustomLabel { get; set; }
-        public string FieldObject { get; set; }
-        public string RevertToDefault { get; set; }
-        public string Ok { get; set; }
-        public string Cancel { get; set; }
-        public string ChangeLabel { get; set; }       
+        public string UnableToOpenFileInstallationMayBeIncomplete { get; set; }                      
+        public string FieldObject { get; set; }        
     }
 }
