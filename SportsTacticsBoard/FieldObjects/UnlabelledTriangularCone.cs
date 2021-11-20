@@ -55,7 +55,8 @@ namespace SportsTacticsBoard.FieldObjects
             using (var fillBrush = new SolidBrush(FillBrushColor))
                 graphics.FillPolygon(fillBrush, trianglePoints);
 
-            if (!(OutlinePenWidth > 0.0)) return;
+            if (!(OutlinePenWidth > 0.0))
+                return;
 
             using (var outlinePen = new Pen(OutlinePenColor, OutlinePenWidth))
                 graphics.DrawPolygon(outlinePen, trianglePoints);

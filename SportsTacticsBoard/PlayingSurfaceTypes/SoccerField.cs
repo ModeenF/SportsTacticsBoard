@@ -62,6 +62,10 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
             PlayersPerTeam = 11;
             Tag = "Soccer";
 
+            WidthOf6YardBoxInPixels = 6.0F;
+            HeightOf6YardBoxInPixels = 6.0F * 2.0F + 8.0F;
+            HalfHeightOf6YardBoxInPixels = 6.0F + 4.0F;
+
             UseCenterCircel = true;
             UseAllRef = true;
             UsePenaltyMarks = true;
@@ -91,6 +95,10 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
         public bool UseAllRef { get; set; }
         public bool UsePenaltyMarks { get; set; }
         public bool Use18yard { get; set; }
+
+        public float WidthOf6YardBoxInPixels { get; set; }
+        public float HeightOf6YardBoxInPixels { get; set; }
+        public float HalfHeightOf6YardBoxInPixels { get; set; }
 
         public bool UseRetreatLine { get; set; }
 
@@ -160,7 +168,7 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
             {
                 benchStartPos += Length / 2.0F;
             }
-           
+
             for (int playerNumber = 1; playerNumber <= PlayersPerTeam; playerNumber++)
             {
                 string playerTag = FieldObjects.NumberedPlayer.ComposeTag(teamId, playerNumber);
@@ -258,13 +266,8 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
 
                     #region Draw the goal areas (6-yard boxes)
                     // ... The 6 yard boxes
-                    float widthOf6YardBoxInPixels = 6.0F;
-                    float heightOf6YardBoxInPixels = 6.0F * 2.0F + 8.0F;
-                    float halfHeightOf6YardBoxInPixels = 6.0F + 4.0F;
-                    RectangleF leftSide6YardBox = new RectangleF(0.0F, fieldCentre.Y - halfHeightOf6YardBoxInPixels,
-                      widthOf6YardBoxInPixels, heightOf6YardBoxInPixels);
-                    RectangleF rightSide6YardBox = new RectangleF(Length - widthOf6YardBoxInPixels, fieldCentre.Y - halfHeightOf6YardBoxInPixels,
-                      widthOf6YardBoxInPixels, heightOf6YardBoxInPixels);
+                    RectangleF leftSide6YardBox = new RectangleF(0.0F, fieldCentre.Y - HalfHeightOf6YardBoxInPixels, WidthOf6YardBoxInPixels, HeightOf6YardBoxInPixels);
+                    RectangleF rightSide6YardBox = new RectangleF(Length - WidthOf6YardBoxInPixels, fieldCentre.Y - HalfHeightOf6YardBoxInPixels, WidthOf6YardBoxInPixels, HeightOf6YardBoxInPixels);
                     graphics.DrawRectangle(linePen, leftSide6YardBox.X, leftSide6YardBox.Y, leftSide6YardBox.Width, leftSide6YardBox.Height);
                     graphics.DrawRectangle(linePen, rightSide6YardBox.X, rightSide6YardBox.Y, rightSide6YardBox.Width, rightSide6YardBox.Height);
                     #endregion

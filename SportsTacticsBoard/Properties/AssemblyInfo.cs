@@ -35,7 +35,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Sports Tactics Board")]
 [assembly: AssemblyDescription("Sports Tactics Board is a utility that allows coaches, trainers and officials to describe sports tactics, strategies and positioning using a magnetic or chalk-board style approach.")]
 [assembly: AssemblyProduct("Sports Tactics Board")]
-[assembly: AssemblyCopyright("Copyright © 2006-2012 Robert Turner. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2006-2012 Robert Turner. All rights reserved.\nCopyright © 2016 Marian Dziubiak. All rights reserved.\nCopyright © 2021- Fredrik Modéen. All rights reserved.\n ")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM componenets.  If you need to access a type in this assembly from 

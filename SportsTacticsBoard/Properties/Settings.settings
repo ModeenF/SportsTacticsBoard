@@ -11,5 +11,8 @@
     <Setting Name="AnimationFrameDurationInMilliseconds" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1000</Value>
     </Setting>
+    <Setting Name="Languages" Type="System.String" Scope="User">
+      <Value Profile="(Default)">English:en-US;German:de-DE;Swedish:sv-SE</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

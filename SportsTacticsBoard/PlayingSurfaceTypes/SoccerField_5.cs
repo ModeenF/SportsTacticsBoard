@@ -58,6 +58,10 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
             UsePenaltyMarks = false;
             Use18yard = false;
             UseRetreatLine = true;
+
+            WidthOf6YardBoxInPixels = 6.0F;
+            HeightOf6YardBoxInPixels = 6.0F * 2.0F + 8.0F;
+            HalfHeightOf6YardBoxInPixels = 6.0F + 4.0F;
         }
 
         public override string Name

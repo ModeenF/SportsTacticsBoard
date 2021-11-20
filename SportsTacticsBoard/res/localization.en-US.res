@@ -41,7 +41,7 @@ TeamNameAttacking: Attacking
 TeamNameDefending: Defending
 TitleFormatString: '{0} - {1}'
 UnableToOpenFileInstallationMayBeIncomplete: Unable to locate document. The installation of this program may not be complete or may have been modified.
-MenuAbout: '&Aboutfff'
+MenuAbout: '&About'
 MenuChangePlayingSurfaceType: Change &type
 MenuCommonSavedLayouts: '&Library'
 MenuCopy: '&Copy to clipboard'
@@ -104,3 +104,7 @@ CategoryLabel: '&Category:'
 DescriptionLabel: '&Description:'
 EntriesLabel: '&Objects to position:'
 NameLabel: '&Name:'
+ChoseLanguageToolStripMenuItem: Chose Language
+English: English
+German: German
+Swedish: Swedish

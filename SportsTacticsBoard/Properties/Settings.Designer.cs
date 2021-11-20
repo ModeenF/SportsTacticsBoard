@@ -55,5 +55,17 @@ namespace SportsTacticsBoard.Properties {
                 this["AnimationFrameDurationInMilliseconds"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("English:en-US;German:de-DE;Swedish:sv-SE")]
+        public string Languages {
+            get {
+                return ((string)(this["Languages"]));
+            }
+            set {
+                this["Languages"] = value;
+            }
+        }
     }
 }

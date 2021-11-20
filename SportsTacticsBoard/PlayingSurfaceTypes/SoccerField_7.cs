@@ -37,10 +37,10 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
     {
         public SoccerField7()
         {
-            Length = 100.0F;
-            Width = 60.0F;
+            Length = 50.0F;
+            Width = 30.0F;
             Margin = 6.5F;
-            PlayerSize = 1.15F;
+            PlayerSize = 0.60F;
             BallSize = 0.75F;
             ConeSize = 0.50F;
             FieldObjectOutlinePenWidth = 3.0F / 36.0F;
@@ -59,6 +59,10 @@ namespace SportsTacticsBoard.PlayingSurfaceTypes
             UsePenaltyMarks = false;
             Use18yard = false;
             UseRetreatLine = true;
+
+            WidthOf6YardBoxInPixels = 4.0F;
+            HeightOf6YardBoxInPixels = 6.0F * 2.0F + 8.0F;
+            HalfHeightOf6YardBoxInPixels = 6.0F + 4.0F;
         }
 
         public override string Name

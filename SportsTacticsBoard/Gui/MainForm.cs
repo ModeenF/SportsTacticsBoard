@@ -857,12 +857,12 @@ namespace SportsTacticsBoard
 
         private void licenseMenuItem_Click(object sender, EventArgs e)
         {
-            ShowInstalledDocument(new string[] { "license.rtf", "license.txt" });
+            ShowInstalledDocument(new string[] { "LICENSE" });
         }
 
         private void readMeMenuItem_Click(object sender, EventArgs e)
         {
-            ShowInstalledDocument(new string[] { "readme.txt" });
+            ShowInstalledDocument(new string[] { "README.md" });
         }
 
         private void changeLogMenuItem_Click(object sender, EventArgs e)
@@ -1085,9 +1085,18 @@ namespace SportsTacticsBoard
             resetViewToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuResetView;
             optionsToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuOptions;
             repeatToolStripButton.Text = resourceManager.LocalizationResource.Repeat;
+            //choseLanguageToolStripMenuItem.Text = resourceManager.LocalizationResource.ChoseLanguageToolStripMenuItem;
 
             fileFilter = resourceManager.LocalizationResource.FileFilter;
-            saveAsImageFileFilter = resourceManager.LocalizationResource.FileFilter;
+            saveAsImageFileFilter = resourceManager.LocalizationResource.FileFilter;            
+
+            //var tmp = Properties.Settings.Default.Languages;
+            //var languages = tmp.Split(';');
+
+            //foreach (var language in languages)
+            //{
+            //    choseLanguageToolStripMenuItem.DropDownItems.Add(language);
+            //}
         }
     }
 }

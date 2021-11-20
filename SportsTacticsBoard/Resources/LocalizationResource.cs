@@ -79,6 +79,11 @@ namespace SportsTacticsBoard.Resources
         public string MenuLicense { get; set; }
         public string MenuExportTooltip { get; set; }
         public string MenuCopyTooltip { get; set; }
+        public string ChoseLanguageToolStripMenuItem { get; set; }
+
+        public string English { get; set; }
+        public string German { get; set; }
+        public string Swedish { get; set; }
         #endregion
 
         #region for AboutForm
