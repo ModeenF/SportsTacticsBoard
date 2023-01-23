@@ -1,160 +1,154 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?include ver.wxi ?>
+﻿<?include ..\Version\ver.template.wxi ?>
 <?define ProductName = "Sports Tactics Board" ?>
 <?define Manufacturer = "Sports Tactics Board" ?>
 
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-  <Product Id="*" Name="$(var.ProductName)" Language="1033" Version="$(var.StbVersion)" Manufacturer="$(var.Manufacturer)" UpgradeCode="3cb2cabc-7021-4a3a-a1f5-fe05627d6bf6">
-    <Package InstallerVersion="300" Compressed="yes" />
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+	<Package Name="$(var.ProductName)" Language="1033" Version="$(var.StbVersion)" Manufacturer="$(var.Manufacturer)" UpgradeCode="3cb2cabc-7021-4a3a-a1f5-fe05627d6bf6" InstallerVersion="300">
+		<Upgrade Id="3cb2cabc-7021-4a3a-a1f5-fe05627d6bf6">
+			<UpgradeVersion Property="OLDERVERSIONBEINGUPGRADED" Minimum="0.0.1.0" Maximum="$(var.StbVersion)" IncludeMinimum="yes" />
+			<UpgradeVersion Property="NEWERVERSIONDETECTED" Minimum="$(var.StbVersion)" OnlyDetect="yes" />
+		</Upgrade>
 
-    <Upgrade Id="3cb2cabc-7021-4a3a-a1f5-fe05627d6bf6">
-      <UpgradeVersion Property="OLDERVERSIONBEINGUPGRADED" Minimum="0.0.1.0" Maximum="$(var.StbVersion)" IncludeMinimum="yes" />
-      <UpgradeVersion Property="NEWERVERSIONDETECTED" Minimum="$(var.StbVersion)" OnlyDetect="yes" />
-    </Upgrade>
+		<Media Id="1" Cabinet="SportsTacticsBoard.cab" EmbedCab="yes" />
 
-    <Media Id="1" Cabinet="SportsTacticsBoard.cab" EmbedCab="yes" />
+		<Feature Id="CoreProgram" Title="Program" Level="1">
+			<ComponentRef Id="MainProgram" />
+			<ComponentRef Id="MainProgramConfig" />
+			<ComponentRef Id="ReadMe" />
+			<ComponentRef Id="ChangeLog" />
+			<ComponentRef Id="LicenseTxt" />
+			<ComponentRef Id="LicenseRtf" />
+		</Feature>
 
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="APPLICATIONFOLDER" Name="$(var.ProductName)" FileSource="$(var.RootDir)">
+		<Feature Id="OtherLanguages" Title="Additional language files" Level="1">
+			<ComponentRef Id="Resources_de" />
+		</Feature>
 
-          <Directory Id="BinDir" Name="bin" FileSource="$(var.BuildDir)">
-            <Component Id="MainProgram" Guid="dc856848-df1a-4cb3-ae75-70f4c22effe6">
-              <CreateFolder />
-              <File Id="SportsTacticsBoard_exe" Name="SportsTacticsBoard.exe" Vital="yes" />
-              <Shortcut Id="SportsTacticsBoard_exe_shortcut" Advertise="yes" Name="$(var.ProductName)" Directory="ProgramMenuFolder" Description="Allows coaches, trainers and officials to describe sports tactics, strategies and positioning using a magnetic or chalk-board style approach." Icon="Program.ico" />
-            </Component>
+		<Feature Id="SoccerLibrary" Title="Library - Soccer" Level="1">
+			<ComponentRef Id="Soccer_PlayersOnBenchLayout" />
+			<ComponentRef Id="Soccer_442_StartingPositionLayout" />
+			<ComponentRef Id="Soccer_442_GamePositionLayout" />
+		</Feature>
 
-            <Component Id="MainProgramConfig" Guid="D733E3CD-3337-40f3-B8FB-CF3AAE7EEB29">
-              <File Id="SportsTacticsBoard_exe_config" Name="SportsTacticsBoard.exe.config" Vital="yes" />
-            </Component>
-            
-            <Directory Id="de" Name="de" FileSource="$(var.BuildDir)\de">
-              <Component Id="Resources_de" Guid="3192E0E3-C997-499b-B619-5EC9DFB5094D">
-                <CreateFolder />
-                <File Id="SportsTacticsBoard_resources_dll" Name="SportsTacticsBoard.resources.dll" />
-              </Component>
-            </Directory>
-          </Directory>
+		<Feature Id="NHLHockeyLibrary" Title="Library - Hockey - NHL" Level="1" />
 
-          <Component Id="ReadMe" Guid="155771D0-A49D-4418-8D8F-626BE072F5CD">
-            <File Id="readme_txt" Name="readme.txt" />
-          </Component>
+		<Feature Id="VolleyballLibrary" Title="Library - Volleyball" Level="1" />
 
-          <Component Id="ChangeLog" Guid="A5DE9560-BDB7-47ae-B341-D0C5E8A8B0D8">
-            <File Id="changelog_txt" Name="changelog.txt" />
-          </Component>
+		<Icon Id="Program.ico" SourceFile="..\SportsTacticsBoard\Program.ico" />
 
-          <Component Id="LicenseTxt" Guid="99C00BEB-F4EA-4b39-A734-B8C9E1F537FA">
-            <File Id="license_txt" Name="license.txt" />
-          </Component>
+		<Launch Condition="(VersionNT = 501 AND ServicePackLevel &gt;= 2) OR (VersionNT &gt; 501)" Message="This program requires Windows XP Service Pack 2 or later to run." />
+		<Launch Condition="Installed OR NETFRAMEWORK35" Message="This application requires .NET Framework 3.5. Please install the .NET Framework then run this installer again." />
+		<Launch Condition="NOT NEWERVERSIONDETECTED Or Installed" Message="A newer version of [ProductName] is installed. If you want to install an older version, please uninstall the newer version first." />
 
-          <Component Id="LicenseRtf" Guid="99BB79C8-EF45-465b-84CF-927427933B14">
-            <File Id="license_rtf" Name="license.rtf" />
-          </Component>
+		<CustomAction Id="SetARPReadme" Return="check" Property="ARPREADME" Value="[APPLICATIONFOLDER]readme.txt" />
+		<CustomAction Id="SetARPInstallLocation" Return="check" Property="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" />
 
-          <Directory Id="Library" Name="Library">
-            <Directory Id="Library_Layouts" Name="Layouts">
-              <Directory Id="Library_Layouts_Soccer" Name="Soccer">
+		<InstallExecuteSequence>
+			<Custom Action="SetARPReadme" After="CostFinalize" />
+			<Custom Action="SetARPInstallLocation" After="CostFinalize" />
+			<RemoveExistingProducts After="InstallValidate" />
+			<FindRelatedProducts Before="LaunchConditions" />
+		</InstallExecuteSequence>
 
-                <Directory Id="Library_Layouts_Soccer_442" Name="4-4-2">
-                  <Component Id="Soccer_442_StartingPositionLayout" Guid="65A439AA-8133-421c-8ACC-B13558B684D0">
-                    <CreateFolder />
-                    <File Id="Typical_Starting_Position_layout_xml" Name="Typical Starting Position.layout.xml" DiskId="1" Source="..\Library\Layouts\Soccer\4-4-2\Typical Starting Position.layout.xml" />
-                  </Component>
-                  <Component Id="Soccer_442_GamePositionLayout" Guid="6C20BC0E-4DA7-41b7-802A-AD45F92B74A8">
-                    <CreateFolder />
-                    <File Id="Game_Position_layout_xml" Name="Game Position.layout.xml" DiskId="1" Source="..\Library\Layouts\Soccer\4-4-2\Game Position.layout.xml" />
-                  </Component>
-                </Directory>
+		<InstallUISequence>
+			<FindRelatedProducts Before="LaunchConditions" />
+		</InstallUISequence>
 
-                <Component Id="Soccer_PlayersOnBenchLayout" Guid="ED406B70-9800-4077-A7BA-C49C28B8E1CC">
-                  <CreateFolder />
-                  <File Id="Players_on_Bench_layout_xml" Name="Players on Bench.layout.xml" DiskId="1" Source="..\Library\Layouts\Soccer\Players on Bench.layout.xml" />
-                </Component>
-              </Directory>
+		<Property Id="ARPURLUPDATEINFO" Value="https://github.com/ModeenF/SportsTacticsBoard" />
+		<Property Id="ARPURLINFOABOUT" Value="https://github.com/ModeenF/SportsTacticsBoard" />
+		<Property Id="ARPPRODUCTICON" Value="Program.ico" />
 
-              <Directory Id="Library_Layouts_Hockey_NHL" Name="Hockey_NHL" />
+		<Property Id="NEWERVERSIONDETECTED" Secure="yes" />
+		<Property Id="OLDERVERSIONBEINGUPGRADED" Secure="yes" />
 
-              <Directory Id="Library_Layouts_Volleyball" Name="Volleyball" />
-            </Directory>
+		<PropertyRef Id="NETFRAMEWORK35" />
 
-            <Directory Id="Library_Sequences" Name="Sequences">
-              <Directory Id="Library_Sequences_Soccer" Name="Soccer" />
+		<WixVariable Id="WixUILicenseRtf" Value="..\LICENSE" />
 
-              <Directory Id="Library_Sequences_Hockey_NHL" Name="Hockey_NHL" />
+		<Property Id="ApplicationFolderName" Value="$(var.ProductName)" />
+		<Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+		<UI>
+			<ui:WixUI Id="WixUI_Advanced" />
+			<UIRef Id="WixUI_ErrorProgressText" />
+		</UI>
 
-              <Directory Id="Library_Sequences_Volleyball" Name="Volleyball" />
-            </Directory>
-          </Directory>
 
-        </Directory>
-      </Directory>
+		<StandardDirectory Id="ProgramFilesFolder">
+			<Directory Id="APPLICATIONFOLDER" Name="$(var.ProductName)" FileSource="$(var.RootDir)">
 
-      <Directory Id="ProgramMenuFolder" Name="Programs" />
-    </Directory>
+				<Directory Id="BinDir" Name="bin" FileSource="$(var.BuildDir)">
+					<Component Id="MainProgram" Guid="dc856848-df1a-4cb3-ae75-70f4c22effe6">
+						<CreateFolder />
+						<File Id="SportsTacticsBoard_exe" Name="SportsTacticsBoard.exe" Vital="yes" />
+						<Shortcut Id="SportsTacticsBoard_exe_shortcut" Advertise="yes" Name="$(var.ProductName)" Directory="ProgramMenuFolder" Description="Allows coaches, trainers and officials to describe sports tactics, strategies and positioning using a magnetic or chalk-board style approach." Icon="Program.ico" />
+					</Component>
 
-    <Feature Id="CoreProgram" Title="Program" Level="1">
-      <ComponentRef Id="MainProgram" />
-      <ComponentRef Id="MainProgramConfig" />
-      <ComponentRef Id="ReadMe" />
-      <ComponentRef Id="ChangeLog" />
-      <ComponentRef Id="LicenseTxt" />
-      <ComponentRef Id="LicenseRtf" />
-    </Feature>
-    
-    <Feature Id="OtherLanguages" Title="Additional language files" Level="1">
-      <ComponentRef Id="Resources_de" />
-    </Feature>
+					<Component Id="MainProgramConfig" Guid="D733E3CD-3337-40f3-B8FB-CF3AAE7EEB29">
+						<File Id="SportsTacticsBoard_exe_config" Name="SportsTacticsBoard.exe.config" Vital="yes" />
+					</Component>
 
-    <Feature Id="SoccerLibrary" Title="Library - Soccer" Level="1">
-      <ComponentRef Id="Soccer_PlayersOnBenchLayout" />
-      <ComponentRef Id="Soccer_442_StartingPositionLayout" />
-      <ComponentRef Id="Soccer_442_GamePositionLayout" />
-    </Feature>
+					<Directory Id="de" Name="de" FileSource="$(var.BuildDir)\de">
+						<Component Id="Resources_de" Guid="3192E0E3-C997-499b-B619-5EC9DFB5094D">
+							<CreateFolder />
+							<File Id="SportsTacticsBoard_resources_dll" Name="SportsTacticsBoard.resources.dll" />
+						</Component>
+					</Directory>
+				</Directory>
 
-    <Feature Id="NHLHockeyLibrary" Title="Library - Hockey - NHL" Level="1" />
+				<Component Id="ReadMe" Guid="155771D0-A49D-4418-8D8F-626BE072F5CD">
+					<File Id="readme_md" Name="readme.md" />
+				</Component>
 
-    <Feature Id="VolleyballLibrary" Title="Library - Volleyball" Level="1" />
+				<Component Id="ChangeLog" Guid="A5DE9560-BDB7-47ae-B341-D0C5E8A8B0D8">
+					<File Id="changelog_txt" Name="changelog.txt" />
+				</Component>
 
-    <Icon Id="Program.ico" SourceFile="..\SportsTacticsBoard\Program.ico" />
+				<!--<Component Id="LicenseTxt" Guid="99C00BEB-F4EA-4b39-A734-B8C9E1F537FA">
+					<File Id="license_txt" Name="license.txt" />
+				</Component>-->
 
-    <Condition Message="This program requires Windows XP Service Pack 2 or later to run."><![CDATA[(VersionNT = 501 AND ServicePackLevel >= 2) OR (VersionNT > 501)]]></Condition>
-    <Condition Message="This application requires .NET Framework 3.5. Please install the .NET Framework then run this installer again."><![CDATA[Installed OR NETFRAMEWORK35]]></Condition>
-    <Condition Message="A newer version of [ProductName] is installed. If you want to install an older version, please uninstall the newer version first."><![CDATA[NOT NEWERVERSIONDETECTED Or Installed]]></Condition>
+				<Component Id="LICENSE" Guid="99BB79C8-EF45-465b-84CF-927427933B14">
+					<File Id="LICENSE" Name="lLICENSE" />
+				</Component>
 
-    <CustomAction Id="SetARPReadme" Return="check" Property="ARPREADME" Value="[APPLICATIONFOLDER]readme.txt" />
-    <CustomAction Id="SetARPInstallLocation" Return="check" Property="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" />
+				<Directory Id="Library" Name="Library">
+					<Directory Id="Library_Layouts" Name="Layouts">
+						<Directory Id="Library_Layouts_Soccer" Name="Soccer">
 
-    <InstallExecuteSequence>
-      <Custom Action="SetARPReadme" After="CostFinalize" />
-      <Custom Action="SetARPInstallLocation" After="CostFinalize" />
-      <RemoveExistingProducts After="InstallValidate" />
-      <FindRelatedProducts Before="LaunchConditions" />
-    </InstallExecuteSequence>
+							<Directory Id="Library_Layouts_Soccer_442" Name="4-4-2">
+								<Component Id="Soccer_442_StartingPositionLayout" Guid="65A439AA-8133-421c-8ACC-B13558B684D0">
+									<CreateFolder />
+									<File Id="Typical_Starting_Position_layout_xml" Name="Typical Starting Position.layout.xml" DiskId="1" Source="..\Library\Layouts\Soccer\4-4-2\Typical Starting Position.layout.xml" />
+								</Component>
+								<Component Id="Soccer_442_GamePositionLayout" Guid="6C20BC0E-4DA7-41b7-802A-AD45F92B74A8">
+									<CreateFolder />
+									<File Id="Game_Position_layout_xml" Name="Game Position.layout.xml" DiskId="1" Source="..\Library\Layouts\Soccer\4-4-2\Game Position.layout.xml" />
+								</Component>
+							</Directory>
 
-    <InstallUISequence>
-      <FindRelatedProducts Before="LaunchConditions" />
-    </InstallUISequence>
+							<Component Id="Soccer_PlayersOnBenchLayout" Guid="ED406B70-9800-4077-A7BA-C49C28B8E1CC">
+								<CreateFolder />
+								<File Id="Players_on_Bench_layout_xml" Name="Players on Bench.layout.xml" DiskId="1" Source="..\Library\Layouts\Soccer\Players on Bench.layout.xml" />
+							</Component>
+						</Directory>
 
-    <Property Id="ARPURLUPDATEINFO" Value="http://sportstacticsbd.sourceforge.net/" />
-    <Property Id="ARPURLINFOABOUT" Value="http://sportstacticsbd.sourceforge.net/" />
-    <Property Id="ARPPRODUCTICON" Value="Program.ico" />
+						<Directory Id="Library_Layouts_Hockey_NHL" Name="Hockey_NHL" />
 
-    <Property Id="NEWERVERSIONDETECTED" Secure="yes" />
-    <Property Id="OLDERVERSIONBEINGUPGRADED" Secure="yes" />
+						<Directory Id="Library_Layouts_Volleyball" Name="Volleyball" />
+					</Directory>
 
-    <PropertyRef Id="NETFRAMEWORK35" />
+					<Directory Id="Library_Sequences" Name="Sequences">
+						<Directory Id="Library_Sequences_Soccer" Name="Soccer" />
 
-    <WixVariable Id="WixUILicenseRtf" Value="..\license.rtf" />
+						<Directory Id="Library_Sequences_Hockey_NHL" Name="Hockey_NHL" />
 
-    <Property Id="ApplicationFolderName" Value="$(var.ProductName)" />
-    <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
-    <UI>
-      <UIRef Id="WixUI_Advanced" />
-      <UIRef Id="WixUI_ErrorProgressText" />
-    </UI>
+						<Directory Id="Library_Sequences_Volleyball" Name="Volleyball" />
+					</Directory>
+				</Directory>
 
-  </Product>
+			</Directory>
+		</StandardDirectory>
+
+		<StandardDirectory Id="ProgramMenuFolder" />
+	</Package>
 </Wix>

@@ -42,7 +42,7 @@ namespace SportsTacticsBoard
 
     public static class RtlAwareMessageBox
     {
-        public static DialogResult Show(IWin32Window owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon, 
+        public static DialogResult Show(IWin32Window? owner, string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon,
             MessageBoxDefaultButton defaultButton, MessageBoxOptions options)
         {
             if (IsRightToLeft(owner))
@@ -54,13 +54,15 @@ namespace SportsTacticsBoard
                 buttons, icon, defaultButton, options);
         }
 
-        private static bool IsRightToLeft(IWin32Window owner)
+        private static bool IsRightToLeft(IWin32Window? owner)
         {
-
-            Control control = owner as Control;
-            if (control != null)
+            if (owner != null)
             {
-                return control.RightToLeft == RightToLeft.Yes;
+                Control? control = owner as Control;
+                if (control != null)
+                {
+                    return control.RightToLeft == RightToLeft.Yes;
+                }
             }
 
             // If no parent control is available, ask the CurrentUICulture

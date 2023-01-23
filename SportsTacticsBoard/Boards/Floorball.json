@@ -1,0 +1,16 @@
+{
+    "Floorball": {
+      "SurfaceColor": "Green",
+      "NumberOfCones": 20,
+      "BallColor": "White",
+      "BallMovmentColor": "White",
+
+      "ConeColor": "Orange",
+      "ConeMovmentColor": "Orange",
+
+      "PlayerDefendingColor": "LightBlue",
+      "PlayerDefendingMovmentColor": "LightBlue",
+
+      "PlayerAttackingColor": "Yellow",
+      "PlayerAttackingMovmentColor": "Yellow"
+}

@@ -33,22 +33,19 @@ namespace SportsTacticsBoard.Resources
 {
     public sealed class ResourceManager
     {
-        private const string LocalizationResourceFileName = "localization.";
-        //private const string DefaultCulture = "en-US";
-        //private const string DefaultCulture = "de-DE";
-        private const string DefaultCulture = "sv-SE";      
+        private const string LocalizationResourceFileName = "localization.";    
         private const string ResourceExtension = ".res";
         private const string ImageResourcePath = "SportsTacticsBoard.Images.";
+
+        private string PathToResources = AppDomain.CurrentDomain.BaseDirectory + @"/res";
+
+        private string FilePath;
 
         private static ResourceManager instance;
         private static readonly object padlock = new object();
 
-        private ResourceManager(string culture)
-            : this(culture ?? DefaultCulture, AppDomain.CurrentDomain.BaseDirectory + @"/res")
-        {
-        }
 
-        public static ResourceManager GetInstance(string culture = null)
+        public static ResourceManager GetInstance(string? culture = null)
         {
             lock (padlock)
             {
@@ -56,51 +53,79 @@ namespace SportsTacticsBoard.Resources
                 {
                     instance = new ResourceManager(culture);
                 }
+
                 return instance;
             }
         }
 
-        public LocalizationResource LocalizationResource { get; }
-        public ImagesResource ImagesResource { get; }
-
-
-        public ResourceManager(string culture, string pathToResources)
+        public void SetLocal(string culture)
         {
-            var filePath = pathToResources + "/" + LocalizationResourceFileName + culture + ResourceExtension;
+            if (string.IsNullOrWhiteSpace(culture))
+            {
+                culture = DefaultCulture;
+            }
 
-            if (!File.Exists(filePath))
-                LocalizationResource = DeserializeLocalizationResource(DefaultCulture, pathToResources);
-            else
-                LocalizationResource = DeserializeLocalizationResource(culture, pathToResources);
+            if (culture.Equals(DefaultCulture))
+            {
+                DefaultCulture = culture;
+            }
 
+            FilePath = PathToResources + "/" + LocalizationResourceFileName + culture + ResourceExtension;
+            LocalizationResource = DeserializeLocalizationResource(File.Exists(FilePath) ? culture : DefaultCulture, PathToResources);
             ImagesResource = GetImagesFromAssembly();
+        }
+
+        public string DefaultCulture { get; set; }
+        public LocalizationResource LocalizationResource { get; set; }
+        public ImagesResource ImagesResource { get; set;  }
+
+
+        public ResourceManager(string culture)
+        {
+            if (string.IsNullOrWhiteSpace(DefaultCulture))
+            {
+                DefaultCulture = "en-US";
+            }
+
+            SetLocal(culture);
+        }
+
+        public string GetLocal(string? defaultCulture)
+        {
+            var tmp = defaultCulture.Split('-');
+            return tmp[1];
         }
 
         private LocalizationResource DeserializeLocalizationResource(string culture, string pathToResources)
         {
-            var filePath = pathToResources + "/" + LocalizationResourceFileName + culture + ResourceExtension;
-            var localResource = YamlDeserialize<LocalizationResource>(filePath);
-
-            if (culture != DefaultCulture)
+            if (File.Exists(FilePath))
             {
-                string pathToDefaultResource = pathToResources + "/" + LocalizationResourceFileName + DefaultCulture +
-                                               ResourceExtension;
-                var defaultLocalizationResource = YamlDeserialize<LocalizationResource>(pathToDefaultResource);
+                var localResource = YamlDeserialize<LocalizationResource>(FilePath);
 
-                //Add default values to empty fields
-                foreach (var propertyInfo in typeof(LocalizationResource).GetProperties())
+                if (culture != DefaultCulture)
                 {
-                    if (propertyInfo.GetGetMethod().Invoke(localResource, new object[0]) == null)
-                        propertyInfo.GetSetMethod().Invoke(localResource, new[]
+                    string pathToDefaultResource = pathToResources + "/" + LocalizationResourceFileName + DefaultCulture + ResourceExtension;
+                    if (File.Exists(pathToDefaultResource))
+                    {
+                        var defaultLocalizationResource = YamlDeserialize<LocalizationResource>(pathToDefaultResource);
+
+                        //Add default values to empty fields
+                        foreach (var propertyInfo in typeof(LocalizationResource).GetProperties())
                         {
+                            if (propertyInfo.GetGetMethod().Invoke(localResource, new object[0]) == null)
+                                propertyInfo.GetSetMethod().Invoke(localResource, new[]
+                                {
                             propertyInfo.GetGetMethod().Invoke(defaultLocalizationResource, new object[0])
                         });
+                        }
+                    }
                 }
+                return localResource;
             }
-            return localResource;
+            return null;
         }
 
-        private ImagesResource GetImagesFromAssembly()
+        private static ImagesResource GetImagesFromAssembly()
         {
             return new ImagesResource()
             {
@@ -127,12 +152,12 @@ namespace SportsTacticsBoard.Resources
             };
         }
 
-        private Stream GetStreamForImage(string name)
+        private static Stream GetStreamForImage(string name)
         {
             return Assembly.GetExecutingAssembly().GetManifestResourceStream(ImageResourcePath + name);
         }
 
-        private T YamlDeserialize<T>(string path)
+        private static T YamlDeserialize<T>(string path)
         {
             using (var stream = File.OpenRead(path))
             using (var streamReader = new StreamReader(stream))

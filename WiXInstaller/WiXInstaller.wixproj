@@ -1,12 +1,6 @@
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project Sdk="WixToolset.Sdk/4.0.0-rc.1">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <ProductVersion>3.0</ProductVersion>
-    <ProjectGuid>{c925c3db-d979-467b-b5b4-ad9e0dbcb1fd}</ProjectGuid>
-    <SchemaVersion>2.0</SchemaVersion>
     <OutputName>SportsTacticsBoard</OutputName>
-    <OutputType>Package</OutputType>
-    <WixToolPath>C:\Program Files (x86)\WiX Toolset v3.11\bin</WixToolPath>
     <IncludeSearchPaths>..\Version</IncludeSearchPaths>
     <DefineConstants>$(DefineConstants);TargetDir=$(OutputPath)</DefineConstants>
   </PropertyGroup>
@@ -15,8 +9,7 @@
     <IntermediateOutputPath>obj\Debug\</IntermediateOutputPath>
     <DefineConstants>Debug;BuildDir=..\Build\Debug;RootDir=..</DefineConstants>
     <AllowIdenticalRows>False</AllowIdenticalRows>
-    <CabinetCachePath>
-    </CabinetCachePath>
+    <CabinetCachePath></CabinetCachePath>
     <CabinetCreationThreadCount>-1</CabinetCreationThreadCount>
     <Cultures>en-US</Cultures>
     <LeaveTemporaryFiles>False</LeaveTemporaryFiles>
@@ -31,25 +24,21 @@
     <SuppressDroppingUnrealTables>False</SuppressDroppingUnrealTables>
     <SuppressFileHashAndInfo>False</SuppressFileHashAndInfo>
     <SuppressFiles>False</SuppressFiles>
-    <SuppressIces>
-    </SuppressIces>
+    <SuppressIces></SuppressIces>
     <LinkerSuppressIntermediateFileVersionMatching>False</LinkerSuppressIntermediateFileVersionMatching>
     <SuppressLayout>False</SuppressLayout>
     <SuppressMsiAssemblyTableProcessing>False</SuppressMsiAssemblyTableProcessing>
     <LinkerSuppressSchemaValidation>False</LinkerSuppressSchemaValidation>
-    <LinkerSuppressSpecificWarnings>
-    </LinkerSuppressSpecificWarnings>
+    <LinkerSuppressSpecificWarnings></LinkerSuppressSpecificWarnings>
     <SuppressValidation>False</SuppressValidation>
     <LinkerTreatWarningsAsErrors>False</LinkerTreatWarningsAsErrors>
     <LinkerVerboseOutput>False</LinkerVerboseOutput>
-    <WixVariables>
-    </WixVariables>
+    <WixVariables></WixVariables>
     <IncludeSearchPaths>..\Version</IncludeSearchPaths>
     <Pedantic>False</Pedantic>
     <ShowSourceTrace>False</ShowSourceTrace>
     <SuppressSchemaValidation>False</SuppressSchemaValidation>
-    <SuppressSpecificWarnings>
-    </SuppressSpecificWarnings>
+    <SuppressSpecificWarnings></SuppressSpecificWarnings>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <VerboseOutput>False</VerboseOutput>
   </PropertyGroup>
@@ -57,8 +46,7 @@
     <OutputPath>..\Build\Release\</OutputPath>
     <IntermediateOutputPath>obj\Release\</IntermediateOutputPath>
     <AllowIdenticalRows>False</AllowIdenticalRows>
-    <CabinetCachePath>
-    </CabinetCachePath>
+    <CabinetCachePath></CabinetCachePath>
     <CabinetCreationThreadCount>-1</CabinetCreationThreadCount>
     <Cultures>en-US</Cultures>
     <LeaveTemporaryFiles>False</LeaveTemporaryFiles>
@@ -73,36 +61,26 @@
     <SuppressDroppingUnrealTables>False</SuppressDroppingUnrealTables>
     <SuppressFileHashAndInfo>False</SuppressFileHashAndInfo>
     <SuppressFiles>False</SuppressFiles>
-    <SuppressIces>
-    </SuppressIces>
+    <SuppressIces></SuppressIces>
     <LinkerSuppressIntermediateFileVersionMatching>False</LinkerSuppressIntermediateFileVersionMatching>
     <SuppressLayout>False</SuppressLayout>
     <SuppressMsiAssemblyTableProcessing>False</SuppressMsiAssemblyTableProcessing>
     <LinkerSuppressSchemaValidation>False</LinkerSuppressSchemaValidation>
-    <LinkerSuppressSpecificWarnings>
-    </LinkerSuppressSpecificWarnings>
+    <LinkerSuppressSpecificWarnings></LinkerSuppressSpecificWarnings>
     <SuppressValidation>False</SuppressValidation>
     <LinkerTreatWarningsAsErrors>False</LinkerTreatWarningsAsErrors>
     <LinkerVerboseOutput>False</LinkerVerboseOutput>
-    <WixVariables>
-    </WixVariables>
+    <WixVariables></WixVariables>
     <DefineConstants>BuildDir=..\Build\Release;RootDir=..</DefineConstants>
     <IncludeSearchPaths>..\Version</IncludeSearchPaths>
     <Pedantic>False</Pedantic>
     <ShowSourceTrace>False</ShowSourceTrace>
     <SuppressSchemaValidation>False</SuppressSchemaValidation>
-    <SuppressSpecificWarnings>
-    </SuppressSpecificWarnings>
+    <SuppressSpecificWarnings></SuppressSpecificWarnings>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <VerboseOutput>False</VerboseOutput>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="WiXInstaller.wxs" />
+    <PackageReference Include="WixToolset.UI.wixext" Version="4.0.0-rc.1" />
   </ItemGroup>
-  <ItemGroup>
-    <WixExtension Include="C:\Program Files (x86)\WiX Toolset v3.11\bin\WixUIExtension.dll">
-      <Private>False</Private>
-    </WixExtension>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets" />
 </Project>

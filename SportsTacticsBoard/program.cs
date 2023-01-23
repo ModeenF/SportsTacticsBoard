@@ -40,7 +40,7 @@ namespace SportsTacticsBoard
         [STAThread]
         static void Main(string[] args)
         {
-            System.Globalization.CultureInfo culture = null;
+            System.Globalization.CultureInfo? culture = null;
             ResourceManager resourceManager = ResourceManager.GetInstance();
             for (int index = 0; (index < args.Length); index++)
             {
@@ -54,6 +54,7 @@ namespace SportsTacticsBoard
                         RtlAwareMessageBox.Show(null, msg, resourceManager.LocalizationResource.InvalidParametersTitle, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, 0);
                         return;
                     }
+
                     try
                     {
                         culture = new System.Globalization.CultureInfo(args[index]);

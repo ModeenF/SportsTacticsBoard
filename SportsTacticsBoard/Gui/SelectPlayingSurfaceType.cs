@@ -24,6 +24,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Classes;
 using SportsTacticsBoard.Resources;
 using System.Windows.Forms;
 
@@ -46,9 +47,9 @@ namespace SportsTacticsBoard
                 sftDialog.fieldTypeComboBox.DisplayMember = "Name";
                 if (sftDialog.fieldTypeComboBox.Items.Count > 0)
                 {
-                    string defaultFieldType = Properties.Settings.Default.DefaultFieldType;
+                    var defaultFieldType = Appsettings.Settings?.DefaultFieldType;
                     int selectedIndex = 0;
-                    if (defaultFieldType.Length > 0)
+                    if (defaultFieldType != null && defaultFieldType.Length > 0)
                     {
                         int index = sftDialog.fieldTypeComboBox.FindStringExact(defaultFieldType);
                         if (index >= 0)
@@ -67,8 +68,8 @@ namespace SportsTacticsBoard
                 IPlayingSurfaceType selectedFieldType = (IPlayingSurfaceType)sftDialog.fieldTypeComboBox.SelectedItem;
                 if (sftDialog.saveAsDefaultCheckBox.Checked)
                 {
-                    Properties.Settings.Default.DefaultFieldType = selectedFieldType.Name;
-                    Properties.Settings.Default.Save();
+                    //Properties.Settings.Default.DefaultFieldType = selectedFieldType.Name;
+                    //Properties.Settings.Default.Save();
                 }
                 return selectedFieldType;
             }

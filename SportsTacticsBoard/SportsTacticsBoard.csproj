@@ -1,19 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net6.0-windows</TargetFramework>
+		<TargetFramework>net7.0-windows</TargetFramework>
 		<OutputType>WinExe</OutputType>
 		<IsWebBootstrapper>true</IsWebBootstrapper>
 		<ApplicationIcon>Images\program.ico</ApplicationIcon>
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>SportsTacticsBoard.snk</AssemblyOriginatorKeyFile>
-		<PublishUrl>http://localhost/SportsTacticsBoard/</PublishUrl>
 		<Install>true</Install>
-		<InstallFrom>Web</InstallFrom>
-		<UpdateEnabled>false</UpdateEnabled>
-		<UpdateMode>Background</UpdateMode>
-		<UpdateInterval>7</UpdateInterval>
-		<UpdateIntervalUnits>Days</UpdateIntervalUnits>
-		<UpdatePeriodically>false</UpdatePeriodically>
 		<UpdateRequired>false</UpdateRequired>
 		<MapFileExtensions>true</MapFileExtensions>
 		<ApplicationRevision>0</ApplicationRevision>
@@ -23,8 +16,11 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
-		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<StartupObject>SportsTacticsBoard.Program</StartupObject>
+		<PlatformTarget>x86</PlatformTarget>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 		<OutputPath>..\Build\Debug\</OutputPath>
@@ -40,35 +36,30 @@
 		<AdditionalFiles Remove="app.manifest" />
 	</ItemGroup>
 	<ItemGroup>
-	  <None Remove="res\localization.de-DE.res" />
+	  <Compile Remove="Classes\Settings.cs" />
+	</ItemGroup>
+	<ItemGroup>
 	  <None Remove="res\localization.sv-SE.res" />
 	</ItemGroup>
 	<ItemGroup>
-		<None Update="Properties\Settings.settings">
-			<Generator>SettingsSingleFileGenerator</Generator>
-			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
-		</None>
+		<Content Include="res\localization.de-DE.res">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="res\localization.en-US.res">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="res\localization.sv-SE.res">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>		
 		<Compile Update="FieldControl.cs">
 			<SubType>UserControl</SubType>
-		</Compile>
-		<Compile Update="Properties\Settings.Designer.cs">
-			<DesignTimeSharedInput>True</DesignTimeSharedInput>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Settings.settings</DependentUpon>
 		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Images\program.ico" />
-		<Content Include="res\localization.sv-SE.res">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="res\localization.de-DE.res">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="res\localization.en-US.res">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>		
+		<Content Include="Images\program.ico" />	
 	</ItemGroup>
 	
 	<ItemGroup>
@@ -95,6 +86,49 @@
 	</ItemGroup>
 
 	<ItemGroup>		
-		<PackageReference Include="YamlDotNet" Version="11.2.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />		
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.2" />		
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />		
+		<PackageReference Include="YamlDotNet" Version="12.3.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Boards\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Boards\Floorball.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Boards\Futsal.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Boards\Handball.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Boards\Hockey_NHL.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Boards\NFLFootball.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Boards\Soccer.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Boards\Soccer5.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Boards\Soccer7.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Boards\Soccer9.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Boards\Volleyball.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 </Project>

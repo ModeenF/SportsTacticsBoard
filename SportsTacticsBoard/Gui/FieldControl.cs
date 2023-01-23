@@ -30,7 +30,6 @@ using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
-using SportsTacticsBoard.Resources;
 
 namespace SportsTacticsBoard
 {
@@ -216,8 +215,6 @@ namespace SportsTacticsBoard
                 zoomCursor = new Cursor(s);
             }
             this.Cursor = ToolCursor;
-
-            SetLanguage();
         }
 
         public IPlayingSurfaceType FieldType
@@ -270,9 +267,9 @@ namespace SportsTacticsBoard
             zoomFactor = 1.0F;
         }
 
-        private Collection<FieldObject> fieldObjects;
+        private Collection<FieldObject>? fieldObjects;
 
-        static public FieldLayout ConvertFieldObjectsToLayout(ICollection<FieldObject> fieldObjects)
+        static public FieldLayout ConvertFieldObjectsToLayout(ICollection<FieldObject>? fieldObjects)
         {
             FieldLayout layout = new FieldLayout();
             foreach (FieldObject fo in fieldObjects)
@@ -290,7 +287,7 @@ namespace SportsTacticsBoard
             }
         }
 
-        public ICollection<FieldObject> FieldLayoutAsFieldObjects
+        public ICollection<FieldObject>? FieldLayoutAsFieldObjects
         {
             get
             {
@@ -314,9 +311,9 @@ namespace SportsTacticsBoard
             }
         }
 
-        private FieldLayout nextLayout;
+        private FieldLayout? nextLayout;
 
-        public void SetNextLayout(FieldLayout layout)
+        public void SetNextLayout(FieldLayout? layout)
         {
             nextLayout = layout;
             Invalidate();
@@ -877,11 +874,9 @@ namespace SportsTacticsBoard
             base.OnMouseClick(e);
         }
 
-        private void SetLanguage()
+        public void SetLanguage(string text)
         {
-            ResourceManager resourceManager = ResourceManager.GetInstance();
-            changeLabelMenuItem.Text = resourceManager.LocalizationResource.ChangeLabel;
+            changeLabelMenuItem.Text = text;
         }
     }
-
 }

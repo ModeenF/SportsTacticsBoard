@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <ProjectView>ProjectFiles</ProjectView>
-    <ShowAllFiles>true</ShowAllFiles>
-  </PropertyGroup>
-  <ItemGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Compile Update="Gui\AboutBox.cs">
       <SubType>Form</SubType>
@@ -24,10 +20,5 @@
     <Compile Update="Gui\SelectPlayingSurfaceType.cs">
       <SubType>Form</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Gui\AboutBox.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

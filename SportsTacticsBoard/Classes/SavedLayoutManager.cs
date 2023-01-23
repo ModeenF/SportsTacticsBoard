@@ -24,6 +24,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Classes;
 using SportsTacticsBoard.Resources;
 using System;
 using System.Collections.Generic;
@@ -94,19 +95,19 @@ namespace SportsTacticsBoard
         /// it, otherwise it attempts to construct the path from the location of the
         /// program binary (which only works for installed copies using the MSI installer).
         /// </summary>
-        public static string CommonLayoutPath
+        public static string? CommonLayoutPath
         {
             get
             {
-                string path = SportsTacticsBoard.Properties.Settings.Default.CommonLibraryFolder;
+                var path = Appsettings.Settings?.CommonLibraryFolder;
                 if (string.IsNullOrEmpty(path))
                 {
-                    string exeDir = Path.GetDirectoryName(Application.ExecutablePath);
-                    string installDir = Path.GetDirectoryName(exeDir);
+                    var exeDir = Path.GetDirectoryName(Application.ExecutablePath);
+                    var installDir = Path.GetDirectoryName(exeDir);
                     path = Path.Combine(installDir, "Library");
                     if (!Directory.Exists(path))
                     {
-                        string rootProjectDir = Path.GetDirectoryName(installDir);
+                        var rootProjectDir = Path.GetDirectoryName(installDir);
                         path = Path.Combine(rootProjectDir, "Library");
                         if (!Directory.Exists(path))
                         {

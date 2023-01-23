@@ -24,6 +24,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Classes;
 using SportsTacticsBoard.Resources;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,8 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
@@ -62,13 +65,16 @@ namespace SportsTacticsBoard
             commonSavedLayoutManager = new SavedLayoutManager(SavedLayoutManager.CommonLayoutPath);
             userSavedLayoutManager = new SavedLayoutManager(SavedLayoutManager.UserLayoutPath);
             InitializeComponent();
+
             originalCaption = Text;
+
             fieldControl.CustomLabelProvider = this;
-
-
             fieldControl.IsDirtyChanged += new EventHandler(fieldControl_IsDirtyChanged);
             fieldControl.IsViewDirtyChanged += new EventHandler(fieldControl_IsViewDirtyChanged);
             fieldControl.KeyDown += new KeyEventHandler(fieldControl_KeyDown);
+
+            ResourceManager resourceManager = ResourceManager.GetInstance();
+            resourceManager.DefaultCulture = Appsettings.Settings?.DefaultLanguage;
 
             SetLanguage();
         }
@@ -510,7 +516,7 @@ namespace SportsTacticsBoard
             }
         }
 
-        private static IPlayingSurfaceType FindFieldType(string tag)
+        private static IPlayingSurfaceType? FindFieldType(string tag)
         {
             List<IPlayingSurfaceType> fieldTypes = AvailableFieldTypes;
             foreach (IPlayingSurfaceType ft in fieldTypes)
@@ -523,13 +529,14 @@ namespace SportsTacticsBoard
             return null;
         }
 
-        private static IPlayingSurfaceType LoadDefaultFieldType()
+        private static IPlayingSurfaceType? LoadDefaultFieldType()
         {
-            string defaultFieldType = global::SportsTacticsBoard.Properties.Settings.Default.DefaultFieldType;
-            if (defaultFieldType.Length == 0)
+            var defaultFieldType = Appsettings.Settings?.DefaultFieldType;
+            if (defaultFieldType != null && defaultFieldType.Length == 0)
             {
                 return null;
             };
+
             List<IPlayingSurfaceType> fieldTypes = AvailableFieldTypes;
             foreach (IPlayingSurfaceType ft in fieldTypes)
             {
@@ -545,7 +552,7 @@ namespace SportsTacticsBoard
         {
             StopPlayingSequence();
 
-            IPlayingSurfaceType newFieldType = fieldControl.FieldType;
+            IPlayingSurfaceType? newFieldType = fieldControl.FieldType;
             if (newFieldType == null)
             {
                 newFieldType = LoadDefaultFieldType();
@@ -879,7 +886,7 @@ namespace SportsTacticsBoard
 
         private void StartPlayingSequence()
         {
-            playSequenceTimer.Interval = global::SportsTacticsBoard.Properties.Settings.Default.AnimationFrameDurationInMilliseconds;
+            playSequenceTimer.Interval = Appsettings.Settings?.AnimationFrameDurationInMilliseconds != null ? Appsettings.Settings.AnimationFrameDurationInMilliseconds : 0;
             playSequenceTimer.Enabled = true;
             fieldControl.AllowInteraction = false;
             UpdateSequenceControls();
@@ -1037,14 +1044,25 @@ namespace SportsTacticsBoard
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StopPlayingSequence();
-
             NotImplementedYet();
+        }
 
+        private void choseLanguageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var item = (ToolStripMenuItem)sender;
+            var str = item.Tag.ToString();
+            //Properties.Settings.Default.DefaultLanguage = str;
+            //Properties.Settings.Default.Save();
+            ResourceManager resourceManager = ResourceManager.GetInstance();
+            resourceManager.SetLocal(str);
+            SetLanguage();
         }
 
         private void SetLanguage()
         {
             ResourceManager resourceManager = ResourceManager.GetInstance();
+            //this.cur = new CultureInfo(resourceManager.GetLocal());
+
             recordNewPositionButton.Text = resourceManager.LocalizationResource.RecordNewPosition;
             previousLayoutInSequence.Text = resourceManager.LocalizationResource.PreviousLayout;
             nextLayoutInSequence.ToolTipText = resourceManager.LocalizationResource.NextLayout;
@@ -1085,18 +1103,29 @@ namespace SportsTacticsBoard
             resetViewToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuResetView;
             optionsToolStripMenuItem.Text = resourceManager.LocalizationResource.MenuOptions;
             repeatToolStripButton.Text = resourceManager.LocalizationResource.Repeat;
-            //choseLanguageToolStripMenuItem.Text = resourceManager.LocalizationResource.ChoseLanguageToolStripMenuItem;
+            choseLanguageToolStripMenuItem.Text = resourceManager.LocalizationResource.ChoseLanguageToolStripMenuItem;
 
             fileFilter = resourceManager.LocalizationResource.FileFilter;
-            saveAsImageFileFilter = resourceManager.LocalizationResource.FileFilter;            
+            saveAsImageFileFilter = resourceManager.LocalizationResource.FileFilter;
 
-            //var tmp = Properties.Settings.Default.Languages;
-            //var languages = tmp.Split(';');
+            fieldControl.SetLanguage(resourceManager.LocalizationResource.ChangeLabel);
 
-            //foreach (var language in languages)
-            //{
-            //    choseLanguageToolStripMenuItem.DropDownItems.Add(language);
-            //}
+            var languages = Appsettings.Settings?.Languages?.Split(';');
+            if (languages == null)
+            {
+                return;
+            }
+
+            choseLanguageToolStripMenuItem.DropDownItems.Clear();
+            foreach (var language in languages)
+            {
+                var l = language.Split(':');
+                var tmp = new ToolStripMenuItem();
+                tmp.Text = l[0];
+                tmp.Tag = l[1];
+                tmp.Click += new EventHandler(choseLanguageToolStripMenuItem_Click);
+                choseLanguageToolStripMenuItem.DropDownItems.Add(tmp);
+            }
         }
     }
 }

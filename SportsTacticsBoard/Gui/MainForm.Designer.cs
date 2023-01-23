@@ -86,6 +86,7 @@ namespace SportsTacticsBoard
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.choseLanguageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.layoutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveTofileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -270,6 +271,7 @@ namespace SportsTacticsBoard
             this.toolStripSeparator5,
             this.printMenuItem,
             this.toolStripSeparator13,
+            this.choseLanguageToolStripMenuItem,
             this.optionsToolStripMenuItem,
             this.toolStripSeparator9,
             this.exitMenuItem});
@@ -351,6 +353,11 @@ namespace SportsTacticsBoard
             this.exitMenuItem.Name = "exitMenuItem";
             resources.ApplyResources(this.exitMenuItem, "exitMenuItem");
             this.exitMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // choseLanguageToolStripMenuItem
+            // 
+            this.choseLanguageToolStripMenuItem.Name = "choseLanguageToolStripMenuItem";
+            resources.ApplyResources(this.choseLanguageToolStripMenuItem, "choseLanguageToolStripMenuItem");
             // 
             // layoutsToolStripMenuItem
             // 
@@ -609,6 +616,7 @@ namespace SportsTacticsBoard
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
     private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
     private System.Windows.Forms.ToolStripButton repeatToolStripButton;
-  }
+        private System.Windows.Forms.ToolStripMenuItem choseLanguageToolStripMenuItem;
+    }
 }
 
