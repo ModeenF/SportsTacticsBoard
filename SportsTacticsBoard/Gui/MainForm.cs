@@ -540,7 +540,7 @@ namespace SportsTacticsBoard
             List<IPlayingSurfaceType> fieldTypes = AvailableFieldTypes;
             foreach (IPlayingSurfaceType ft in fieldTypes)
             {
-                if (ft.Name == defaultFieldType)
+                if (ft.Tag == defaultFieldType)
                 {
                     return ft;
                 }
@@ -557,6 +557,7 @@ namespace SportsTacticsBoard
             {
                 newFieldType = LoadDefaultFieldType();
             }
+
             if ((newFieldType == null) || (alwaysAskForFieldType))
             {
                 newFieldType = SelectPlayingSurfaceType.AskUserForFieldType(saveAsDefaultChecked);
@@ -1116,14 +1117,19 @@ namespace SportsTacticsBoard
             }
 
             choseLanguageToolStripMenuItem.DropDownItems.Clear();
-            foreach (var language in languages)
+            foreach (string language in languages)
             {
                 var l = language.Split(':');
-                var tmp = new ToolStripMenuItem();
-                tmp.Text = l[0];
-                tmp.Tag = l[1];
-                tmp.Click += new EventHandler(choseLanguageToolStripMenuItem_Click);
-                choseLanguageToolStripMenuItem.DropDownItems.Add(tmp);
+                var toolStripMenuItem = new ToolStripMenuItem(l[0]);
+                toolStripMenuItem.Tag = l[1];
+
+                if (l[1].Equals(Appsettings.Settings?.DefaultLanguage))
+                {
+                    toolStripMenuItem.Checked = true;
+                }
+
+                toolStripMenuItem.Click += new EventHandler(choseLanguageToolStripMenuItem_Click);
+                choseLanguageToolStripMenuItem.DropDownItems.Add(toolStripMenuItem);
             }
         }
     }

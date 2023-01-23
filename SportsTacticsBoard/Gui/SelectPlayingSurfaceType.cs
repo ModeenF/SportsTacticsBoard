@@ -38,7 +38,7 @@ namespace SportsTacticsBoard
             SetLanguage();
         }
 
-        internal static IPlayingSurfaceType AskUserForFieldType(bool saveAsDefaultChecked)
+        internal static IPlayingSurfaceType? AskUserForFieldType(bool saveAsDefaultChecked)
         {
             using (SelectPlayingSurfaceType sftDialog = new SelectPlayingSurfaceType())
             {
@@ -68,7 +68,7 @@ namespace SportsTacticsBoard
                 IPlayingSurfaceType selectedFieldType = (IPlayingSurfaceType)sftDialog.fieldTypeComboBox.SelectedItem;
                 if (sftDialog.saveAsDefaultCheckBox.Checked)
                 {
-                    Appsettings.AddOrUpdateAppSetting<string>("appsettings:DefaultFieldType", selectedFieldType.Name);
+                    Appsettings.AddOrUpdateAppSetting<string>("appsettings:DefaultFieldType", selectedFieldType.Tag);
                 }
                 return selectedFieldType;
             }

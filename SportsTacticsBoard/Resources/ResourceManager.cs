@@ -23,6 +23,7 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
+using SportsTacticsBoard.Classes;
 using System;
 using System.Drawing;
 using System.IO;
@@ -33,17 +34,19 @@ namespace SportsTacticsBoard.Resources
 {
     public sealed class ResourceManager
     {
-        private const string LocalizationResourceFileName = "localization.";    
+        private const string LocalizationResourceFileName = "localization.";
         private const string ResourceExtension = ".res";
         private const string ImageResourcePath = "SportsTacticsBoard.Images.";
-
         private string PathToResources = AppDomain.CurrentDomain.BaseDirectory + @"/res";
 
-        private string FilePath;
+        private string? FilePath { get; set; }
 
         private static ResourceManager instance;
         private static readonly object padlock = new object();
 
+        public string DefaultCulture { get; set; }
+        public LocalizationResource? LocalizationResource { get; set; }
+        public ImagesResource? ImagesResource { get; set; }
 
         public static ResourceManager GetInstance(string? culture = null)
         {
@@ -51,52 +54,32 @@ namespace SportsTacticsBoard.Resources
             {
                 if (instance == null)
                 {
-                    instance = new ResourceManager(culture);
+                    instance = new ResourceManager(culture ?? Appsettings.Settings?.DefaultLanguage);
                 }
 
                 return instance;
             }
         }
 
-        public void SetLocal(string culture)
+        public ResourceManager(string? culture)
         {
-            if (string.IsNullOrWhiteSpace(culture))
+            SetLocal(culture ?? "en-US");
+        }
+
+        public void SetLocal(string? culture)
+        {
+            string cultureLocal = culture == null ? DefaultCulture : culture;
+            if (!cultureLocal.Equals(DefaultCulture))
             {
-                culture = DefaultCulture;
+                DefaultCulture = cultureLocal;
             }
 
-            if (culture.Equals(DefaultCulture))
-            {
-                DefaultCulture = culture;
-            }
-
-            FilePath = PathToResources + "/" + LocalizationResourceFileName + culture + ResourceExtension;
-            LocalizationResource = DeserializeLocalizationResource(File.Exists(FilePath) ? culture : DefaultCulture, PathToResources);
+            FilePath = PathToResources + "/" + LocalizationResourceFileName + cultureLocal + ResourceExtension;
+            LocalizationResource = DeserializeLocalizationResource(File.Exists(FilePath) ? cultureLocal : DefaultCulture);
             ImagesResource = GetImagesFromAssembly();
         }
 
-        public string DefaultCulture { get; set; }
-        public LocalizationResource LocalizationResource { get; set; }
-        public ImagesResource ImagesResource { get; set;  }
-
-
-        public ResourceManager(string culture)
-        {
-            if (string.IsNullOrWhiteSpace(DefaultCulture))
-            {
-                DefaultCulture = "en-US";
-            }
-
-            SetLocal(culture);
-        }
-
-        public string GetLocal(string? defaultCulture)
-        {
-            var tmp = defaultCulture.Split('-');
-            return tmp[1];
-        }
-
-        private LocalizationResource DeserializeLocalizationResource(string culture, string pathToResources)
+        private LocalizationResource? DeserializeLocalizationResource(string culture)
         {
             if (File.Exists(FilePath))
             {
@@ -104,7 +87,7 @@ namespace SportsTacticsBoard.Resources
 
                 if (culture != DefaultCulture)
                 {
-                    string pathToDefaultResource = pathToResources + "/" + LocalizationResourceFileName + DefaultCulture + ResourceExtension;
+                    string pathToDefaultResource = PathToResources + "/" + LocalizationResourceFileName + DefaultCulture + ResourceExtension;
                     if (File.Exists(pathToDefaultResource))
                     {
                         var defaultLocalizationResource = YamlDeserialize<LocalizationResource>(pathToDefaultResource);
@@ -112,11 +95,11 @@ namespace SportsTacticsBoard.Resources
                         //Add default values to empty fields
                         foreach (var propertyInfo in typeof(LocalizationResource).GetProperties())
                         {
-                            if (propertyInfo.GetGetMethod().Invoke(localResource, new object[0]) == null)
-                                propertyInfo.GetSetMethod().Invoke(localResource, new[]
+                            if (propertyInfo.GetGetMethod()?.Invoke(localResource, new object[0]) == null)
+                                propertyInfo.GetSetMethod()?.Invoke(localResource, new[]
                                 {
-                            propertyInfo.GetGetMethod().Invoke(defaultLocalizationResource, new object[0])
-                        });
+                                    propertyInfo.GetGetMethod()?.Invoke(defaultLocalizationResource, new object[0])
+                                });
                         }
                     }
                 }
