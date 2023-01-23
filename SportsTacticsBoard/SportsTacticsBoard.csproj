@@ -37,6 +37,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Remove="Classes\Settings.cs" />
+	  <Compile Remove="Classes\SettingsHelpers.cs" />
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="res\localization.sv-SE.res" />
@@ -89,6 +90,7 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />		
 		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.2" />		
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />		
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />		
 		<PackageReference Include="YamlDotNet" Version="12.3.1" />
 	</ItemGroup>
 

@@ -29,13 +29,21 @@
 // Microsoft.Extensions.Configuration.Json
 
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using System;
+using System.Configuration;
 using System.IO;
 
 namespace SportsTacticsBoard.Classes
 {
     public class Appsettings
     {
+        private static string file = "appsettings.json";
+
+        private static bool reRead = false;
         private static SportsTacticsBoardSettings? settings;
+
+        public static bool ReRead { get { return reRead; } }
 
         public static SportsTacticsBoardSettings? Settings
         {
@@ -47,11 +55,11 @@ namespace SportsTacticsBoard.Classes
 
         public static SportsTacticsBoardSettings? ReadSettings()
         {
-            if (settings == null)
+            if (settings == null || ReRead)
             {
                 var builder = new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json", optional: false);
+                    .AddJsonFile(file, optional: false);
 
                 IConfiguration config = builder.Build();
                 var tmp = config.GetSection("appsettings").Get<SportsTacticsBoardSettings>();
@@ -62,5 +70,79 @@ namespace SportsTacticsBoard.Classes
 
             return settings;
         }
+
+        public static void AddOrUpdateAppSetting<T>(string key, T value)
+        {
+            try
+            {
+                var filePath = Path.Combine(AppContext.BaseDirectory, file);
+                string json = File.ReadAllText(filePath);
+                dynamic? jsonObj = JsonConvert.DeserializeObject(json);
+                
+                if (jsonObj == null)
+                    return;
+
+                var sectionPath = key.Split(":")[0];
+                if (!string.IsNullOrEmpty(sectionPath))
+                {
+                    var keyPath = key.Split(":")[1];
+                    jsonObj[sectionPath][keyPath] = value;
+                }
+                else
+                {
+                    jsonObj[sectionPath] = value; // if no sectionpath just set the value
+                }
+
+                string output = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
+                File.WriteAllText(filePath, output);
+            }
+            catch (ConfigurationErrorsException)
+            {
+                Console.WriteLine("Error writing app settings");
+            }
+        }
+
+        #region copy_paset
+        ///https://stackoverflow.com/questions/60832072/how-to-write-data-to-appsettings-json-in-a-console-application-net-core
+        //public static void AddOrUpdateAppSetting<T>(string sectionPathKey, T value)
+        //{
+        //    try
+        //    {
+        //        var filePath = Path.Combine(AppContext.BaseDirectory, file);
+        //        var jsonObj = JsonConvert.DeserializeObject(File.ReadAllText(filePath));
+
+        //        SetValueRecursively(sectionPathKey, jsonObj, value);
+
+        //        File.WriteAllText(filePath, JsonConvert.SerializeObject(jsonObj, Formatting.Indented));
+        //        reRead = true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Error writing app settings | {0}", ex.Message);
+        //    }
+        //}
+
+        //private static void SetValueRecursively<T>(string sectionPathKey, dynamic? jsonObj, T value)
+        //{
+        //    if (jsonObj == null)
+        //        return;
+
+        //    // split the string at the first ':' character
+        //    var remainingSections = sectionPathKey.Split(":", 2);
+
+        //    var currentSection = "appsettings : " + remainingSections[0];
+        //    if (remainingSections.Length > 1)
+        //    {
+        //        // continue with the procress, moving down the tree
+        //        var nextSection = remainingSections[1];
+        //        SetValueRecursively(nextSection, jsonObj[currentSection], value);
+        //    }
+        //    else
+        //    {
+        //        // we've got to the end of the tree, set the value
+        //        jsonObj[currentSection] = value;
+        //    }
+        //}
+        #endregion
     }
 }

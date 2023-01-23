@@ -68,8 +68,7 @@ namespace SportsTacticsBoard
                 IPlayingSurfaceType selectedFieldType = (IPlayingSurfaceType)sftDialog.fieldTypeComboBox.SelectedItem;
                 if (sftDialog.saveAsDefaultCheckBox.Checked)
                 {
-                    //Properties.Settings.Default.DefaultFieldType = selectedFieldType.Name;
-                    //Properties.Settings.Default.Save();
+                    Appsettings.AddOrUpdateAppSetting<string>("appsettings:DefaultFieldType", selectedFieldType.Name);
                 }
                 return selectedFieldType;
             }

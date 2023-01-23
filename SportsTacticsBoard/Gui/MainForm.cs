@@ -1051,8 +1051,7 @@ namespace SportsTacticsBoard
         {
             var item = (ToolStripMenuItem)sender;
             var str = item.Tag.ToString();
-            //Properties.Settings.Default.DefaultLanguage = str;
-            //Properties.Settings.Default.Save();
+            Appsettings.AddOrUpdateAppSetting<string>("appsettings:DefaultLanguage", str);
             ResourceManager resourceManager = ResourceManager.GetInstance();
             resourceManager.SetLocal(str);
             SetLanguage();
