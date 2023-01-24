@@ -45,8 +45,8 @@ namespace SportsTacticsBoard.Resources
         private static readonly object padlock = new object();
 
         public string DefaultCulture { get; set; }
-        public LocalizationResource? LocalizationResource { get; set; }
-        public ImagesResource? ImagesResource { get; set; }
+        public LocalizationResource LocalizationResource { get; set; }
+        public ImagesResource ImagesResource { get; set; }
 
         public static ResourceManager GetInstance(string? culture = null)
         {

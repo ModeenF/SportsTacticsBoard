@@ -105,7 +105,7 @@ CategoryLabel: '&Kategory:'
 DescriptionLabel: '&Beschreibung:'
 EntriesLabel: '&Positionsobjekt:'
 NameLabel: '&Name:'
-ChoseLanguageToolStripMenuItem: Chose Language
-English: English
-German: German
-Swedish: Swedish
+ChoseLanguageToolStripMenuItem: Sprache wählen
+English: English:en-US
+German: Englisch:de-DE
+Swedish: Schwedisch:sv-SE

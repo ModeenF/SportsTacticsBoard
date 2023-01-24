@@ -10,10 +10,10 @@ FieldObjectBaseConeNameFormat: Cone - {0}
 FieldObjectPlayer: Player
 FieldObjectPlayerNameFormat: Player - {0} - {1}
 FieldObjectPuck: Puck
-FieldObjectReferee_Soccer_CR: Centre Referee
-FieldObjectReferee_Soccer_AR1: Assistant
-FieldObjectReferee_Soccer_AR2: Line
-FieldObjectReferee_Soccer_4th: Main
+FieldObjectReferee_Soccer_CR: Huvuddommare
+FieldObjectReferee_Soccer_AR1: Linjedommare
+FieldObjectReferee_Soccer_AR2: Linjedommare
+FieldObjectReferee_Soccer_4th: 4:e dommare
 FieldTypeFloorball: Floorball
 FieldTypeFutsal: Futsal (FIFA)
 FieldTypeHandball: Handball
@@ -105,6 +105,6 @@ DescriptionLabel: '&Description:'
 EntriesLabel: '&Objects to position:'
 NameLabel: '&Name:'
 ChoseLanguageToolStripMenuItem: 'Välj Språk'
-English: Engelska
-German: Tyska
-Swedish: Svenska
+English: Engelska:en-US
+German: Tyska:de-DE
+Swedish: Svenska:sv-SE

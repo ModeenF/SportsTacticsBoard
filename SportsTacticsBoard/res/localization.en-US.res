@@ -105,6 +105,6 @@ DescriptionLabel: '&Description:'
 EntriesLabel: '&Objects to position:'
 NameLabel: '&Name:'
 ChoseLanguageToolStripMenuItem: Chose Language
-English: English
-German: German
-Swedish: Swedish
+English: English:en-US
+German: German:de-DE
+Swedish: Swedish:sv-SE

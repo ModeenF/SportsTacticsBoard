@@ -1110,27 +1110,25 @@ namespace SportsTacticsBoard
 
             fieldControl.SetLanguage(resourceManager.LocalizationResource.ChangeLabel);
 
-            var languages = Appsettings.Settings?.Languages?.Split(';');
-            if (languages == null)
-            {
-                return;
-            }
-
             choseLanguageToolStripMenuItem.DropDownItems.Clear();
-            foreach (string language in languages)
+            SetLanguageDropdown(resourceManager.LocalizationResource.English);
+            SetLanguageDropdown(resourceManager.LocalizationResource.German);
+            SetLanguageDropdown(resourceManager.LocalizationResource.Swedish);           
+        }
+
+        public void SetLanguageDropdown(string language)
+        {
+            var l = language.Split(':');
+            var toolStripMenuItem = new ToolStripMenuItem(l[0]);
+            toolStripMenuItem.Tag = l[1];
+
+            if (l[1].Equals(Appsettings.Settings?.DefaultLanguage))
             {
-                var l = language.Split(':');
-                var toolStripMenuItem = new ToolStripMenuItem(l[0]);
-                toolStripMenuItem.Tag = l[1];
-
-                if (l[1].Equals(Appsettings.Settings?.DefaultLanguage))
-                {
-                    toolStripMenuItem.Checked = true;
-                }
-
-                toolStripMenuItem.Click += new EventHandler(choseLanguageToolStripMenuItem_Click);
-                choseLanguageToolStripMenuItem.DropDownItems.Add(toolStripMenuItem);
+                toolStripMenuItem.Checked = true;
             }
+
+            toolStripMenuItem.Click += new EventHandler(choseLanguageToolStripMenuItem_Click);
+            choseLanguageToolStripMenuItem.DropDownItems.Add(toolStripMenuItem);
         }
     }
 }
